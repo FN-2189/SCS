@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class BaseThruster : Thruster
 {
-    public override float power { get => 100; }
+    public override float power { get => 10; }
 }
