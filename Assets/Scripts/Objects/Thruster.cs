@@ -2,13 +2,15 @@ using UnityEngine;
 
 public class Thruster : MonoBehaviour
 {
-    public Vector3 position;
-    public Vector3 rotation;
-    public float thrust;
-
-    private void Awake()
-    {
-        position = transform.localPosition;
-        rotation = transform.localEulerAngles;
+    public Vector3 position => transform.localPosition;
+    public Quaternion rotation => transform.localRotation;
+    public float thrust {
+        get {
+            return power * thrustLevel;      
+        }
     }
+    
+    public virtual float power { get; }
+    [SerializeField]
+    private float thrustLevel;
 }

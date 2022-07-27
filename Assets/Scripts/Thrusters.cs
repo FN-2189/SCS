@@ -13,21 +13,19 @@ public class Thrusters : MonoBehaviour
     [SerializeField]
     private Rigidbody rb;
 
-    void Start()
+    void Awake()
     {
-        
+        thrusters = GetComponentsInChildren<Thruster>();
+        Debug.Log(thrusters.Length);
     }
 
     void FixedUpdate()
     {
         thrustVector = Vector3.zero;
         thrustPosition = Vector3.zero;
-        foreach(Thruster t in thrusters)
+        for(int i = 0; i < thrusters.Length; i++)
         {
-            thrustVector += t.rotation * t.thrust;
-            thrustPosition += t.position * t.thrust;
+            rb.AddForceAtPosition((thrusters[i].rotation * transform.forward) * thrusters[i].thrust, (transform.rotation * thrusters[i].position) + transform.position);
         }
-
-        rb.AddForceAtPosition(thrustVector, thrustPosition);
     }
 }
