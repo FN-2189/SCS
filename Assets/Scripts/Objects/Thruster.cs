@@ -13,4 +13,12 @@ public class Thruster : MonoBehaviour
     public virtual float power { get; }
     [SerializeField]
     private float thrustLevel;
+
+    [SerializeField]
+    private Mesh model;
+
+    private void Awake()
+    {
+        GetComponent<MeshFilter>().mesh = model;
+    }
 }
