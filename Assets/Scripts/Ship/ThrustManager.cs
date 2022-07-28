@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Thrusters : MonoBehaviour
+public class ThrustManager : MonoBehaviour
 {
     public Thruster[] thrusters;
 

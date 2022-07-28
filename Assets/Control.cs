@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class Control : MonoBehaviour
 {
     [SerializeField]
-    private Thrusters thrusters;
+    private ThrustManager thrusters;
 
     private InputManager input;
 
