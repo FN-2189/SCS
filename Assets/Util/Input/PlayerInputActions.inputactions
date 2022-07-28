@@ -6,48 +6,26 @@
             "id": "4f72c896-47ef-4ca1-a72e-b0477c298cf3",
             "actions": [
                 {
-                    "name": "Roll",
-                    "type": "Button",
-                    "id": "8d52f886-53a4-405f-a7fa-8b38130988fa",
-                    "expectedControlType": "Button",
+                    "name": "PitchAndYaw",
+                    "type": "Value",
+                    "id": "bb521b96-3d1f-4033-93d9-6164f92b6113",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
-                    "name": "1D Axis",
-                    "id": "de22c607-cdab-473e-b842-097234a79870",
-                    "path": "1DAxis",
+                    "name": "",
+                    "id": "23eda144-2e5a-4d94-be01-1a21911851da",
+                    "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Roll",
-                    "isComposite": true,
+                    "action": "PitchAndYaw",
+                    "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "6a4b9fdd-32ea-49e2-bf74-15ce51305a80",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Roll",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "c61028ad-9ddb-48a6-9795-561189a085f9",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Roll",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 }
             ]
         }

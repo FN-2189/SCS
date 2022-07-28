@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -220,6 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrustLevel: 100
+  group: 0
   model: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
@@ -313,7 +314,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &963194225
 GameObject:
@@ -397,7 +398,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 34.574, y: 0, z: 0}
 --- !u!1 &980771546
 GameObject:
@@ -410,6 +411,7 @@ GameObject:
   - component: {fileID: 980771550}
   - component: {fileID: 980771549}
   - component: {fileID: 980771548}
+  - component: {fileID: 980771551}
   m_Layer: 0
   m_Name: B O A T
   m_TagString: Untagged
@@ -461,8 +463,21 @@ Transform:
   - {fileID: 1405151582}
   - {fileID: 1110581364}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &980771551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980771546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdbc1fb0deb298b4e9d6958139764a52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thrusters: {fileID: 1110581365}
 --- !u!1 &1065708554
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,6 +525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrustLevel: 100
+  group: 0
   model: {fileID: 0}
 --- !u!23 &1065708557
 MeshRenderer:
@@ -611,6 +627,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thrusters: []
   rb: {fileID: 980771548}
+--- !u!1 &1221816533
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1221816535}
+  - component: {fileID: 1221816534}
+  m_Layer: 0
+  m_Name: Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1221816534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221816533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83289b25fb2a4bc488f9a2bc8cb18204, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseSensitivity: 0.3
+--- !u!4 &1221816535
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221816533}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1237504661
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,6 +719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrustLevel: 100
+  group: 0
   model: {fileID: 0}
 --- !u!23 &1237504664
 MeshRenderer:
@@ -811,19 +873,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 31466061068de2f45a0a1321746c7c7c, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 31466061068de2f45a0a1321746c7c7c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 37.9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 31466061068de2f45a0a1321746c7c7c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 31466061068de2f45a0a1321746c7c7c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -181.2
+      value: -44.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 31466061068de2f45a0a1321746c7c7c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -885,14 +947,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1629111096}
-  m_LocalRotation: {x: 0, y: 0, z: -0.15471035, w: 0.98795986}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7172756, w: 0.6967896}
   m_LocalPosition: {x: -3.38, y: -3.3, z: -7.05}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1110581364}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -17.8}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -91.66}
 --- !u!23 &1629111099
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -956,4 +1018,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrustLevel: 100
+  group: 0
   model: {fileID: 0}

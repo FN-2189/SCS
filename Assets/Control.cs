@@ -8,8 +8,15 @@ public class Control : MonoBehaviour
     [SerializeField]
     private Thrusters thrusters;
 
-    public void OnRoll(InputAction.CallbackContext context)
-    {
+    private InputManager input;
 
+    private void Awake()
+    {
+        input = GameObject.Find("Manager").GetComponent<InputManager>();
+    }
+
+    private void Update()
+    {
+        Debug.Log(input.Stick);
     }
 }

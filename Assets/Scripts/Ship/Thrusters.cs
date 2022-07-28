@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Thrusters : MonoBehaviour
 {
-    [SerializeField]
-    private Thruster[] thrusters;
+    public Thruster[] thrusters;
 
     private Vector3 thrustVector;
     private Vector3 thrustPosition;

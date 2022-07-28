@@ -14,6 +14,8 @@ public class Thruster : MonoBehaviour
     [SerializeField]
     private float thrustLevel;
 
+    public ThrusterGroup group;
+
     [SerializeField]
     private Mesh model;
 
