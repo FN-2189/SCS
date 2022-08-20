@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Thrusters : MonoBehaviour
+public class ThrustManager : MonoBehaviour
 {
-    [SerializeField]
-    private Thruster[] thrusters;
+    public Thruster[] thrusters;
 
     private Vector3 thrustVector;
     private Vector3 thrustPosition;
