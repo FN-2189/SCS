@@ -1,0 +1,40 @@
+Weapon Types with Mechanics:
+
+	Missiles/Torpedos
+		Customizable Warheads
+			-Plasma
+			-Nuclear
+			-Breaching Charges
+		Customizable Behaviour
+			-Intercept
+			-Module Targeting
+			-(Mine-like Behaviour/Wait until Proximity to Target Vessels)
+			-Drone-Like Behaviour
+		Quick-to-Use Configuration Menu
+
+	Kinetics
+		Railguns
+			Shot Pipelines
+			Module Sniping
+			For Fixed-Mount Railguns: Aim Assist using Thrusters
+			Manual Control
+			Recoil Compensation
+
+		PDCs
+			Missile AutoTrack
+			Manual Control for Offense
+			Shotgun PDCs?
+
+	Laser
+		Fuck no, but i guess you could use comm lasers for sensor blinding?
+
+Map:
+	Sol-System-like
+
+Navigation:
+	IFF
+		Sends Encoded Transmissions that can only be read by allies
+		"Lidar" and "Radar" Scans to identify vessels (Active)
+		Visible Range scans to identify Hulltypes/Armament to a degree (Passive)
+	Transponder System
+		
