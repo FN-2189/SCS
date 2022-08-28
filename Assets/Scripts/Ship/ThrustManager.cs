@@ -5,6 +5,8 @@ using UnityEngine;
 public class ThrustManager : MonoBehaviour
 {
     public Thruster[] thrusters;
+    [SerializeField]
+    private List<ThrusterGroup> activeGroups = new List<ThrusterGroup>();
 
     private Vector3 thrustVector;
     private Vector3 thrustPosition;
@@ -12,10 +14,40 @@ public class ThrustManager : MonoBehaviour
     [SerializeField]
     private Rigidbody rb;
 
+    [SerializeField]
+    private InputManager input;
+
     void Awake()
     {
         thrusters = GetComponentsInChildren<Thruster>();
         Debug.Log(thrusters.Length);
+    }
+
+    private void Update()
+    {
+        float yInput = input.Stick.y;
+        activeGroups.Clear();
+        if (yInput > 0f) activeGroups.Add(ThrusterGroup.PitchUp);
+        else if (yInput < 0f) activeGroups.Add(ThrusterGroup.PitchDown);
+
+        float xInput = input.Stick.x;
+        if (xInput > 0f) activeGroups.Add(ThrusterGroup.YawRight);
+        else if (xInput < 0f) activeGroups.Add(ThrusterGroup.YawLeft);
+
+        float inputMagnitude = input.Stick.magnitude;
+
+        for (int i = 0; i < thrusters.Length; i++)
+        {
+            if(isActive(thrusters[i], activeGroups))
+            {
+                thrusters[i].thrustLevel = inputMagnitude;
+            }
+            else
+            {
+                thrusters[i].thrustLevel = 0f;
+            }
+        }
+
     }
 
     void FixedUpdate()
@@ -26,5 +58,14 @@ public class ThrustManager : MonoBehaviour
         {
             rb.AddForceAtPosition((thrusters[i].rotation * transform.forward) * thrusters[i].thrust, (transform.rotation * thrusters[i].position) + transform.position);
         }
+    }
+
+    bool isActive(Thruster t, List<ThrusterGroup> g)
+    {
+        foreach(ThrusterGroup group in g)
+        {
+            if (t.isInGroup[group]) return true;
+        }
+        return false;
     }
 }
