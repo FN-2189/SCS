@@ -10,6 +10,7 @@ public class InputManager : MonoBehaviour
     private float mouseSensitivity;
 
     public Vector2 Stick { get; private set; }
+    public float Throttle;
 
     private void Awake()
     {
@@ -29,6 +30,17 @@ public class InputManager : MonoBehaviour
         stick.y += pitchAndYaw.y * mouseSensitivity * Time.deltaTime;
         stick.x = Mathf.Clamp(stick.x, -1, 1);
         stick.y = Mathf.Clamp(stick.y, -1, 1);
+
+
+        float joyStickX = input.ManualShipThrusterControl.StickX.ReadValue<float>();
+        float joyStickY = input.ManualShipThrusterControl.StickY.ReadValue<float>();
+        float joyStickRz = input.ManualShipThrusterControl.StickRz.ReadValue<float>();
+        float joyStickZ = input.ManualShipThrusterControl.StickZ.ReadValue<float>();
+        stick.x = joyStickRz;
+        stick.y = joyStickY * -1;
+        float throttle = joyStickZ * -1;
+
         this.Stick = stick;
+        this.Throttle = throttle;
     }
 }

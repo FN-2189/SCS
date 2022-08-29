@@ -27,12 +27,15 @@ public class ThrustManager : MonoBehaviour
     {
         float yInput = input.Stick.y;
         activeGroups.Clear();
-        if (yInput > 0f) activeGroups.Add(ThrusterGroup.PitchUp);
-        else if (yInput < 0f) activeGroups.Add(ThrusterGroup.PitchDown);
+        if (yInput > 0.15) activeGroups.Add(ThrusterGroup.PitchUp);
+        else if (yInput < -0.15) activeGroups.Add(ThrusterGroup.PitchDown);
 
         float xInput = input.Stick.x;
-        if (xInput > 0f) activeGroups.Add(ThrusterGroup.YawRight);
-        else if (xInput < 0f) activeGroups.Add(ThrusterGroup.YawLeft);
+        if (xInput > 0.15) activeGroups.Add(ThrusterGroup.YawRight);
+        else if (xInput < -0.15) activeGroups.Add(ThrusterGroup.YawLeft);
+
+        float zInput = input.Throttle;
+        if (zInput > 0f) activeGroups.Add(ThrusterGroup.Forward);
 
         float inputMagnitude = input.Stick.magnitude;
 
