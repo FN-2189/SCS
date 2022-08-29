@@ -10,6 +10,7 @@ public class ThrustManager : MonoBehaviour
 
     private Vector3 thrustVector;
     private Vector3 thrustPosition;
+    private float deadZone = 0.15f;
 
     [SerializeField]
     private Rigidbody rb;
@@ -27,12 +28,12 @@ public class ThrustManager : MonoBehaviour
     {
         float yInput = input.Stick.y;
         activeGroups.Clear();
-        if (yInput > 0.15) activeGroups.Add(ThrusterGroup.PitchUp);
-        else if (yInput < -0.15) activeGroups.Add(ThrusterGroup.PitchDown);
+        if (yInput > deadZone) activeGroups.Add(ThrusterGroup.PitchUp);
+        else if (yInput < -deadZone) activeGroups.Add(ThrusterGroup.PitchDown);
 
         float xInput = input.Stick.x;
-        if (xInput > 0.15) activeGroups.Add(ThrusterGroup.YawRight);
-        else if (xInput < -0.15) activeGroups.Add(ThrusterGroup.YawLeft);
+        if (xInput > deadZone) activeGroups.Add(ThrusterGroup.YawRight);
+        else if (xInput < -deadZone) activeGroups.Add(ThrusterGroup.YawLeft);
 
         float zInput = input.Throttle;
         if (zInput > 0f) activeGroups.Add(ThrusterGroup.Forward);
