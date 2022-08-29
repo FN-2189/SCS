@@ -2,34 +2,6 @@
     "name": "PlayerInputActions",
     "maps": [
         {
-            "name": "Main",
-            "id": "4f72c896-47ef-4ca1-a72e-b0477c298cf3",
-            "actions": [
-                {
-                    "name": "PitchAndYaw",
-                    "type": "Value",
-                    "id": "bb521b96-3d1f-4033-93d9-6164f92b6113",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "23eda144-2e5a-4d94-be01-1a21911851da",
-                    "path": "<Mouse>/delta",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "PitchAndYaw",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
             "name": "ManualShipThrusterControl",
             "id": "f062a2a2-29b1-4c39-8eb1-0bf2d5aa483e",
             "actions": [
@@ -65,6 +37,15 @@
                     "type": "Value",
                     "id": "27e2790c-3929-4271-8c6d-81143733229d",
                     "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "PitchAndYaw",
+                    "type": "Value",
+                    "id": "92b54d6e-8b4a-4811-86b1-efc2e632c597",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -112,6 +93,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "StickZ",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "12092e6e-61e3-4dfb-9d8a-e35200f17f40",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PitchAndYaw",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

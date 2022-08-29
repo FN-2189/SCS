@@ -24,7 +24,7 @@ public class InputManager : MonoBehaviour
     private void Update()
     {
         // mouse controls (pitch + yaw)
-        Vector2 pitchAndYaw = input.Main.PitchAndYaw.ReadValue<Vector2>();
+        Vector2 pitchAndYaw = input.ManualShipThrusterControl.PitchAndYaw.ReadValue<Vector2>();
         Vector2 stick = this.Stick;
         stick.x += pitchAndYaw.x * mouseSensitivity * Time.deltaTime;
         stick.y += pitchAndYaw.y * mouseSensitivity * Time.deltaTime;
