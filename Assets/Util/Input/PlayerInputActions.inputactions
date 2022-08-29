@@ -26,6 +26,17 @@
                     "action": "PitchAndYaw",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "12ceb495-59b4-4071-a501-bc94998d8433",
+                    "path": "<Joystick>/stick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PitchAndYaw",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
