@@ -42,5 +42,7 @@ public class InputManager : MonoBehaviour
 
         this.Stick = stick;
         this.Throttle = throttle;
+
+        Debug.Log(input.devices);
     }
 }

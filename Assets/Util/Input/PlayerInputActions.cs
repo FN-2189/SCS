@@ -24,6 +24,45 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     ""name"": ""PlayerInputActions"",
     ""maps"": [
         {
+            ""name"": ""Main"",
+            ""id"": ""4f72c896-47ef-4ca1-a72e-b0477c298cf3"",
+            ""actions"": [
+                {
+                    ""name"": ""PitchAndYaw"",
+                    ""type"": ""Value"",
+                    ""id"": ""bb521b96-3d1f-4033-93d9-6164f92b6113"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""23eda144-2e5a-4d94-be01-1a21911851da"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PitchAndYaw"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""12ceb495-59b4-4071-a501-bc94998d8433"",
+                    ""path"": ""<Joystick>/stick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PitchAndYaw"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
             ""name"": ""ManualShipThrusterControl"",
             ""id"": ""f062a2a2-29b1-4c39-8eb1-0bf2d5aa483e"",
             ""actions"": [
