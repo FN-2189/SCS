@@ -28,28 +28,10 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
             ""id"": ""f062a2a2-29b1-4c39-8eb1-0bf2d5aa483e"",
             ""actions"": [
                 {
-                    ""name"": ""StickX"",
+                    ""name"": ""PitchAndRollStick"",
                     ""type"": ""Value"",
                     ""id"": ""39bfc9a6-9582-4fe8-99cb-caa9f9cf32e9"",
-                    ""expectedControlType"": ""Axis"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""StickY"",
-                    ""type"": ""Value"",
-                    ""id"": ""535786a6-5387-4095-ae6f-920dba08c498"",
-                    ""expectedControlType"": ""Axis"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""StickRz"",
-                    ""type"": ""Value"",
-                    ""id"": ""eaf2d2dc-8034-494f-b8e8-53da63b87079"",
-                    ""expectedControlType"": ""Axis"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -64,46 +46,33 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""PitchAndYaw"",
+                    ""name"": ""PitchAndYawMouse"",
                     ""type"": ""Value"",
                     ""id"": ""92b54d6e-8b4a-4811-86b1-efc2e632c597"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""StickRz"",
+                    ""type"": ""Button"",
+                    ""id"": ""e45f8941-ef1f-428f-a20d-bf3bd5dd366e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""c7102e19-ce8f-4609-a82b-9d7eea1ed7e5"",
-                    ""path"": ""<Joystick>/stick/y"",
+                    ""id"": ""4bd4f86a-85e9-4805-9267-5e5a51357f08"",
+                    ""path"": ""<Joystick>/stick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""StickY"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""824cebc3-8c05-42b4-8693-634b3dfe218b"",
-                    ""path"": ""<Joystick>/stick/x"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""StickX"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""21e50905-2021-4a61-a931-3f6cdd0b1915"",
-                    ""path"": ""<HID::Logitech X52 Professional H.O.T.A.S.>/rz"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""StickRz"",
+                    ""action"": ""PitchAndRollStick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -125,7 +94,18 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""PitchAndYaw"",
+                    ""action"": ""PitchAndYawMouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""21e50905-2021-4a61-a931-3f6cdd0b1915"",
+                    ""path"": ""<HID::Logitech X52 Professional H.O.T.A.S.>/rz"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StickRz"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -136,11 +116,10 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
 }");
         // ManualShipThrusterControl
         m_ManualShipThrusterControl = asset.FindActionMap("ManualShipThrusterControl", throwIfNotFound: true);
-        m_ManualShipThrusterControl_StickX = m_ManualShipThrusterControl.FindAction("StickX", throwIfNotFound: true);
-        m_ManualShipThrusterControl_StickY = m_ManualShipThrusterControl.FindAction("StickY", throwIfNotFound: true);
-        m_ManualShipThrusterControl_StickRz = m_ManualShipThrusterControl.FindAction("StickRz", throwIfNotFound: true);
+        m_ManualShipThrusterControl_PitchAndRollStick = m_ManualShipThrusterControl.FindAction("PitchAndRollStick", throwIfNotFound: true);
         m_ManualShipThrusterControl_StickZ = m_ManualShipThrusterControl.FindAction("StickZ", throwIfNotFound: true);
-        m_ManualShipThrusterControl_PitchAndYaw = m_ManualShipThrusterControl.FindAction("PitchAndYaw", throwIfNotFound: true);
+        m_ManualShipThrusterControl_PitchAndYawMouse = m_ManualShipThrusterControl.FindAction("PitchAndYawMouse", throwIfNotFound: true);
+        m_ManualShipThrusterControl_StickRz = m_ManualShipThrusterControl.FindAction("StickRz", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -200,20 +179,18 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     // ManualShipThrusterControl
     private readonly InputActionMap m_ManualShipThrusterControl;
     private IManualShipThrusterControlActions m_ManualShipThrusterControlActionsCallbackInterface;
-    private readonly InputAction m_ManualShipThrusterControl_StickX;
-    private readonly InputAction m_ManualShipThrusterControl_StickY;
-    private readonly InputAction m_ManualShipThrusterControl_StickRz;
+    private readonly InputAction m_ManualShipThrusterControl_PitchAndRollStick;
     private readonly InputAction m_ManualShipThrusterControl_StickZ;
-    private readonly InputAction m_ManualShipThrusterControl_PitchAndYaw;
+    private readonly InputAction m_ManualShipThrusterControl_PitchAndYawMouse;
+    private readonly InputAction m_ManualShipThrusterControl_StickRz;
     public struct ManualShipThrusterControlActions
     {
         private @PlayerInputActions m_Wrapper;
         public ManualShipThrusterControlActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @StickX => m_Wrapper.m_ManualShipThrusterControl_StickX;
-        public InputAction @StickY => m_Wrapper.m_ManualShipThrusterControl_StickY;
-        public InputAction @StickRz => m_Wrapper.m_ManualShipThrusterControl_StickRz;
+        public InputAction @PitchAndRollStick => m_Wrapper.m_ManualShipThrusterControl_PitchAndRollStick;
         public InputAction @StickZ => m_Wrapper.m_ManualShipThrusterControl_StickZ;
-        public InputAction @PitchAndYaw => m_Wrapper.m_ManualShipThrusterControl_PitchAndYaw;
+        public InputAction @PitchAndYawMouse => m_Wrapper.m_ManualShipThrusterControl_PitchAndYawMouse;
+        public InputAction @StickRz => m_Wrapper.m_ManualShipThrusterControl_StickRz;
         public InputActionMap Get() { return m_Wrapper.m_ManualShipThrusterControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -223,50 +200,43 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface != null)
             {
-                @StickX.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnStickX;
-                @StickX.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnStickX;
-                @StickX.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnStickX;
-                @StickY.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnStickY;
-                @StickY.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnStickY;
-                @StickY.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnStickY;
-                @StickRz.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnStickRz;
-                @StickRz.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnStickRz;
-                @StickRz.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnStickRz;
+                @PitchAndRollStick.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnPitchAndRollStick;
+                @PitchAndRollStick.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnPitchAndRollStick;
+                @PitchAndRollStick.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnPitchAndRollStick;
                 @StickZ.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnStickZ;
                 @StickZ.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnStickZ;
                 @StickZ.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnStickZ;
-                @PitchAndYaw.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnPitchAndYaw;
-                @PitchAndYaw.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnPitchAndYaw;
-                @PitchAndYaw.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnPitchAndYaw;
+                @PitchAndYawMouse.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnPitchAndYawMouse;
+                @PitchAndYawMouse.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnPitchAndYawMouse;
+                @PitchAndYawMouse.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnPitchAndYawMouse;
+                @StickRz.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnStickRz;
+                @StickRz.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnStickRz;
+                @StickRz.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnStickRz;
             }
             m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @StickX.started += instance.OnStickX;
-                @StickX.performed += instance.OnStickX;
-                @StickX.canceled += instance.OnStickX;
-                @StickY.started += instance.OnStickY;
-                @StickY.performed += instance.OnStickY;
-                @StickY.canceled += instance.OnStickY;
-                @StickRz.started += instance.OnStickRz;
-                @StickRz.performed += instance.OnStickRz;
-                @StickRz.canceled += instance.OnStickRz;
+                @PitchAndRollStick.started += instance.OnPitchAndRollStick;
+                @PitchAndRollStick.performed += instance.OnPitchAndRollStick;
+                @PitchAndRollStick.canceled += instance.OnPitchAndRollStick;
                 @StickZ.started += instance.OnStickZ;
                 @StickZ.performed += instance.OnStickZ;
                 @StickZ.canceled += instance.OnStickZ;
-                @PitchAndYaw.started += instance.OnPitchAndYaw;
-                @PitchAndYaw.performed += instance.OnPitchAndYaw;
-                @PitchAndYaw.canceled += instance.OnPitchAndYaw;
+                @PitchAndYawMouse.started += instance.OnPitchAndYawMouse;
+                @PitchAndYawMouse.performed += instance.OnPitchAndYawMouse;
+                @PitchAndYawMouse.canceled += instance.OnPitchAndYawMouse;
+                @StickRz.started += instance.OnStickRz;
+                @StickRz.performed += instance.OnStickRz;
+                @StickRz.canceled += instance.OnStickRz;
             }
         }
     }
     public ManualShipThrusterControlActions @ManualShipThrusterControl => new ManualShipThrusterControlActions(this);
     public interface IManualShipThrusterControlActions
     {
-        void OnStickX(InputAction.CallbackContext context);
-        void OnStickY(InputAction.CallbackContext context);
-        void OnStickRz(InputAction.CallbackContext context);
+        void OnPitchAndRollStick(InputAction.CallbackContext context);
         void OnStickZ(InputAction.CallbackContext context);
-        void OnPitchAndYaw(InputAction.CallbackContext context);
+        void OnPitchAndYawMouse(InputAction.CallbackContext context);
+        void OnStickRz(InputAction.CallbackContext context);
     }
 }
