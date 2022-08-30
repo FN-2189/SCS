@@ -10,6 +10,9 @@ public class Control : MonoBehaviour
 
     private InputManager input;
 
+    [SerializeField] ParticleSystem railgunParticles;
+    [SerializeField] ParticleSystem mainEngineParticles;
+
     private void Awake()
     {
         input = GameObject.Find("Manager").GetComponent<InputManager>();
@@ -17,6 +20,12 @@ public class Control : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(input.Stick);
+        RailgunShot();
+        mainEngineParticles.startLifetime = (input.Throttle + 1) * 2;
+    }
+
+    public void RailgunShot()
+    {
+        railgunParticles.Play();
     }
 }
