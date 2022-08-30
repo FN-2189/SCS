@@ -11,6 +11,7 @@ public class InputManager : MonoBehaviour
 
     public Vector2 Stick { get; private set; }
     public float Throttle;
+    public float Trigger;
 
     private void Awake()
     {
@@ -37,11 +38,13 @@ public class InputManager : MonoBehaviour
         float joyStickZ = input.ManualShipThrusterControl.StickZ.ReadValue<float>();
         stick.x = joyStickRz;
         stick.y = pitchAndRollJoystick.y * -1;
-        float throttle = joyStickZ * -1;
+        float throttle = ((joyStickZ * -1) + 1) / 2;
+
+        float trigger = 0f;
+        trigger = input.ManualShipThrusterControl.TestRailgunFire.ReadValue<float>();
 
         this.Stick = stick;
         this.Throttle = throttle;
-
-        Debug.Log(input.devices);
+        this.Trigger = trigger;
     }
 }

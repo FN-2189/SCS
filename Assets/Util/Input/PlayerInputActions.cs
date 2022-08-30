@@ -62,6 +62,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TestRailgunFire"",
+                    ""type"": ""Button"",
+                    ""id"": ""b7dc320d-6396-4b39-952d-1709c018c2e9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -108,6 +117,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""StickRz"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c28be392-aa55-4eb9-b9a2-f2aed395e8ad"",
+                    ""path"": ""<Joystick>/trigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TestRailgunFire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -120,6 +140,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_ManualShipThrusterControl_StickZ = m_ManualShipThrusterControl.FindAction("StickZ", throwIfNotFound: true);
         m_ManualShipThrusterControl_PitchAndYawMouse = m_ManualShipThrusterControl.FindAction("PitchAndYawMouse", throwIfNotFound: true);
         m_ManualShipThrusterControl_StickRz = m_ManualShipThrusterControl.FindAction("StickRz", throwIfNotFound: true);
+        m_ManualShipThrusterControl_TestRailgunFire = m_ManualShipThrusterControl.FindAction("TestRailgunFire", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -183,6 +204,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_ManualShipThrusterControl_StickZ;
     private readonly InputAction m_ManualShipThrusterControl_PitchAndYawMouse;
     private readonly InputAction m_ManualShipThrusterControl_StickRz;
+    private readonly InputAction m_ManualShipThrusterControl_TestRailgunFire;
     public struct ManualShipThrusterControlActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -191,6 +213,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @StickZ => m_Wrapper.m_ManualShipThrusterControl_StickZ;
         public InputAction @PitchAndYawMouse => m_Wrapper.m_ManualShipThrusterControl_PitchAndYawMouse;
         public InputAction @StickRz => m_Wrapper.m_ManualShipThrusterControl_StickRz;
+        public InputAction @TestRailgunFire => m_Wrapper.m_ManualShipThrusterControl_TestRailgunFire;
         public InputActionMap Get() { return m_Wrapper.m_ManualShipThrusterControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -212,6 +235,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @StickRz.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnStickRz;
                 @StickRz.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnStickRz;
                 @StickRz.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnStickRz;
+                @TestRailgunFire.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnTestRailgunFire;
+                @TestRailgunFire.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnTestRailgunFire;
+                @TestRailgunFire.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnTestRailgunFire;
             }
             m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface = instance;
             if (instance != null)
@@ -228,6 +254,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @StickRz.started += instance.OnStickRz;
                 @StickRz.performed += instance.OnStickRz;
                 @StickRz.canceled += instance.OnStickRz;
+                @TestRailgunFire.started += instance.OnTestRailgunFire;
+                @TestRailgunFire.performed += instance.OnTestRailgunFire;
+                @TestRailgunFire.canceled += instance.OnTestRailgunFire;
             }
         }
     }
@@ -238,5 +267,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnStickZ(InputAction.CallbackContext context);
         void OnPitchAndYawMouse(InputAction.CallbackContext context);
         void OnStickRz(InputAction.CallbackContext context);
+        void OnTestRailgunFire(InputAction.CallbackContext context);
     }
 }
