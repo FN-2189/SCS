@@ -33,7 +33,7 @@ public class InputManager : MonoBehaviour
         stick.x = Mathf.Clamp(stick.x, -1, 1);
         stick.y = Mathf.Clamp(stick.y, -1, 1);
 
-
+        /*
         float joyStickRz = input.ManualShipThrusterControl.StickRz.ReadValue<float>();
         float joyStickZ = input.ManualShipThrusterControl.StickZ.ReadValue<float>();
         stick.x = joyStickRz;
@@ -43,8 +43,10 @@ public class InputManager : MonoBehaviour
         float trigger = 0f;
         trigger = input.ManualShipThrusterControl.TestRailgunFire.ReadValue<float>();
 
+        */
+        this.Throttle = input.ManualShipThrusterControl.Throttle.ReadValue<float>();
         this.Stick = stick;
-        this.Throttle = throttle;
-        this.Trigger = trigger;
+        //this.Trigger = trigger;
+        
     }
 }

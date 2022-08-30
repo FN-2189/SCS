@@ -11,11 +11,13 @@ public class Thruster : MonoBehaviour
     public Quaternion rotation => transform.localRotation;
     public float thrust {
         get {
-            return type.power * thrustLevel;      
+            if (isNegative && thrustLevel > 0f) return 0f;
+            else if (!isNegative && thrustLevel < 0f) return 0f;
+            else return type.power * Mathf.Abs(thrustLevel);
         }
     }
 
-    public Dictionary<ThrusterGroup, bool> isInGroup;
+    public Dictionary<Axis, bool> isInAxis;
     
 
     [SerializeField]
@@ -23,20 +25,23 @@ public class Thruster : MonoBehaviour
     public float thrustLevel;
 
     [SerializeField]
-    private ThrusterGroup[] inGroups = { };
+    private bool isNegative;
+
+    [SerializeField]
+    private Axis[] inGroups = { };
 
     private void Awake()
     {
-        isInGroup = new Dictionary<ThrusterGroup, bool>();
-        Array vals = Enum.GetValues(typeof(ThrusterGroup));
-        foreach(ThrusterGroup t in vals)
+        isInAxis = new Dictionary<Axis, bool>();
+        Array vals = Enum.GetValues(typeof(Axis));
+        foreach(Axis t in vals)
         {
-            isInGroup.Add(t, false);
+            isInAxis.Add(t, false);
         }
 
-        foreach(ThrusterGroup t in inGroups)
+        foreach(Axis t in inGroups)
         {
-            isInGroup[t] = true;
+            isInAxis[t] = true;
         }
 
     }

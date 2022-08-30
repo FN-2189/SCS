@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3362f436859c7df4c8cfac341383b31b, type: 3}
   m_Name: RCS
   m_EditorClassIdentifier: 
-  power: 0.5
+  power: 50
   mesh: {fileID: 0}

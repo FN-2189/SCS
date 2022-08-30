@@ -5,8 +5,6 @@ using UnityEngine;
 public class ThrustManager : MonoBehaviour
 {
     public Thruster[] thrusters;
-    [SerializeField]
-    private List<ThrusterGroup> activeGroups = new List<ThrusterGroup>();
 
     private Vector3 thrustVector;
     private Vector3 thrustPosition;
@@ -26,32 +24,45 @@ public class ThrustManager : MonoBehaviour
 
     private void Update()
     {
-        float yInput = input.Stick.y;
-        activeGroups.Clear();
-        if (yInput > deadZone) activeGroups.Add(ThrusterGroup.PitchUp);
-        else if (yInput < -deadZone) activeGroups.Add(ThrusterGroup.PitchDown);
 
-        float xInput = input.Stick.x;
-        if (xInput > deadZone) activeGroups.Add(ThrusterGroup.YawRight);
-        else if (xInput < -deadZone) activeGroups.Add(ThrusterGroup.YawLeft);
 
-        float zInput = input.Throttle;
-        if (zInput > 0f) activeGroups.Add(ThrusterGroup.Forward);
+        // get stick input (x,y -> pitch/yaw)
 
-        float inputMagnitude = input.Stick.magnitude;
-
-        for (int i = 0; i < thrusters.Length; i++)
+        // pitch
+        
+        if(Mathf.Abs(input.Stick.y) > deadZone)
         {
-            if(isActive(thrusters[i], activeGroups))
+            for(int i = 0; i < thrusters.Length; i++)
             {
-                thrusters[i].thrustLevel = inputMagnitude;
-            }
-            else
-            {
-                thrusters[i].thrustLevel = 0f;
+                if (thrusters[i].isInAxis[Axis.Pitch])
+                {
+                    thrusters[i].thrustLevel = input.Stick.y;
+                }
             }
         }
 
+        // yaw
+
+        if (Mathf.Abs(input.Stick.x) > deadZone)
+        {
+            for (int i = 0; i < thrusters.Length; i++)
+            {
+                if (thrusters[i].isInAxis[Axis.Yaw])
+                {
+                    thrusters[i].thrustLevel = input.Stick.x;
+                }
+            }
+        }
+        
+        // thrust
+
+        for (int i = 0; i < thrusters.Length; i++)
+        {
+            if (thrusters[i].isInAxis[Axis.Forward])
+            {
+                thrusters[i].thrustLevel = input.Throttle;
+            }
+        }
     }
 
     void FixedUpdate()
@@ -64,6 +75,7 @@ public class ThrustManager : MonoBehaviour
         }
     }
 
+    /*
     bool isActive(Thruster t, List<ThrusterGroup> g)
     {
         foreach(ThrusterGroup group in g)
@@ -72,4 +84,5 @@ public class ThrustManager : MonoBehaviour
         }
         return false;
     }
+    */
 }

@@ -71,6 +71,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Throttle"",
+                    ""type"": ""Value"",
+                    ""id"": ""6d9d2549-ad56-48c3-af21-e3c26b0166e9"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -128,6 +137,39 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""TestRailgunFire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Keyboard"",
+                    ""id"": ""0b4aba4b-72de-4e68-8425-fe26ae7fe4dd"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Throttle"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""0c4c3076-1670-4ab9-a652-bed9580cc675"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Throttle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""fbd27ffd-02f7-4ac8-91aa-2a845b24d653"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Throttle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -141,6 +183,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_ManualShipThrusterControl_PitchAndYawMouse = m_ManualShipThrusterControl.FindAction("PitchAndYawMouse", throwIfNotFound: true);
         m_ManualShipThrusterControl_StickRz = m_ManualShipThrusterControl.FindAction("StickRz", throwIfNotFound: true);
         m_ManualShipThrusterControl_TestRailgunFire = m_ManualShipThrusterControl.FindAction("TestRailgunFire", throwIfNotFound: true);
+        m_ManualShipThrusterControl_Throttle = m_ManualShipThrusterControl.FindAction("Throttle", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -205,6 +248,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_ManualShipThrusterControl_PitchAndYawMouse;
     private readonly InputAction m_ManualShipThrusterControl_StickRz;
     private readonly InputAction m_ManualShipThrusterControl_TestRailgunFire;
+    private readonly InputAction m_ManualShipThrusterControl_Throttle;
     public struct ManualShipThrusterControlActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -214,6 +258,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @PitchAndYawMouse => m_Wrapper.m_ManualShipThrusterControl_PitchAndYawMouse;
         public InputAction @StickRz => m_Wrapper.m_ManualShipThrusterControl_StickRz;
         public InputAction @TestRailgunFire => m_Wrapper.m_ManualShipThrusterControl_TestRailgunFire;
+        public InputAction @Throttle => m_Wrapper.m_ManualShipThrusterControl_Throttle;
         public InputActionMap Get() { return m_Wrapper.m_ManualShipThrusterControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -238,6 +283,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @TestRailgunFire.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnTestRailgunFire;
                 @TestRailgunFire.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnTestRailgunFire;
                 @TestRailgunFire.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnTestRailgunFire;
+                @Throttle.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnThrottle;
+                @Throttle.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnThrottle;
+                @Throttle.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnThrottle;
             }
             m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface = instance;
             if (instance != null)
@@ -257,6 +305,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @TestRailgunFire.started += instance.OnTestRailgunFire;
                 @TestRailgunFire.performed += instance.OnTestRailgunFire;
                 @TestRailgunFire.canceled += instance.OnTestRailgunFire;
+                @Throttle.started += instance.OnThrottle;
+                @Throttle.performed += instance.OnThrottle;
+                @Throttle.canceled += instance.OnThrottle;
             }
         }
     }
@@ -268,5 +319,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnPitchAndYawMouse(InputAction.CallbackContext context);
         void OnStickRz(InputAction.CallbackContext context);
         void OnTestRailgunFire(InputAction.CallbackContext context);
+        void OnThrottle(InputAction.CallbackContext context);
     }
 }
