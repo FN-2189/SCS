@@ -35,11 +35,11 @@ public class InputManager : MonoBehaviour
 
         
         float joyStickRz = input.ManualShipThrusterControl.StickRz.ReadValue<float>();
-        float joyStickZ = input.ManualShipThrusterControl.StickZ.ReadValue<float>();
+        float throttleInput = input.ManualShipThrusterControl.Throttle.ReadValue<float>();
         stick.x = joyStickRz;
         stick.y = pitchAndRollJoystick.y * -1;
         stick.z = pitchAndRollJoystick.x;
-        float throttle = ((joyStickZ * -1) + 1) / 2;
+        float throttle = (-throttleInput + 1) / 2;
 
         float trigger = 0f;
         trigger = input.ManualShipThrusterControl.TestRailgunFire.ReadValue<float>();
