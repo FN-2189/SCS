@@ -36,7 +36,7 @@ public class ThrustManager : MonoBehaviour
             {
                 if (thrusters[i].isInAxis[Axis.Pitch])
                 {
-                    thrusters[i].thrustLevel = input.Stick.y;
+                    thrusters[i].thrustLevel = input.Stick.y * -1;
                 }
             }
         }
@@ -49,11 +49,23 @@ public class ThrustManager : MonoBehaviour
             {
                 if (thrusters[i].isInAxis[Axis.Yaw])
                 {
-                    thrusters[i].thrustLevel = input.Stick.x;
+                    thrusters[i].thrustLevel = input.Stick.x * -1;
                 }
             }
         }
-        
+
+        //roll
+        if (Mathf.Abs(input.Stick.z) > deadZone)
+        {
+            for (int i = 0; i < thrusters.Length; i++)
+            {
+                if (thrusters[i].isInAxis[Axis.Roll])
+                {
+                    thrusters[i].thrustLevel = input.Stick.z * -1;
+                }
+            }
+        }
+
         // thrust
 
         for (int i = 0; i < thrusters.Length; i++)

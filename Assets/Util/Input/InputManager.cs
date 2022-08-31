@@ -9,7 +9,7 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     private float mouseSensitivity;
 
-    public Vector2 Stick { get; private set; }
+    public Vector3 Stick { get; private set; }
     public float Throttle;
     public float Trigger;
 
@@ -19,7 +19,7 @@ public class InputManager : MonoBehaviour
         input = new PlayerInputActions();
         input.Enable();
 
-        Stick = Vector2.zero;
+        Stick = Vector3.zero;
     }
 
     private void Update()
@@ -27,26 +27,28 @@ public class InputManager : MonoBehaviour
         // mouse controls (pitch + yaw)
         Vector2 pitchAndYaw = input.ManualShipThrusterControl.PitchAndYawMouse.ReadValue<Vector2>();
         Vector2 pitchAndRollJoystick = input.ManualShipThrusterControl.PitchAndRollStick.ReadValue<Vector2>();
-        Vector2 stick = this.Stick;
+        Vector3 stick = this.Stick;
         stick.x += pitchAndYaw.x * mouseSensitivity * Time.deltaTime;
         stick.y += pitchAndYaw.y * mouseSensitivity * Time.deltaTime;
         stick.x = Mathf.Clamp(stick.x, -1, 1);
         stick.y = Mathf.Clamp(stick.y, -1, 1);
 
-        /*
+        
         float joyStickRz = input.ManualShipThrusterControl.StickRz.ReadValue<float>();
         float joyStickZ = input.ManualShipThrusterControl.StickZ.ReadValue<float>();
         stick.x = joyStickRz;
         stick.y = pitchAndRollJoystick.y * -1;
+        stick.z = pitchAndRollJoystick.x;
         float throttle = ((joyStickZ * -1) + 1) / 2;
 
         float trigger = 0f;
         trigger = input.ManualShipThrusterControl.TestRailgunFire.ReadValue<float>();
 
-        */
-        this.Throttle = input.ManualShipThrusterControl.Throttle.ReadValue<float>();
+
+        //this.Throttle = input.ManualShipThrusterControl.Throttle.ReadValue<float>();
+        this.Throttle = throttle;
         this.Stick = stick;
-        //this.Trigger = trigger;
+        this.Trigger = trigger;
         
     }
 }
