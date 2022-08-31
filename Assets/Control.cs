@@ -10,18 +10,21 @@ public class Control : MonoBehaviour
 
     private InputManager input;
 
-    [SerializeField] ParticleSystem railgunParticles;
     [SerializeField] ParticleSystem mainEngineParticles;
-    [SerializeField] Rigidbody rigidbody;
+    [SerializeField] Rigidbody rb;
     [SerializeField] Camera thirdpersonview;
+    [SerializeField] private GameObject railgunObject;
 
-    public Vector3 ThirdPersonCameraPosition { get; private set; }
+    private Railgun railgun;
 
     int RailgunFired = 0;
+
+    public Vector3 ThirdPersonCameraPosition { get; private set; }
 
     private void Awake()
     {
         input = GameObject.Find("Manager").GetComponent<InputManager>();
+        railgun = railgunObject.GetComponent<Railgun>();
 
         ThirdPersonCameraPosition = thirdpersonview.transform.position;
 
@@ -34,7 +37,7 @@ public class Control : MonoBehaviour
             case 0:
                 if (input.Trigger == 1)
                 {
-                    RailgunShot();
+                    railgun.StartRailgunShot();
                     RailgunFired = 1;
                 }
                 break;
@@ -46,16 +49,8 @@ public class Control : MonoBehaviour
                 break;
         }
 
-
-
         mainEngineParticles.startLifetime = input.Throttle * 3;
 
-    }
-
-    public void RailgunShot()
-    {
-        railgunParticles.startSpeed = rigidbody.velocity.magnitude + 1000;
-        railgunParticles.Play();
     }
 
     private void CameraMovement()
