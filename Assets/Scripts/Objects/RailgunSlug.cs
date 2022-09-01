@@ -10,7 +10,7 @@ public class RailgunSlug : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb.AddForce(transform.forward * 99, ForceMode.VelocityChange);
+        rb.AddForce(transform.forward * 9980, ForceMode.VelocityChange);
         Destroy(gameObject, 10f);
     }
 
@@ -20,8 +20,8 @@ public class RailgunSlug : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider collider)
     {
-        Debug.Log(other);
+
     }
 }
