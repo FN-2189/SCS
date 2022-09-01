@@ -49,8 +49,7 @@ public class InputManager : MonoBehaviour
 
 
         //this.Throttle = input.ManualShipThrusterControl.Throttle.ReadValue<float>();
-        this.Throttle = (throttleInput + 1)/2;
-        if (Throttle > 0f) Debug.Log("E");
+        this.Throttle = throttleInput;
         this.Stick = stick;
         this.Trigger = trigger;
         
