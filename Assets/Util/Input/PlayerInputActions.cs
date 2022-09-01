@@ -28,152 +28,90 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
             ""id"": ""f062a2a2-29b1-4c39-8eb1-0bf2d5aa483e"",
             ""actions"": [
                 {
-                    ""name"": ""PitchAndRollStick"",
+                    ""name"": ""PitchAndRoll"",
                     ""type"": ""Value"",
-                    ""id"": ""39bfc9a6-9582-4fe8-99cb-caa9f9cf32e9"",
+                    ""id"": ""23c66b26-1ab0-4e79-a297-c63d9491aae9"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""StickZ"",
+                    ""name"": ""Yaw"",
                     ""type"": ""Value"",
-                    ""id"": ""27e2790c-3929-4271-8c6d-81143733229d"",
+                    ""id"": ""722b9e98-5193-46c8-8b27-00d72a104568"",
                     ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""PitchAndYawMouse"",
-                    ""type"": ""Value"",
-                    ""id"": ""92b54d6e-8b4a-4811-86b1-efc2e632c597"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""StickRz"",
-                    ""type"": ""Button"",
-                    ""id"": ""e45f8941-ef1f-428f-a20d-bf3bd5dd366e"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""TestRailgunFire"",
-                    ""type"": ""Button"",
-                    ""id"": ""b7dc320d-6396-4b39-952d-1709c018c2e9"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 },
                 {
                     ""name"": ""Throttle"",
                     ""type"": ""Value"",
-                    ""id"": ""6d9d2549-ad56-48c3-af21-e3c26b0166e9"",
+                    ""id"": ""3025a863-1e49-448a-8d35-1d8d2a66169c"",
                     ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Fire"",
+                    ""type"": ""Button"",
+                    ""id"": ""3ce49c64-9185-497f-b42e-e4b241b9db18"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""4bd4f86a-85e9-4805-9267-5e5a51357f08"",
-                    ""path"": ""<Joystick>/stick"",
+                    ""id"": ""6249b220-218c-466e-bac4-44e02fd92c39"",
+                    ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""PitchAndRollStick"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""2715bd2b-6a09-4617-931c-d02d3dca91e1"",
-                    ""path"": ""<HID::Logitech X52 Professional H.O.T.A.S.>/z"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""StickZ"",
+                    ""action"": ""PitchAndRoll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": ""Keybord"",
-                    ""id"": ""233560a0-80bd-4d6c-8371-4dc64cfdb181"",
+                    ""id"": ""17b60ad3-63b7-4254-a5a8-47f1df549f18"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""StickZ"",
+                    ""action"": ""Yaw"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""positive"",
-                    ""id"": ""a7fd85e8-4804-440c-8d67-5eeb6f6f0127"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""StickZ"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": ""negative"",
-                    ""id"": ""58abf3e8-5acd-44c9-a0c5-19ae78129624"",
-                    ""path"": ""<Keyboard>/w"",
+                    ""id"": ""c00c6e05-b586-4174-95b9-4cede61971ec"",
+                    ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""StickZ"",
+                    ""action"": ""Yaw"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""12092e6e-61e3-4dfb-9d8a-e35200f17f40"",
-                    ""path"": ""<Mouse>/delta"",
+                    ""name"": ""positive"",
+                    ""id"": ""78ab18db-ba0c-4ab6-8479-4673ac1b5331"",
+                    ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""PitchAndYawMouse"",
+                    ""action"": ""Yaw"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": false
+                    ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""21e50905-2021-4a61-a931-3f6cdd0b1915"",
-                    ""path"": ""<HID::Logitech X52 Professional H.O.T.A.S.>/rz"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""StickRz"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c28be392-aa55-4eb9-b9a2-f2aed395e8ad"",
-                    ""path"": ""<Joystick>/trigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""TestRailgunFire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""Keyboard"",
-                    ""id"": ""0b4aba4b-72de-4e68-8425-fe26ae7fe4dd"",
+                    ""name"": ""Keybord"",
+                    ""id"": ""e8f4d892-a45b-4775-8b3e-e5d9923c60bb"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -184,7 +122,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""negative"",
-                    ""id"": ""0c4c3076-1670-4ab9-a652-bed9580cc675"",
+                    ""id"": ""5c0d36da-080f-44de-8ec3-45272337c63c"",
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -195,7 +133,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""positive"",
-                    ""id"": ""fbd27ffd-02f7-4ac8-91aa-2a845b24d653"",
+                    ""id"": ""bdbb3c34-96f8-476e-b8fa-047e776cc8b3"",
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -206,12 +144,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""77fd74aa-1a4a-46b1-92dc-b26d56ee738b"",
-                    ""path"": ""<HID::Logitech X52 Professional H.O.T.A.S.>/z"",
+                    ""id"": ""03449cc5-f1f9-4cba-9579-7c62a1b46947"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Throttle"",
+                    ""action"": ""Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -222,12 +160,10 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
 }");
         // ManualShipThrusterControl
         m_ManualShipThrusterControl = asset.FindActionMap("ManualShipThrusterControl", throwIfNotFound: true);
-        m_ManualShipThrusterControl_PitchAndRollStick = m_ManualShipThrusterControl.FindAction("PitchAndRollStick", throwIfNotFound: true);
-        m_ManualShipThrusterControl_StickZ = m_ManualShipThrusterControl.FindAction("StickZ", throwIfNotFound: true);
-        m_ManualShipThrusterControl_PitchAndYawMouse = m_ManualShipThrusterControl.FindAction("PitchAndYawMouse", throwIfNotFound: true);
-        m_ManualShipThrusterControl_StickRz = m_ManualShipThrusterControl.FindAction("StickRz", throwIfNotFound: true);
-        m_ManualShipThrusterControl_TestRailgunFire = m_ManualShipThrusterControl.FindAction("TestRailgunFire", throwIfNotFound: true);
+        m_ManualShipThrusterControl_PitchAndRoll = m_ManualShipThrusterControl.FindAction("PitchAndRoll", throwIfNotFound: true);
+        m_ManualShipThrusterControl_Yaw = m_ManualShipThrusterControl.FindAction("Yaw", throwIfNotFound: true);
         m_ManualShipThrusterControl_Throttle = m_ManualShipThrusterControl.FindAction("Throttle", throwIfNotFound: true);
+        m_ManualShipThrusterControl_Fire = m_ManualShipThrusterControl.FindAction("Fire", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -287,22 +223,18 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     // ManualShipThrusterControl
     private readonly InputActionMap m_ManualShipThrusterControl;
     private IManualShipThrusterControlActions m_ManualShipThrusterControlActionsCallbackInterface;
-    private readonly InputAction m_ManualShipThrusterControl_PitchAndRollStick;
-    private readonly InputAction m_ManualShipThrusterControl_StickZ;
-    private readonly InputAction m_ManualShipThrusterControl_PitchAndYawMouse;
-    private readonly InputAction m_ManualShipThrusterControl_StickRz;
-    private readonly InputAction m_ManualShipThrusterControl_TestRailgunFire;
+    private readonly InputAction m_ManualShipThrusterControl_PitchAndRoll;
+    private readonly InputAction m_ManualShipThrusterControl_Yaw;
     private readonly InputAction m_ManualShipThrusterControl_Throttle;
+    private readonly InputAction m_ManualShipThrusterControl_Fire;
     public struct ManualShipThrusterControlActions
     {
         private @PlayerInputActions m_Wrapper;
         public ManualShipThrusterControlActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @PitchAndRollStick => m_Wrapper.m_ManualShipThrusterControl_PitchAndRollStick;
-        public InputAction @StickZ => m_Wrapper.m_ManualShipThrusterControl_StickZ;
-        public InputAction @PitchAndYawMouse => m_Wrapper.m_ManualShipThrusterControl_PitchAndYawMouse;
-        public InputAction @StickRz => m_Wrapper.m_ManualShipThrusterControl_StickRz;
-        public InputAction @TestRailgunFire => m_Wrapper.m_ManualShipThrusterControl_TestRailgunFire;
+        public InputAction @PitchAndRoll => m_Wrapper.m_ManualShipThrusterControl_PitchAndRoll;
+        public InputAction @Yaw => m_Wrapper.m_ManualShipThrusterControl_Yaw;
         public InputAction @Throttle => m_Wrapper.m_ManualShipThrusterControl_Throttle;
+        public InputAction @Fire => m_Wrapper.m_ManualShipThrusterControl_Fire;
         public InputActionMap Get() { return m_Wrapper.m_ManualShipThrusterControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -312,57 +244,43 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface != null)
             {
-                @PitchAndRollStick.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnPitchAndRollStick;
-                @PitchAndRollStick.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnPitchAndRollStick;
-                @PitchAndRollStick.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnPitchAndRollStick;
-                @StickZ.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnStickZ;
-                @StickZ.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnStickZ;
-                @StickZ.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnStickZ;
-                @PitchAndYawMouse.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnPitchAndYawMouse;
-                @PitchAndYawMouse.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnPitchAndYawMouse;
-                @PitchAndYawMouse.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnPitchAndYawMouse;
-                @StickRz.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnStickRz;
-                @StickRz.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnStickRz;
-                @StickRz.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnStickRz;
-                @TestRailgunFire.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnTestRailgunFire;
-                @TestRailgunFire.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnTestRailgunFire;
-                @TestRailgunFire.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnTestRailgunFire;
+                @PitchAndRoll.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnPitchAndRoll;
+                @PitchAndRoll.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnPitchAndRoll;
+                @PitchAndRoll.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnPitchAndRoll;
+                @Yaw.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnYaw;
+                @Yaw.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnYaw;
+                @Yaw.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnYaw;
                 @Throttle.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnThrottle;
                 @Throttle.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnThrottle;
                 @Throttle.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnThrottle;
+                @Fire.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnFire;
+                @Fire.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnFire;
+                @Fire.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnFire;
             }
             m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @PitchAndRollStick.started += instance.OnPitchAndRollStick;
-                @PitchAndRollStick.performed += instance.OnPitchAndRollStick;
-                @PitchAndRollStick.canceled += instance.OnPitchAndRollStick;
-                @StickZ.started += instance.OnStickZ;
-                @StickZ.performed += instance.OnStickZ;
-                @StickZ.canceled += instance.OnStickZ;
-                @PitchAndYawMouse.started += instance.OnPitchAndYawMouse;
-                @PitchAndYawMouse.performed += instance.OnPitchAndYawMouse;
-                @PitchAndYawMouse.canceled += instance.OnPitchAndYawMouse;
-                @StickRz.started += instance.OnStickRz;
-                @StickRz.performed += instance.OnStickRz;
-                @StickRz.canceled += instance.OnStickRz;
-                @TestRailgunFire.started += instance.OnTestRailgunFire;
-                @TestRailgunFire.performed += instance.OnTestRailgunFire;
-                @TestRailgunFire.canceled += instance.OnTestRailgunFire;
+                @PitchAndRoll.started += instance.OnPitchAndRoll;
+                @PitchAndRoll.performed += instance.OnPitchAndRoll;
+                @PitchAndRoll.canceled += instance.OnPitchAndRoll;
+                @Yaw.started += instance.OnYaw;
+                @Yaw.performed += instance.OnYaw;
+                @Yaw.canceled += instance.OnYaw;
                 @Throttle.started += instance.OnThrottle;
                 @Throttle.performed += instance.OnThrottle;
                 @Throttle.canceled += instance.OnThrottle;
+                @Fire.started += instance.OnFire;
+                @Fire.performed += instance.OnFire;
+                @Fire.canceled += instance.OnFire;
             }
         }
     }
     public ManualShipThrusterControlActions @ManualShipThrusterControl => new ManualShipThrusterControlActions(this);
     public interface IManualShipThrusterControlActions
     {
-        void OnPitchAndRollStick(InputAction.CallbackContext context);
-        void OnStickZ(InputAction.CallbackContext context);
-        void OnPitchAndYawMouse(InputAction.CallbackContext context);
-        void OnStickRz(InputAction.CallbackContext context);
-        void OnTestRailgunFire(InputAction.CallbackContext context);
+        void OnPitchAndRoll(InputAction.CallbackContext context);
+        void OnYaw(InputAction.CallbackContext context);
         void OnThrottle(InputAction.CallbackContext context);
+        void OnFire(InputAction.CallbackContext context);
     }
 }

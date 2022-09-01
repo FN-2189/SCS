@@ -6,152 +6,90 @@
             "id": "f062a2a2-29b1-4c39-8eb1-0bf2d5aa483e",
             "actions": [
                 {
-                    "name": "PitchAndRollStick",
+                    "name": "PitchAndRoll",
                     "type": "Value",
-                    "id": "39bfc9a6-9582-4fe8-99cb-caa9f9cf32e9",
+                    "id": "23c66b26-1ab0-4e79-a297-c63d9491aae9",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
                 },
                 {
-                    "name": "StickZ",
+                    "name": "Yaw",
                     "type": "Value",
-                    "id": "27e2790c-3929-4271-8c6d-81143733229d",
+                    "id": "722b9e98-5193-46c8-8b27-00d72a104568",
                     "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "PitchAndYawMouse",
-                    "type": "Value",
-                    "id": "92b54d6e-8b4a-4811-86b1-efc2e632c597",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "StickRz",
-                    "type": "Button",
-                    "id": "e45f8941-ef1f-428f-a20d-bf3bd5dd366e",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "TestRailgunFire",
-                    "type": "Button",
-                    "id": "b7dc320d-6396-4b39-952d-1709c018c2e9",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 },
                 {
                     "name": "Throttle",
                     "type": "Value",
-                    "id": "6d9d2549-ad56-48c3-af21-e3c26b0166e9",
+                    "id": "3025a863-1e49-448a-8d35-1d8d2a66169c",
                     "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Fire",
+                    "type": "Button",
+                    "id": "3ce49c64-9185-497f-b42e-e4b241b9db18",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "4bd4f86a-85e9-4805-9267-5e5a51357f08",
-                    "path": "<Joystick>/stick",
+                    "id": "6249b220-218c-466e-bac4-44e02fd92c39",
+                    "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "PitchAndRollStick",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2715bd2b-6a09-4617-931c-d02d3dca91e1",
-                    "path": "<HID::Logitech X52 Professional H.O.T.A.S.>/z",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "StickZ",
+                    "action": "PitchAndRoll",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "Keybord",
-                    "id": "233560a0-80bd-4d6c-8371-4dc64cfdb181",
+                    "id": "17b60ad3-63b7-4254-a5a8-47f1df549f18",
                     "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "StickZ",
+                    "action": "Yaw",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "positive",
-                    "id": "a7fd85e8-4804-440c-8d67-5eeb6f6f0127",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "StickZ",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "negative",
-                    "id": "58abf3e8-5acd-44c9-a0c5-19ae78129624",
-                    "path": "<Keyboard>/w",
+                    "id": "c00c6e05-b586-4174-95b9-4cede61971ec",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "StickZ",
+                    "action": "Yaw",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "12092e6e-61e3-4dfb-9d8a-e35200f17f40",
-                    "path": "<Mouse>/delta",
+                    "name": "positive",
+                    "id": "78ab18db-ba0c-4ab6-8479-4673ac1b5331",
+                    "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "PitchAndYawMouse",
+                    "action": "Yaw",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "21e50905-2021-4a61-a931-3f6cdd0b1915",
-                    "path": "<HID::Logitech X52 Professional H.O.T.A.S.>/rz",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "StickRz",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c28be392-aa55-4eb9-b9a2-f2aed395e8ad",
-                    "path": "<Joystick>/trigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "TestRailgunFire",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "Keyboard",
-                    "id": "0b4aba4b-72de-4e68-8425-fe26ae7fe4dd",
+                    "name": "Keybord",
+                    "id": "e8f4d892-a45b-4775-8b3e-e5d9923c60bb",
                     "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
@@ -162,7 +100,7 @@
                 },
                 {
                     "name": "negative",
-                    "id": "0c4c3076-1670-4ab9-a652-bed9580cc675",
+                    "id": "5c0d36da-080f-44de-8ec3-45272337c63c",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
@@ -173,7 +111,7 @@
                 },
                 {
                     "name": "positive",
-                    "id": "fbd27ffd-02f7-4ac8-91aa-2a845b24d653",
+                    "id": "bdbb3c34-96f8-476e-b8fa-047e776cc8b3",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
@@ -184,12 +122,12 @@
                 },
                 {
                     "name": "",
-                    "id": "77fd74aa-1a4a-46b1-92dc-b26d56ee738b",
-                    "path": "<HID::Logitech X52 Professional H.O.T.A.S.>/z",
+                    "id": "03449cc5-f1f9-4cba-9579-7c62a1b46947",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Throttle",
+                    "action": "Fire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
