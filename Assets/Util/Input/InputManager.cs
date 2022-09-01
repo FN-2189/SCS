@@ -26,7 +26,6 @@ public class InputManager : MonoBehaviour
     {
         // mouse controls (pitch + yaw)
         Vector2 pitchAndRoll = input.ManualShipThrusterControl.PitchAndRoll.ReadValue<Vector2>();
-        Debug.Log(pitchAndRoll);
         Vector3 stick = this.Stick;
         stick.x += pitchAndRoll.x * mouseSensitivity * Time.deltaTime;
         stick.y += pitchAndRoll.y * mouseSensitivity * Time.deltaTime;
