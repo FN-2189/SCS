@@ -26,6 +26,7 @@ public class InputManager : MonoBehaviour
     {
         // mouse controls (pitch + yaw)
         Vector2 pitchAndRoll = input.ManualShipThrusterControl.PitchAndRoll.ReadValue<Vector2>();
+        Vector2 pitchAndRollJoystick = input.ManualShipThrusterControl.pitchAndRollJoystick.ReadValue<Vector2>();
         Vector3 stick = this.Stick;
         stick.x += pitchAndRoll.x * mouseSensitivity * Time.deltaTime;
         stick.y += pitchAndRoll.y * mouseSensitivity * Time.deltaTime;
@@ -34,12 +35,12 @@ public class InputManager : MonoBehaviour
         stick.y = Mathf.Clamp(stick.y, -1, 1);
 
         float throttleInput = input.ManualShipThrusterControl.Throttle.ReadValue<float>();
-        /*
+        
         float joyStickRz = input.ManualShipThrusterControl.StickRz.ReadValue<float>();
         stick.x = joyStickRz;
         stick.y = pitchAndRollJoystick.y * -1;
         stick.z = pitchAndRollJoystick.x;
-        */
+        
         float throttle = (-throttleInput + 1) / 2;
         
 
@@ -48,7 +49,7 @@ public class InputManager : MonoBehaviour
 
 
         //this.Throttle = input.ManualShipThrusterControl.Throttle.ReadValue<float>();
-        this.Throttle = throttleInput;
+        this.Throttle = throttle;
         this.Stick = stick;
         this.Trigger = trigger;
         

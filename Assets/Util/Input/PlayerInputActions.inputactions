@@ -40,6 +40,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "pitchAndRollJoystick",
+                    "type": "Value",
+                    "id": "1fd4c333-4485-4bf8-9310-18703e978554",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "StickRz",
+                    "type": "Value",
+                    "id": "206fcbf0-3861-4512-addf-b69f476da629",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -50,17 +68,6 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KandM",
-                    "action": "PitchAndRoll",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c330921f-aae5-4f2d-9bd8-6e38c551eb56",
-                    "path": "<Joystick>/stick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Stick",
                     "action": "PitchAndRoll",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -165,37 +172,15 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "Keyboard",
-                    "id": "80e0873e-cfc1-4e7e-ba67-99dca8bbc1fe",
-                    "path": "1DAxis",
+                    "name": "",
+                    "id": "77b41022-7814-44b6-9de2-00ab8d91cf69",
+                    "path": "<HID::Logitech X52 Professional H.O.T.A.S.>/z",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Throttle",
-                    "isComposite": true,
+                    "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "801356c7-6fde-4c89-91a7-1c3811883cd0",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Stick",
-                    "action": "Throttle",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "a4906248-5fe8-4056-8f4d-9e3fc58c34be",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Stick",
-                    "action": "Throttle",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
@@ -216,6 +201,28 @@
                     "processors": "",
                     "groups": "Stick",
                     "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "79461b7a-77d7-45d5-a8f4-3845b42eb004",
+                    "path": "<Joystick>/stick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Stick",
+                    "action": "pitchAndRollJoystick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "73d5f074-cc38-4173-a4cc-fad677ddfdf6",
+                    "path": "<HID::Logitech X52 Professional H.O.T.A.S.>/rz",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Stick",
+                    "action": "StickRz",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -62,6 +62,24 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""pitchAndRollJoystick"",
+                    ""type"": ""Value"",
+                    ""id"": ""1fd4c333-4485-4bf8-9310-18703e978554"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""StickRz"",
+                    ""type"": ""Value"",
+                    ""id"": ""206fcbf0-3861-4512-addf-b69f476da629"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -72,17 +90,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KandM"",
-                    ""action"": ""PitchAndRoll"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c330921f-aae5-4f2d-9bd8-6e38c551eb56"",
-                    ""path"": ""<Joystick>/stick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Stick"",
                     ""action"": ""PitchAndRoll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -187,37 +194,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""Keyboard"",
-                    ""id"": ""80e0873e-cfc1-4e7e-ba67-99dca8bbc1fe"",
-                    ""path"": ""1DAxis"",
+                    ""name"": """",
+                    ""id"": ""77b41022-7814-44b6-9de2-00ab8d91cf69"",
+                    ""path"": ""<HID::Logitech X52 Professional H.O.T.A.S.>/z"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Throttle"",
-                    ""isComposite"": true,
+                    ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""801356c7-6fde-4c89-91a7-1c3811883cd0"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Stick"",
-                    ""action"": ""Throttle"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""a4906248-5fe8-4056-8f4d-9e3fc58c34be"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Stick"",
-                    ""action"": ""Throttle"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
@@ -238,6 +223,28 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Stick"",
                     ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""79461b7a-77d7-45d5-a8f4-3845b42eb004"",
+                    ""path"": ""<Joystick>/stick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Stick"",
+                    ""action"": ""pitchAndRollJoystick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""73d5f074-cc38-4173-a4cc-fad677ddfdf6"",
+                    ""path"": ""<HID::Logitech X52 Professional H.O.T.A.S.>/rz"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Stick"",
+                    ""action"": ""StickRz"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -285,6 +292,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_ManualShipThrusterControl_Yaw = m_ManualShipThrusterControl.FindAction("Yaw", throwIfNotFound: true);
         m_ManualShipThrusterControl_Throttle = m_ManualShipThrusterControl.FindAction("Throttle", throwIfNotFound: true);
         m_ManualShipThrusterControl_Fire = m_ManualShipThrusterControl.FindAction("Fire", throwIfNotFound: true);
+        m_ManualShipThrusterControl_pitchAndRollJoystick = m_ManualShipThrusterControl.FindAction("pitchAndRollJoystick", throwIfNotFound: true);
+        m_ManualShipThrusterControl_StickRz = m_ManualShipThrusterControl.FindAction("StickRz", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -348,6 +357,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_ManualShipThrusterControl_Yaw;
     private readonly InputAction m_ManualShipThrusterControl_Throttle;
     private readonly InputAction m_ManualShipThrusterControl_Fire;
+    private readonly InputAction m_ManualShipThrusterControl_pitchAndRollJoystick;
+    private readonly InputAction m_ManualShipThrusterControl_StickRz;
     public struct ManualShipThrusterControlActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -356,6 +367,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Yaw => m_Wrapper.m_ManualShipThrusterControl_Yaw;
         public InputAction @Throttle => m_Wrapper.m_ManualShipThrusterControl_Throttle;
         public InputAction @Fire => m_Wrapper.m_ManualShipThrusterControl_Fire;
+        public InputAction @pitchAndRollJoystick => m_Wrapper.m_ManualShipThrusterControl_pitchAndRollJoystick;
+        public InputAction @StickRz => m_Wrapper.m_ManualShipThrusterControl_StickRz;
         public InputActionMap Get() { return m_Wrapper.m_ManualShipThrusterControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -377,6 +390,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Fire.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnFire;
                 @Fire.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnFire;
                 @Fire.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnFire;
+                @pitchAndRollJoystick.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnPitchAndRollJoystick;
+                @pitchAndRollJoystick.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnPitchAndRollJoystick;
+                @pitchAndRollJoystick.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnPitchAndRollJoystick;
+                @StickRz.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnStickRz;
+                @StickRz.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnStickRz;
+                @StickRz.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnStickRz;
             }
             m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface = instance;
             if (instance != null)
@@ -393,6 +412,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Fire.started += instance.OnFire;
                 @Fire.performed += instance.OnFire;
                 @Fire.canceled += instance.OnFire;
+                @pitchAndRollJoystick.started += instance.OnPitchAndRollJoystick;
+                @pitchAndRollJoystick.performed += instance.OnPitchAndRollJoystick;
+                @pitchAndRollJoystick.canceled += instance.OnPitchAndRollJoystick;
+                @StickRz.started += instance.OnStickRz;
+                @StickRz.performed += instance.OnStickRz;
+                @StickRz.canceled += instance.OnStickRz;
             }
         }
     }
@@ -421,5 +446,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnYaw(InputAction.CallbackContext context);
         void OnThrottle(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
+        void OnPitchAndRollJoystick(InputAction.CallbackContext context);
+        void OnStickRz(InputAction.CallbackContext context);
     }
 }
