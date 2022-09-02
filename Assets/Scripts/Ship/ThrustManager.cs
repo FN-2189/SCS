@@ -16,6 +16,8 @@ public class ThrustManager : MonoBehaviour
     [SerializeField]
     private InputManager input;
 
+    [SerializeField] public bool flightAssist;
+
     void Awake()
     {
         thrusters = GetComponentsInChildren<Thruster>();
@@ -103,6 +105,89 @@ public class ThrustManager : MonoBehaviour
             if (thrusters[i].isInAxis[Axis.Forward])
             {
                 thrusters[i].thrustLevel = input.Throttle;
+            }
+        }
+
+        if (flightAssist)
+        {
+            Vector3 goalAngularVelocity = new Vector3(0, 0, 0);
+
+            //flight assist pitch
+            if (Mathf.Abs(input.Stick.y) < deadZone)
+            {
+                if (rb.angularVelocity.x < goalAngularVelocity.x)
+                {
+                    for (int i = 0; i < thrusters.Length; i++)
+                    {
+                        if (thrusters[i].isInAxis[Axis.Pitch])
+                        {
+                            thrusters[i].thrustLevel = 1;
+                        }
+                    }
+                }
+
+                if (rb.angularVelocity.x > goalAngularVelocity.x)
+                {
+                    for (int i = 0; i < thrusters.Length; i++)
+                    {
+                        if (thrusters[i].isInAxis[Axis.Pitch])
+                        {
+                            thrusters[i].thrustLevel = -1;
+                        }
+                    }
+                }
+            }
+
+            //flight assist yaw
+            if (Mathf.Abs(input.Stick.x) < deadZone)
+            {
+                if (rb.angularVelocity.y < goalAngularVelocity.y)
+                {
+                    for (int i = 0; i < thrusters.Length; i++)
+                    {
+                        if (thrusters[i].isInAxis[Axis.Yaw])
+                        {
+                            thrusters[i].thrustLevel = -1;
+                        }
+                    }
+                }
+
+                if (rb.angularVelocity.y > goalAngularVelocity.y)
+                {
+                    for (int i = 0; i < thrusters.Length; i++)
+                    {
+                        if (thrusters[i].isInAxis[Axis.Yaw])
+                        {
+                            thrusters[i].thrustLevel = 1;
+                        }
+                    }
+                }
+            }
+
+            //flight assist roll
+            if (Mathf.Abs(input.Stick.z) < deadZone)
+            {
+                if (rb.angularVelocity.z < goalAngularVelocity.z)
+                {
+                    for (int i = 0; i < thrusters.Length; i++)
+                    {
+                        if (thrusters[i].isInAxis[Axis.Roll])
+                        {
+                            thrusters[i].thrustLevel = 1;
+                        }
+                    }
+                }
+
+                if (rb.angularVelocity.z > goalAngularVelocity.z)
+                {
+                    for (int i = 0; i < thrusters.Length; i++)
+                    {
+                        if (thrusters[i].isInAxis[Axis.Roll])
+                        {
+                            thrusters[i].thrustLevel = -1;
+                        }
+                    }
+                }
             }
         }
     }
