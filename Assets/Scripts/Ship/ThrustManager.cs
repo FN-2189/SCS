@@ -8,6 +8,8 @@ public class ThrustManager : MonoBehaviour
 
     private Vector3 thrustVector;
     private Vector3 thrustPosition;
+    [SerializeField]
+    [Range(0f, 1f)]
     private float deadZone = 0.15f;
 
     [SerializeField]
@@ -17,6 +19,8 @@ public class ThrustManager : MonoBehaviour
     private InputManager input;
 
     [SerializeField] public bool flightAssist;
+
+    [SerializeField] [Range(0f, 1f)] private float flighAssistStrength;
 
     void Awake()
     {
@@ -42,6 +46,7 @@ public class ThrustManager : MonoBehaviour
                 }
             }
         }
+        
         else
         {
             for (int i = 0; i < thrusters.Length; i++)
@@ -52,7 +57,7 @@ public class ThrustManager : MonoBehaviour
                 }
             }
         }
-
+        
         // yaw
 
         if (Mathf.Abs(input.Stick.x) > deadZone)
@@ -65,6 +70,7 @@ public class ThrustManager : MonoBehaviour
                 }
             }
         }
+        
         else
         {
             for (int i = 0; i < thrusters.Length; i++)
@@ -75,6 +81,7 @@ public class ThrustManager : MonoBehaviour
                 }
             }
         }
+        
 
         //roll
         if (Mathf.Abs(input.Stick.z) > deadZone)
@@ -87,6 +94,7 @@ public class ThrustManager : MonoBehaviour
                 }
             }
         }
+        
         else
         {
             for (int i = 0; i < thrusters.Length; i++)
@@ -97,6 +105,7 @@ public class ThrustManager : MonoBehaviour
                 }
             }
         }
+        
 
         // thrust
 
@@ -110,55 +119,59 @@ public class ThrustManager : MonoBehaviour
 
         if (flightAssist)
         {
+            Vector3 angularV = transform.InverseTransformDirection(rb.angularVelocity).normalized * rb.angularVelocity.magnitude;
+            // stick x:yaw, y:pitch, z:roll
             Vector3 goalAngularVelocity = new Vector3(0, 0, 0);
 
             //flight assist pitch
             if (Mathf.Abs(input.Stick.y) < deadZone)
             {
-                if (rb.angularVelocity.x < goalAngularVelocity.x)
+                if (angularV.x < goalAngularVelocity.x)
                 {
                     for (int i = 0; i < thrusters.Length; i++)
                     {
                         if (thrusters[i].isInAxis[Axis.Pitch])
                         {
-                            thrusters[i].thrustLevel = 1;
+                            thrusters[i].thrustLevel = flighAssistStrength;
                         }
                     }
                 }
 
-                if (rb.angularVelocity.x > goalAngularVelocity.x)
+                if (angularV.x > goalAngularVelocity.x)
                 {
                     for (int i = 0; i < thrusters.Length; i++)
                     {
                         if (thrusters[i].isInAxis[Axis.Pitch])
                         {
-                            thrusters[i].thrustLevel = -1;
+                            thrusters[i].thrustLevel = -flighAssistStrength;
                         }
                     }
                 }
             }
 
+            
+
             //flight assist yaw
             if (Mathf.Abs(input.Stick.x) < deadZone)
             {
-                if (rb.angularVelocity.y < goalAngularVelocity.y)
+                if (angularV.y < goalAngularVelocity.y)
                 {
                     for (int i = 0; i < thrusters.Length; i++)
                     {
                         if (thrusters[i].isInAxis[Axis.Yaw])
                         {
-                            thrusters[i].thrustLevel = -1;
+                            thrusters[i].thrustLevel = -flighAssistStrength;
                         }
                     }
                 }
 
-                if (rb.angularVelocity.y > goalAngularVelocity.y)
+                if (angularV.y > goalAngularVelocity.y)
                 {
                     for (int i = 0; i < thrusters.Length; i++)
                     {
                         if (thrusters[i].isInAxis[Axis.Yaw])
                         {
-                            thrusters[i].thrustLevel = 1;
+                            thrusters[i].thrustLevel = flighAssistStrength;
                         }
                     }
                 }
@@ -167,24 +180,24 @@ public class ThrustManager : MonoBehaviour
             //flight assist roll
             if (Mathf.Abs(input.Stick.z) < deadZone)
             {
-                if (rb.angularVelocity.z < goalAngularVelocity.z)
+                if (angularV.z < goalAngularVelocity.z)
                 {
                     for (int i = 0; i < thrusters.Length; i++)
                     {
                         if (thrusters[i].isInAxis[Axis.Roll])
                         {
-                            thrusters[i].thrustLevel = 1;
+                            thrusters[i].thrustLevel = flighAssistStrength;
                         }
                     }
                 }
 
-                if (rb.angularVelocity.z > goalAngularVelocity.z)
+                if (angularV.z > goalAngularVelocity.z)
                 {
                     for (int i = 0; i < thrusters.Length; i++)
                     {
                         if (thrusters[i].isInAxis[Axis.Roll])
                         {
-                            thrusters[i].thrustLevel = -1;
+                            thrusters[i].thrustLevel = -flighAssistStrength;
                         }
                     }
                 }
@@ -198,7 +211,11 @@ public class ThrustManager : MonoBehaviour
         thrustPosition = Vector3.zero;
         for(int i = 0; i < thrusters.Length; i++)
         {
-            rb.AddForceAtPosition((thrusters[i].rotation * transform.forward) * thrusters[i].thrust, (transform.rotation * thrusters[i].position) + transform.position);
+            Transform thrusterTransform = thrusters[i].transform;
+            Quaternion rotation = thrusterTransform.rotation;
+            float thrust = thrusters[i].thrust;
+            rb.AddForceAtPosition(rotation * Vector3.forward * thrust, thrusterTransform.position);
+            //rb.AddForceAtPosition((thrusters[i].rotation * transform.forward) * thrusters[i].thrust, (transform.rotation * thrusters[i].position) + transform.position);
         }
     }
 
