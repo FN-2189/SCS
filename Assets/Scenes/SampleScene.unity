@@ -16836,6 +16836,7 @@ MonoBehaviour:
   input: {fileID: 1221816534}
   flightAssistOn: 1
   flighAssistStrength: 0.5
+  manualAxes: 
 --- !u!1 &1143857089
 GameObject:
   m_ObjectHideFlags: 0

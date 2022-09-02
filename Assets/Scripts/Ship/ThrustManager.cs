@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class ThrustManager : MonoBehaviour
@@ -22,9 +23,17 @@ public class ThrustManager : MonoBehaviour
 
     [SerializeField] [Range(0f, 1f)] private float flighAssistStrength;
 
+    private Dictionary<Axis, bool> inManualMode;
+
+    [SerializeField] private Axis[] manualAxes;
+
     void Awake()
     {
         thrusters = GetComponentsInChildren<Thruster>();
+        inManualMode = new Dictionary<Axis, bool>();
+        Array array = Enum.GetValues(typeof(Axis));
+        foreach(Axis a in array) inManualMode[a] = false;
+        foreach (Axis a in manualAxes) inManualMode[a] = true;
         Debug.Log(thrusters.Length);
     }
 
@@ -33,7 +42,7 @@ public class ThrustManager : MonoBehaviour
         //pitch
         for (int i = 0; i < thrusters.Length; i++)
         {
-            if (thrusters[i].isInAxis[Axis.Pitch])
+            if (thrusters[i].isInAxis[Axis.Pitch] && !inManualMode[Axis.Pitch])
             {
                 if (Mathf.Abs(input.Stick.y) > deadZone) thrusters[i].thrustLevel = -input.Stick.y;
                 else thrusters[i].thrustLevel = 0f;
@@ -43,7 +52,7 @@ public class ThrustManager : MonoBehaviour
         //yaw
         for (int i = 0; i < thrusters.Length; i++)
         {
-            if (thrusters[i].isInAxis[Axis.Yaw])
+            if (thrusters[i].isInAxis[Axis.Yaw] && !inManualMode[Axis.Yaw])
             {
                 if (Mathf.Abs(input.Stick.x) > deadZone) thrusters[i].thrustLevel = -input.Stick.x;
                 else thrusters[i].thrustLevel = 0f;
@@ -53,7 +62,7 @@ public class ThrustManager : MonoBehaviour
         //roll
         for (int i = 0; i < thrusters.Length; i++)
         {
-            if (thrusters[i].isInAxis[Axis.Roll])
+            if (thrusters[i].isInAxis[Axis.Roll] && !inManualMode[Axis.Roll])
             {
                 if (Mathf.Abs(input.Stick.z) > deadZone) thrusters[i].thrustLevel = -input.Stick.z;
                 else thrusters[i].thrustLevel = 0f;
@@ -63,7 +72,7 @@ public class ThrustManager : MonoBehaviour
         //horizontal
         for (int i = 0; i < thrusters.Length; i++)
         {
-            if (thrusters[i].isInAxis[Axis.Horizontal])
+            if (thrusters[i].isInAxis[Axis.Horizontal] && !inManualMode[Axis.Horizontal])
             {
                 if (Mathf.Abs(input.Translate.x) > deadZone) thrusters[i].thrustLevel = -input.Translate.x;
                 else thrusters[i].thrustLevel = 0f;
@@ -73,7 +82,7 @@ public class ThrustManager : MonoBehaviour
         //vertical
         for (int i = 0; i < thrusters.Length; i++)
         {
-            if (thrusters[i].isInAxis[Axis.Vertical])
+            if (thrusters[i].isInAxis[Axis.Vertical] && !inManualMode[Axis.Vertical])
             {
                 if(Mathf.Abs(input.Translate.y) > deadZone) thrusters[i].thrustLevel = -input.Translate.y;
                 else thrusters[i].thrustLevel = 0f;
@@ -83,7 +92,7 @@ public class ThrustManager : MonoBehaviour
         // thrust
         for (int i = 0; i < thrusters.Length; i++)
         {
-            if (thrusters[i].isInAxis[Axis.Forward])
+            if (thrusters[i].isInAxis[Axis.Forward] && !inManualMode[Axis.Forward])
             {
                 thrusters[i].thrustLevel = input.Throttle;
             }
@@ -111,12 +120,11 @@ public class ThrustManager : MonoBehaviour
 
     private void flightAssist()
     {
-        Vector3 angularV = transform.InverseTransformDirection(rb.angularVelocity).normalized * rb.angularVelocity.magnitude;
         // stick x:yaw, y:pitch, z:roll
+        Vector3 angularV = transform.InverseTransformDirection(rb.angularVelocity).normalized * rb.angularVelocity.magnitude;
         Vector3 goalAngularVelocity = Vector3.zero;
 
         Vector3 v = transform.InverseTransformVector(rb.velocity);
-        Debug.Log(v);
         Vector3 goalV = Vector3.zero;
 
         //flight assist pitch
@@ -126,7 +134,7 @@ public class ThrustManager : MonoBehaviour
             {
                 for (int i = 0; i < thrusters.Length; i++)
                 {
-                    if (thrusters[i].isInAxis[Axis.Pitch])
+                    if (thrusters[i].isInAxis[Axis.Pitch] && !inManualMode[Axis.Pitch])
                     {
                         thrusters[i].thrustLevel = flighAssistStrength;
                     }
@@ -145,8 +153,6 @@ public class ThrustManager : MonoBehaviour
             }
         }
 
-
-
         //flight assist yaw
         if (Mathf.Abs(input.Stick.x) < deadZone)
         {
@@ -154,7 +160,7 @@ public class ThrustManager : MonoBehaviour
             {
                 for (int i = 0; i < thrusters.Length; i++)
                 {
-                    if (thrusters[i].isInAxis[Axis.Yaw])
+                    if (thrusters[i].isInAxis[Axis.Yaw] && !inManualMode[Axis.Yaw])
                     {
                         thrusters[i].thrustLevel = -flighAssistStrength;
                     }
@@ -180,7 +186,7 @@ public class ThrustManager : MonoBehaviour
             {
                 for (int i = 0; i < thrusters.Length; i++)
                 {
-                    if (thrusters[i].isInAxis[Axis.Roll])
+                    if (thrusters[i].isInAxis[Axis.Roll] && !inManualMode[Axis.Roll])
                     {
                         thrusters[i].thrustLevel = flighAssistStrength;
                     }
@@ -206,7 +212,7 @@ public class ThrustManager : MonoBehaviour
             {
                 for (int i = 0; i < thrusters.Length; i++)
                 {
-                    if (thrusters[i].isInAxis[Axis.Horizontal])
+                    if (thrusters[i].isInAxis[Axis.Horizontal] && !inManualMode[Axis.Horizontal])
                     {
                         thrusters[i].thrustLevel = -flighAssistStrength;
                     }
@@ -232,7 +238,7 @@ public class ThrustManager : MonoBehaviour
             {
                 for (int i = 0; i < thrusters.Length; i++)
                 {
-                    if (thrusters[i].isInAxis[Axis.Vertical])
+                    if (thrusters[i].isInAxis[Axis.Vertical] && !inManualMode[Axis.Vertical])
                     {
                         thrusters[i].thrustLevel = -flighAssistStrength;
                     }
@@ -249,6 +255,19 @@ public class ThrustManager : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    public void SetManual(Axis axis, bool manual)
+    {
+        inManualMode[axis] = manual;
+    }
+
+    public void SetThrust(Axis axis, float thrust)
+    {
+        for(int i = 0; i < thrusters.Length; i++)
+        {
+            if (thrusters[i].isInAxis[axis]) thrusters[i].thrustLevel = thrust;
         }
     }
 }
