@@ -5,7 +5,7 @@ using UnityEngine;
 public class Railgun : MonoBehaviour
 {
 
-    [SerializeField] private Transform pfRailgunShot;
+    [SerializeField] private GameObject pfRailgunShot;
     [SerializeField] ParticleSystem railgunParticles;
     [SerializeField] Rigidbody ship;
 
@@ -24,7 +24,8 @@ public class Railgun : MonoBehaviour
     {
         // + new Vector3(0f, -5.189f, 4.25f)
         railgunParticles.Play();
-        Instantiate(pfRailgunShot, transform.position, transform.rotation);
+        GameObject g = Instantiate(pfRailgunShot, transform.position, transform.rotation);
+        g.GetComponent<Rigidbody>().AddForce(transform.forward * 9980, ForceMode.VelocityChange);
         ship.AddForce(transform.forward * -9.98f, ForceMode.VelocityChange);
     }
 }

@@ -63,6 +63,5 @@ public class InputManager : MonoBehaviour
         this.Stick = stick;
         this.Translate = translateIn;
         this.Trigger = triggerIn;
-        
     }
 }
