@@ -10,16 +10,15 @@ public class InputManager : MonoBehaviour
     private float mouseSensitivity;
 
     public Vector3 Stick { get; private set; }
-    public float Throttle;
-    public float Trigger;
+    public Vector2 Translate { get; private set; }
+    public float Throttle { get; private set; }
+    public float Trigger { get; private set; }
 
     private void Awake()
     {
         Cursor.visible = false;
         input = new PlayerInputActions();
         input.Enable();
-
-        Stick = Vector3.zero;
     }
 
     private void Update()
@@ -49,6 +48,7 @@ public class InputManager : MonoBehaviour
 
         //inputs
         Vector2 pitchAndRollIn = input.ManualShipThrusterControl.pitchAndRollJoystick.ReadValue<Vector2>();
+        Vector2 translateIn = input.ManualShipThrusterControl.Translate.ReadValue<Vector2>();
         float yawIn = input.ManualShipThrusterControl.Yaw.ReadValue<float>();
         float throttleIn = input.ManualShipThrusterControl.Throttle.ReadValue<float>();
         float triggerIn = input.ManualShipThrusterControl.Fire.ReadValue<float>();
@@ -61,6 +61,7 @@ public class InputManager : MonoBehaviour
         //this.Throttle = input.ManualShipThrusterControl.Throttle.ReadValue<float>();
         this.Throttle = throttleIn;
         this.Stick = stick;
+        this.Translate = translateIn;
         this.Trigger = triggerIn;
         
     }

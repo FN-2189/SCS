@@ -80,6 +80,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Translate"",
+                    ""type"": ""Value"",
+                    ""id"": ""5c445816-390a-4c5a-8b69-ddce47276be6"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -225,6 +234,72 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""StickRz"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5d4c6047-3e68-4c85-a1ae-b14411f79a83"",
+                    ""path"": ""<Gamepad>/dpad"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Stick"",
+                    ""action"": ""Translate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Keyboard"",
+                    ""id"": ""86476471-7882-4352-acbe-b24203bfb933"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Translate"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""511ca918-7923-403c-9dfa-81295136cc36"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Translate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""9bd775ea-589f-4c21-97f2-2b0a386b511c"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Translate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""adcd87f1-1250-448e-b531-4d267e2b1753"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Translate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""9cd040f9-3b3c-448f-b866-a9554b0d521a"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Translate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -277,6 +352,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_ManualShipThrusterControl_Fire = m_ManualShipThrusterControl.FindAction("Fire", throwIfNotFound: true);
         m_ManualShipThrusterControl_pitchAndRollJoystick = m_ManualShipThrusterControl.FindAction("pitchAndRollJoystick", throwIfNotFound: true);
         m_ManualShipThrusterControl_StickRz = m_ManualShipThrusterControl.FindAction("StickRz", throwIfNotFound: true);
+        m_ManualShipThrusterControl_Translate = m_ManualShipThrusterControl.FindAction("Translate", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -342,6 +418,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_ManualShipThrusterControl_Fire;
     private readonly InputAction m_ManualShipThrusterControl_pitchAndRollJoystick;
     private readonly InputAction m_ManualShipThrusterControl_StickRz;
+    private readonly InputAction m_ManualShipThrusterControl_Translate;
     public struct ManualShipThrusterControlActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -352,6 +429,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Fire => m_Wrapper.m_ManualShipThrusterControl_Fire;
         public InputAction @pitchAndRollJoystick => m_Wrapper.m_ManualShipThrusterControl_pitchAndRollJoystick;
         public InputAction @StickRz => m_Wrapper.m_ManualShipThrusterControl_StickRz;
+        public InputAction @Translate => m_Wrapper.m_ManualShipThrusterControl_Translate;
         public InputActionMap Get() { return m_Wrapper.m_ManualShipThrusterControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -379,6 +457,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @StickRz.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnStickRz;
                 @StickRz.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnStickRz;
                 @StickRz.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnStickRz;
+                @Translate.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnTranslate;
+                @Translate.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnTranslate;
+                @Translate.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnTranslate;
             }
             m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface = instance;
             if (instance != null)
@@ -401,6 +482,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @StickRz.started += instance.OnStickRz;
                 @StickRz.performed += instance.OnStickRz;
                 @StickRz.canceled += instance.OnStickRz;
+                @Translate.started += instance.OnTranslate;
+                @Translate.performed += instance.OnTranslate;
+                @Translate.canceled += instance.OnTranslate;
             }
         }
     }
@@ -431,5 +515,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnFire(InputAction.CallbackContext context);
         void OnPitchAndRollJoystick(InputAction.CallbackContext context);
         void OnStickRz(InputAction.CallbackContext context);
+        void OnTranslate(InputAction.CallbackContext context);
     }
 }
