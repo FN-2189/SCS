@@ -6,6 +6,7 @@ public class Autopilot : MonoBehaviour
 {
     private ThrustManager tm;
     [SerializeField] public bool autopilotActive;
+    [SerializeField] public bool decelerateAssistActive;
     [SerializeField] public Vector3 targetVector;
     [SerializeField] public Vector3 targetPosition;
     [SerializeField] public bool targetPosOrTargetVector;
@@ -38,9 +39,15 @@ public class Autopilot : MonoBehaviour
     {
         if (autopilotActive)
         {
+
             if (targetPosOrTargetVector)
             {
                 targetVector = targetPosition - transform.position;
+            }
+
+            if (decelerateAssistActive)
+            {
+                targetVector = -rb.velocity.normalized;
             }
 
             Vector3 direction = targetVector.normalized - transform.forward;

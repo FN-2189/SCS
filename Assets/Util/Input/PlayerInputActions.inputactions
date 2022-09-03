@@ -85,6 +85,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "DecelerateAssistToggle",
+                    "type": "Button",
+                    "id": "2fcdbb0d-51e3-43f4-9898-449a8abc76e7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -426,6 +435,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "AimAissistToggle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "350bdd36-183d-4df8-89c8-2eae8f751a85",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DecelerateAssistToggle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "993763ff-c23c-4e46-a163-4231af2ed52a",
+                    "path": "<HID::Logitech X52 Professional H.O.T.A.S.>/button8",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DecelerateAssistToggle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7dcb8d19-4615-40ad-bf3a-c561a79ddc89",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DecelerateAssistToggle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

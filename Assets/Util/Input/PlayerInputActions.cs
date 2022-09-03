@@ -107,6 +107,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DecelerateAssistToggle"",
+                    ""type"": ""Button"",
+                    ""id"": ""2fcdbb0d-51e3-43f4-9898-449a8abc76e7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -450,6 +459,39 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""AimAissistToggle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""350bdd36-183d-4df8-89c8-2eae8f751a85"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DecelerateAssistToggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""993763ff-c23c-4e46-a163-4231af2ed52a"",
+                    ""path"": ""<HID::Logitech X52 Professional H.O.T.A.S.>/button8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DecelerateAssistToggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7dcb8d19-4615-40ad-bf3a-c561a79ddc89"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DecelerateAssistToggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -505,6 +547,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_ManualShipThrusterControl_Translate = m_ManualShipThrusterControl.FindAction("Translate", throwIfNotFound: true);
         m_ManualShipThrusterControl_FlightAssistToggle = m_ManualShipThrusterControl.FindAction("FlightAssistToggle", throwIfNotFound: true);
         m_ManualShipThrusterControl_AimAissistToggle = m_ManualShipThrusterControl.FindAction("AimAissistToggle", throwIfNotFound: true);
+        m_ManualShipThrusterControl_DecelerateAssistToggle = m_ManualShipThrusterControl.FindAction("DecelerateAssistToggle", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -573,6 +616,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_ManualShipThrusterControl_Translate;
     private readonly InputAction m_ManualShipThrusterControl_FlightAssistToggle;
     private readonly InputAction m_ManualShipThrusterControl_AimAissistToggle;
+    private readonly InputAction m_ManualShipThrusterControl_DecelerateAssistToggle;
     public struct ManualShipThrusterControlActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -586,6 +630,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Translate => m_Wrapper.m_ManualShipThrusterControl_Translate;
         public InputAction @FlightAssistToggle => m_Wrapper.m_ManualShipThrusterControl_FlightAssistToggle;
         public InputAction @AimAissistToggle => m_Wrapper.m_ManualShipThrusterControl_AimAissistToggle;
+        public InputAction @DecelerateAssistToggle => m_Wrapper.m_ManualShipThrusterControl_DecelerateAssistToggle;
         public InputActionMap Get() { return m_Wrapper.m_ManualShipThrusterControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -622,6 +667,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @AimAissistToggle.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnAimAissistToggle;
                 @AimAissistToggle.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnAimAissistToggle;
                 @AimAissistToggle.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnAimAissistToggle;
+                @DecelerateAssistToggle.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnDecelerateAssistToggle;
+                @DecelerateAssistToggle.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnDecelerateAssistToggle;
+                @DecelerateAssistToggle.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnDecelerateAssistToggle;
             }
             m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface = instance;
             if (instance != null)
@@ -653,6 +701,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @AimAissistToggle.started += instance.OnAimAissistToggle;
                 @AimAissistToggle.performed += instance.OnAimAissistToggle;
                 @AimAissistToggle.canceled += instance.OnAimAissistToggle;
+                @DecelerateAssistToggle.started += instance.OnDecelerateAssistToggle;
+                @DecelerateAssistToggle.performed += instance.OnDecelerateAssistToggle;
+                @DecelerateAssistToggle.canceled += instance.OnDecelerateAssistToggle;
             }
         }
     }
@@ -686,5 +737,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnTranslate(InputAction.CallbackContext context);
         void OnFlightAssistToggle(InputAction.CallbackContext context);
         void OnAimAissistToggle(InputAction.CallbackContext context);
+        void OnDecelerateAssistToggle(InputAction.CallbackContext context);
     }
 }

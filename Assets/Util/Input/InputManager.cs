@@ -16,6 +16,7 @@ public class InputManager : MonoBehaviour
     public float Trigger { get; private set; }
     public float FAtoggle { get; private set; }
     public float AAtoggle { get; private set; }
+    public float DeAtoggle { get; private set; }
 
     private float faTriggerCooldown;
 
@@ -59,6 +60,7 @@ public class InputManager : MonoBehaviour
         float triggerIn = input.ManualShipThrusterControl.Fire.ReadValue<float>();
         float flightAssistToggleIn = input.ManualShipThrusterControl.FlightAssistToggle.ReadValue<float>();
         float aimAssistToggleIn = input.ManualShipThrusterControl.AimAissistToggle.ReadValue<float>();
+        float decelAssistToggleIn = input.ManualShipThrusterControl.DecelerateAssistToggle.ReadValue<float>();
 
         Vector3 stick = Vector3.zero;
         stick.x = yawIn;
@@ -72,6 +74,7 @@ public class InputManager : MonoBehaviour
         this.Trigger = triggerIn;
         this.FAtoggle = flightAssistToggleIn;
         this.AAtoggle = aimAssistToggleIn;
+        this.DeAtoggle = decelAssistToggleIn;
 
     }
 }

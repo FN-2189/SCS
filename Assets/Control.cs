@@ -19,6 +19,7 @@ public class Control : MonoBehaviour
 
     int RailgunFired = 0;
     int faTriggerCooldown;
+    int decelerateAssistCooldown = 0;
 
     public Vector3 ThirdPersonCameraPosition { get; private set; }
 
@@ -68,16 +69,26 @@ public class Control : MonoBehaviour
                 break;
         }
 
-        //Autoaim toggle
+        //Autoaim toggle, doesn't disengage autopilot if in Decelerate assist mode
         switch (input.AAtoggle)
         {
             case 0:
-                GetComponent<Autopilot>().autopilotActive = false;
+                if (decelerateAssistCooldown != 1)
+                {
+                    GetComponent<Autopilot>().autopilotActive = false;
+                }
                 break;
             case 1:
                 GetComponent<Autopilot>().autopilotActive = true;
                 GetComponent<Autopilot>().targetPosOrTargetVector = true;
                 break;
+        }
+
+        //Decelerate assist
+        if (input.DeAtoggle == 1 && decelerateAssistCooldown == 0)
+        {
+            StartCoroutine(DecelerateAssist());
+            decelerateAssistCooldown = 1;
         }
 
         mainEngineParticles.startLifetime = input.Throttle * 3;
@@ -86,6 +97,23 @@ public class Control : MonoBehaviour
 
     private void CameraMovement()
     {
+
+    }
+
+    private IEnumerator DecelerateAssist()
+    {
+        thrusters.SetManual(Axis.Forward, true);
+        thrusters.SetThrust(Axis.Forward, 0f);
+        GetComponent<Autopilot>().decelerateAssistActive = true;
+        GetComponent<Autopilot>().autopilotActive = true;
+
+        yield return new WaitForSeconds(5);
+
+        thrusters.SetManual(Axis.Forward, false);
+        GetComponent<Autopilot>().autopilotActive = false;
+        GetComponent<Autopilot>().decelerateAssistActive = false;
+        Debug.Log("Flip complete");
+        decelerateAssistCooldown = 0;
 
     }
 }

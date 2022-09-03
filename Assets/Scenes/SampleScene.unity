@@ -15983,7 +15983,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b0268d5116605c4db0945debbcaeee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autopilotActive: 0
+  autopilotActive: 1
+  decelerateAssistActive: 1
   targetVector: {x: 0.5, y: 1, z: 0.3}
   targetPosition: {x: 163.4, y: -5.1, z: 779.1}
   targetPosOrTargetVector: 1
