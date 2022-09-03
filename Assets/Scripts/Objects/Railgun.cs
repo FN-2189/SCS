@@ -26,6 +26,6 @@ public class Railgun : MonoBehaviour
         railgunParticles.Play();
         GameObject g = Instantiate(pfRailgunShot, transform.position, transform.rotation);
         g.GetComponent<Rigidbody>().AddForce(transform.forward * 9980, ForceMode.VelocityChange);
-        ship.AddForce(transform.forward * -9.98f, ForceMode.VelocityChange);
+        ship.AddForce(transform.forward * -9.98f, ForceMode.Impulse);
     }
 }

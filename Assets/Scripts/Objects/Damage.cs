@@ -24,6 +24,7 @@ public class Damage : MonoBehaviour
         {
             destroyed = true;
             explosionParticleSystem.Play();
+            Destroy(gameObject, explosionParticleSystem.main.startLifetime.constant);
         }
 
     }
