@@ -18,6 +18,7 @@ public class Control : MonoBehaviour
     private Railgun railgun;
 
     int RailgunFired = 0;
+    int faTriggerCooldown;
 
     public Vector3 ThirdPersonCameraPosition { get; private set; }
 
@@ -46,6 +47,36 @@ public class Control : MonoBehaviour
                 {
                     RailgunFired = 0;
                 }
+                break;
+        }
+
+        //Flight assist toggle
+        switch (faTriggerCooldown)
+        {
+            case 0:
+                if (input.FAtoggle == 1)
+                {
+                    thrusters.flightAssistOn = !thrusters.flightAssistOn;
+                    faTriggerCooldown = 1;
+                }
+                break;
+            case 1:
+                if (input.FAtoggle == 0)
+                {
+                    faTriggerCooldown = 0;
+                }
+                break;
+        }
+
+        //Autoaim toggle
+        switch (input.AAtoggle)
+        {
+            case 0:
+                GetComponent<Autopilot>().autopilotActive = false;
+                break;
+            case 1:
+                GetComponent<Autopilot>().autopilotActive = true;
+                GetComponent<Autopilot>().targetPosOrTargetVector = true;
                 break;
         }
 
