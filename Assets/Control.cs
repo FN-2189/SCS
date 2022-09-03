@@ -17,9 +17,10 @@ public class Control : MonoBehaviour
 
     private Railgun railgun;
 
-    int RailgunFired = 0;
+    int railgunfiredCooldown = 0;
     int faTriggerCooldown;
     int decelerateAssistCooldown = 0;
+    bool railgunCool;
 
     public Vector3 ThirdPersonCameraPosition { get; private set; }
 
@@ -34,19 +35,21 @@ public class Control : MonoBehaviour
 
     private void Update()
     {
-        switch (RailgunFired) 
+        switch (railgunfiredCooldown) 
         {
             case 0:
                 if (input.Trigger == 1)
                 {
                     railgun.StartRailgunShot();
-                    RailgunFired = 1;
+                    railgunCool = false;
+                    StartCoroutine(RailgunDelay());
+                    railgunfiredCooldown = 1;
                 }
                 break;
             case 1:
-                if (input.Trigger == 0)
+                if (input.Trigger == 0 && railgunCool)
                 {
-                    RailgunFired = 0;
+                    railgunfiredCooldown = 0;
                 }
                 break;
         }
@@ -108,6 +111,7 @@ public class Control : MonoBehaviour
         GetComponent<Autopilot>().autopilotActive = true;
 
         yield return new WaitForSeconds(5);
+        //This could use actual Vector verification but it's to late rn lul
 
         thrusters.SetManual(Axis.Forward, false);
         GetComponent<Autopilot>().autopilotActive = false;
@@ -115,5 +119,11 @@ public class Control : MonoBehaviour
         Debug.Log("Flip complete");
         decelerateAssistCooldown = 0;
 
+    }
+
+    private IEnumerator RailgunDelay()
+    {
+        yield return new WaitForSeconds(7);
+        railgunCool = true;
     }
 }
