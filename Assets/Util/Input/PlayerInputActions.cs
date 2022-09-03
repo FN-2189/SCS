@@ -89,6 +89,24 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""FlightAssistToggle"",
+                    ""type"": ""Button"",
+                    ""id"": ""530bd889-434b-4737-bdef-3872a8304c08"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AimAissistToggle"",
+                    ""type"": ""Button"",
+                    ""id"": ""d9f14f9c-a607-4a52-9732-8b0f15ce8e95"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -366,6 +384,72 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Translate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""64f9b2ce-767c-4483-aed3-193cbf8c40cb"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FlightAssistToggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f08b1896-fcf1-48ac-9b09-037f530c0601"",
+                    ""path"": ""<HID::Logitech X52 Professional H.O.T.A.S.>/button31"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FlightAssistToggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7fc155f2-c738-49a9-9947-73fce01b6389"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FlightAssistToggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ba6df7ec-662a-42ab-a8c3-0adefd6c65a2"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AimAissistToggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""153e93c1-c763-4707-8288-61fe43cd2c34"",
+                    ""path"": ""<HID::Logitech X52 Professional H.O.T.A.S.>/button5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AimAissistToggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0d70b417-dd82-4e7f-89e7-1b691a0b141e"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AimAissistToggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -419,6 +503,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_ManualShipThrusterControl_pitchAndRollJoystick = m_ManualShipThrusterControl.FindAction("pitchAndRollJoystick", throwIfNotFound: true);
         m_ManualShipThrusterControl_StickRz = m_ManualShipThrusterControl.FindAction("StickRz", throwIfNotFound: true);
         m_ManualShipThrusterControl_Translate = m_ManualShipThrusterControl.FindAction("Translate", throwIfNotFound: true);
+        m_ManualShipThrusterControl_FlightAssistToggle = m_ManualShipThrusterControl.FindAction("FlightAssistToggle", throwIfNotFound: true);
+        m_ManualShipThrusterControl_AimAissistToggle = m_ManualShipThrusterControl.FindAction("AimAissistToggle", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -485,6 +571,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_ManualShipThrusterControl_pitchAndRollJoystick;
     private readonly InputAction m_ManualShipThrusterControl_StickRz;
     private readonly InputAction m_ManualShipThrusterControl_Translate;
+    private readonly InputAction m_ManualShipThrusterControl_FlightAssistToggle;
+    private readonly InputAction m_ManualShipThrusterControl_AimAissistToggle;
     public struct ManualShipThrusterControlActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -496,6 +584,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @pitchAndRollJoystick => m_Wrapper.m_ManualShipThrusterControl_pitchAndRollJoystick;
         public InputAction @StickRz => m_Wrapper.m_ManualShipThrusterControl_StickRz;
         public InputAction @Translate => m_Wrapper.m_ManualShipThrusterControl_Translate;
+        public InputAction @FlightAssistToggle => m_Wrapper.m_ManualShipThrusterControl_FlightAssistToggle;
+        public InputAction @AimAissistToggle => m_Wrapper.m_ManualShipThrusterControl_AimAissistToggle;
         public InputActionMap Get() { return m_Wrapper.m_ManualShipThrusterControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -526,6 +616,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Translate.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnTranslate;
                 @Translate.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnTranslate;
                 @Translate.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnTranslate;
+                @FlightAssistToggle.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnFlightAssistToggle;
+                @FlightAssistToggle.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnFlightAssistToggle;
+                @FlightAssistToggle.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnFlightAssistToggle;
+                @AimAissistToggle.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnAimAissistToggle;
+                @AimAissistToggle.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnAimAissistToggle;
+                @AimAissistToggle.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnAimAissistToggle;
             }
             m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface = instance;
             if (instance != null)
@@ -551,6 +647,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Translate.started += instance.OnTranslate;
                 @Translate.performed += instance.OnTranslate;
                 @Translate.canceled += instance.OnTranslate;
+                @FlightAssistToggle.started += instance.OnFlightAssistToggle;
+                @FlightAssistToggle.performed += instance.OnFlightAssistToggle;
+                @FlightAssistToggle.canceled += instance.OnFlightAssistToggle;
+                @AimAissistToggle.started += instance.OnAimAissistToggle;
+                @AimAissistToggle.performed += instance.OnAimAissistToggle;
+                @AimAissistToggle.canceled += instance.OnAimAissistToggle;
             }
         }
     }
@@ -582,5 +684,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnPitchAndRollJoystick(InputAction.CallbackContext context);
         void OnStickRz(InputAction.CallbackContext context);
         void OnTranslate(InputAction.CallbackContext context);
+        void OnFlightAssistToggle(InputAction.CallbackContext context);
+        void OnAimAissistToggle(InputAction.CallbackContext context);
     }
 }

@@ -5,10 +5,10 @@ using UnityEngine;
 public class Autopilot : MonoBehaviour
 {
     private ThrustManager tm;
-    [SerializeField] private bool autopilotActive;
-    [SerializeField] private Vector3 targetVector;
-    [SerializeField] private Vector3 targetPosition;
-    [SerializeField] private bool targetPosOrTargetVector;
+    [SerializeField] public bool autopilotActive;
+    [SerializeField] public Vector3 targetVector;
+    [SerializeField] public Vector3 targetPosition;
+    [SerializeField] public bool targetPosOrTargetVector;
     [SerializeField] private float maxRotationSpeed;
     [SerializeField] private float power;
     [SerializeField] private float tFactor; // temp name

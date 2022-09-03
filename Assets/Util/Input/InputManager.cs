@@ -6,13 +6,16 @@ public class InputManager : MonoBehaviour
 {
     private PlayerInputActions input;
 
-    [SerializeField]
-    private float mouseSensitivity;
+    [SerializeField] private float mouseSensitivity;
+    [SerializeField] private GameObject thrusterObject;
+    [SerializeField] private GameObject shipObject;
 
     public Vector3 Stick { get; private set; }
     public Vector2 Translate { get; private set; }
     public float Throttle { get; private set; }
     public float Trigger { get; private set; }
+
+    private float faTriggerCooldown;
 
     private void Awake()
     {
@@ -52,6 +55,8 @@ public class InputManager : MonoBehaviour
         float yawIn = input.ManualShipThrusterControl.Yaw.ReadValue<float>();
         float throttleIn = input.ManualShipThrusterControl.Throttle.ReadValue<float>();
         float triggerIn = input.ManualShipThrusterControl.Fire.ReadValue<float>();
+        float flightAssistToggle = input.ManualShipThrusterControl.FlightAssistToggle.ReadValue<float>();
+        float aimAssistToggle = input.ManualShipThrusterControl.AimAissistToggle.ReadValue<float>();
 
         Vector3 stick = Vector3.zero;
         stick.x = yawIn;
@@ -63,5 +68,35 @@ public class InputManager : MonoBehaviour
         this.Stick = stick;
         this.Translate = translateIn;
         this.Trigger = triggerIn;
+
+        //Flight assist toggle
+        switch (faTriggerCooldown)
+        {
+            case 0:
+                if (flightAssistToggle == 1)
+                {
+                    thrusterObject.GetComponent<ThrustManager>().flightAssistOn = !(thrusterObject.GetComponent<ThrustManager>().flightAssistOn);
+                    faTriggerCooldown = 1;
+                }
+                break;
+            case 1:
+                if (flightAssistToggle == 0)
+                {
+                    faTriggerCooldown = 0;
+                }
+                break;
+        }
+
+        //Autoaim toggle
+        switch (aimAssistToggle)
+        {
+            case 0:
+                shipObject.GetComponent<Autopilot>().autopilotActive = false;
+                break;
+            case 1:
+                shipObject.GetComponent<Autopilot>().autopilotActive = true;
+                shipObject.GetComponent<Autopilot>().targetPosOrTargetVector = true;
+                break;
+        }
     }
 }

@@ -67,6 +67,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "FlightAssistToggle",
+                    "type": "Button",
+                    "id": "530bd889-434b-4737-bdef-3872a8304c08",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AimAissistToggle",
+                    "type": "Button",
+                    "id": "d9f14f9c-a607-4a52-9732-8b0f15ce8e95",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -344,6 +362,72 @@
                     "action": "Translate",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "64f9b2ce-767c-4483-aed3-193cbf8c40cb",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FlightAssistToggle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f08b1896-fcf1-48ac-9b09-037f530c0601",
+                    "path": "<HID::Logitech X52 Professional H.O.T.A.S.>/button31",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FlightAssistToggle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7fc155f2-c738-49a9-9947-73fce01b6389",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FlightAssistToggle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ba6df7ec-662a-42ab-a8c3-0adefd6c65a2",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AimAissistToggle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "153e93c1-c763-4707-8288-61fe43cd2c34",
+                    "path": "<HID::Logitech X52 Professional H.O.T.A.S.>/button5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AimAissistToggle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0d70b417-dd82-4e7f-89e7-1b691a0b141e",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AimAissistToggle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
