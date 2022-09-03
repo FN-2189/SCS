@@ -15623,7 +15623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3acd07168f20ee84bac751b86df6297d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 200
+  health: 2000
   explosionParticleSystem: {fileID: 886384276}
   destroyed: 0
 --- !u!135 &941140679
@@ -15983,7 +15983,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b0268d5116605c4db0945debbcaeee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autopilotActive: 1
+  autopilotActive: 0
   targetVector: {x: 0.5, y: 1, z: 0.3}
   targetPosition: {x: 163.4, y: -5.1, z: 779.1}
   targetPosOrTargetVector: 1
@@ -21802,7 +21802,7 @@ MonoBehaviour:
   rb: {fileID: 980771548}
   input: {fileID: 1221816534}
   flightAssistOn: 1
-  flighAssistStrength: 0.5
+  flighAssistStrength: 0.8
   manualAxes: 
 --- !u!1 &1143857089
 GameObject:
@@ -22404,6 +22404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSensitivity: 1
+  thrusterObject: {fileID: 1110581363}
   shipObject: {fileID: 980771546}
 --- !u!4 &1221816535
 Transform:
@@ -33172,4 +33173,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pfRailgunShot: {fileID: 206168842209807284, guid: d7b196708e5b4b040a3fb6e7d63104d2, type: 3}
   railgunParticles: {fileID: 1011561322}
+  engineParticles: {fileID: 2033231599}
   ship: {fileID: 980771548}
+  thrusters: {fileID: 1110581365}
