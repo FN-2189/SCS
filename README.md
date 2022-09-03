@@ -1,3 +1,2 @@
 # Spaaaaaaaaaaaaaace
-Hyper immersive super colliding super Simulation mega professional extreme high end gaming game about space
-Wow so cool
+A space battle simulator with near-future technology setting aiming to achieve relatively realistic space combat.
