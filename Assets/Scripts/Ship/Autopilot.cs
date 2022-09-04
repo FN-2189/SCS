@@ -5,11 +5,11 @@ using UnityEngine;
 public class Autopilot : MonoBehaviour
 {
     private ThrustManager tm;
-    [SerializeField] public bool autopilotActive;
-    [SerializeField] public bool decelerateAssistActive;
-    [SerializeField] public Vector3 targetVector;
-    [SerializeField] public Vector3 targetPosition;
-    [SerializeField] public bool targetPosOrTargetVector;
+    public bool autopilotActive;
+    public bool decelerateAssistActive;
+    public Vector3 targetVector;
+    public Vector3 targetPosition;
+    public bool InPosMode;
     [SerializeField] private float maxRotationSpeed;
     [SerializeField] private float power;
     [SerializeField] private float tFactor; // temp name
@@ -39,8 +39,7 @@ public class Autopilot : MonoBehaviour
     {
         if (autopilotActive)
         {
-
-            if (targetPosOrTargetVector)
+            if (InPosMode)
             {
                 targetVector = targetPosition - transform.position;
             }
@@ -48,44 +47,9 @@ public class Autopilot : MonoBehaviour
             if (decelerateAssistActive)
             {
                 targetVector = -rb.velocity.normalized;
+                StopShip();
             }
-
-            Vector3 direction = targetVector.normalized - transform.forward;
-            testLine.SetPositions(new Vector3[] { transform.position, transform.position + direction });
-            targetLine.SetPositions(new Vector3[] { transform.position, transform.position + targetVector.normalized });
-
-            Vector3 localDirection = transform.InverseTransformDirection(direction).normalized;
-            Vector3 localAngularVelocity = transform.InverseTransformDirection(rb.angularVelocity).normalized * rb.angularVelocity.magnitude;
-
-            if (!tm.isManual(Axis.Yaw)) tm.SetManual(Axis.Yaw, true);
-            if (!tm.isManual(Axis.Pitch)) tm.SetManual(Axis.Pitch, true);
-
-            float maxSpeed = maxRotationSpeed * (Mathf.Abs(localDirection.z) * zFactor);
-            float thrust = (-Mathf.Pow(tFactor, 1-direction.magnitude)+2)*power;
-            if (Mathf.Abs(localDirection.z) > threshold)
-            {
-                
-                if(localDirection.x > 0f && localAngularVelocity.y < maxSpeed)
-                {
-                    tm.SetThrust(Axis.Yaw, -thrust);
-                }
-                else if(localDirection.x < 0f && localAngularVelocity.y > -maxSpeed)
-                {
-                    tm.SetThrust(Axis.Yaw, thrust);
-                }
-                else tm.SetThrust(Axis.Yaw, 0f);
-                
-                if (localDirection.y > 0f && localAngularVelocity.x > -maxSpeed)
-                {
-                    tm.SetThrust(Axis.Pitch, -thrust);
-                }
-                else if (localDirection.y < 0f && localAngularVelocity.x < maxSpeed)
-                {
-                    tm.SetThrust(Axis.Pitch, thrust);
-                }
-                else tm.SetThrust(Axis.Pitch, 0f);
-
-            }
+            TurnToTarget();
         }
         else
         {
@@ -94,4 +58,60 @@ public class Autopilot : MonoBehaviour
         }
     }
 
+    public void StopShip()
+    {
+        Vector3 targetDirection = targetVector.normalized - transform.forward;
+
+        if (targetDirection.magnitude < 0.1f && rb.velocity.magnitude > 1f)
+        {
+            tm.SetManual(Axis.Forward, true);
+            tm.SetThrust(Axis.Forward, 1f);
+        }
+        else
+        {
+            tm.SetManual(Axis.Forward, true);
+            tm.SetThrust(Axis.Forward, 0f);
+            tm.SetManual(Axis.Forward, false);
+            return;
+        }
+    }
+
+    public void TurnToTarget()
+    {
+        Vector3 direction = targetVector.normalized - transform.forward;
+        //testLine.SetPositions(new Vector3[] { transform.position, transform.position + direction });
+        //targetLine.SetPositions(new Vector3[] { transform.position, transform.position + targetVector.normalized });
+
+        Vector3 localDirection = transform.InverseTransformDirection(direction).normalized;
+        Vector3 localAngularVelocity = transform.InverseTransformDirection(rb.angularVelocity).normalized * rb.angularVelocity.magnitude;
+
+        if (!tm.isManual(Axis.Yaw)) tm.SetManual(Axis.Yaw, true);
+        if (!tm.isManual(Axis.Pitch)) tm.SetManual(Axis.Pitch, true);
+
+        float maxSpeed = maxRotationSpeed * (Mathf.Abs(localDirection.z) * zFactor);
+        float thrust = (-Mathf.Pow(tFactor, 1 - direction.magnitude) + 2) * power;
+        if (Mathf.Abs(localDirection.z) > threshold)
+        {
+
+            if (localDirection.x > 0f && localAngularVelocity.y < maxSpeed)
+            {
+                tm.SetThrust(Axis.Yaw, -thrust);
+            }
+            else if (localDirection.x < 0f && localAngularVelocity.y > -maxSpeed)
+            {
+                tm.SetThrust(Axis.Yaw, thrust);
+            }
+            else tm.SetThrust(Axis.Yaw, 0f);
+
+            if (localDirection.y > 0f && localAngularVelocity.x > -maxSpeed)
+            {
+                tm.SetThrust(Axis.Pitch, -thrust);
+            }
+            else if (localDirection.y < 0f && localAngularVelocity.x < maxSpeed)
+            {
+                tm.SetThrust(Axis.Pitch, thrust);
+            }
+            else tm.SetThrust(Axis.Pitch, 0f);
+        }
+    }
 }

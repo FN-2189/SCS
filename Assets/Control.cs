@@ -83,18 +83,19 @@ public class Control : MonoBehaviour
                 break;
             case 1:
                 GetComponent<Autopilot>().autopilotActive = true;
-                GetComponent<Autopilot>().targetPosOrTargetVector = true;
+                GetComponent<Autopilot>().InPosMode = true;
                 break;
         }
 
         //Decelerate assist
         if (input.DeAtoggle == 1 && decelerateAssistCooldown == 0)
         {
-            StartCoroutine(DecelerateAssist());
+            Decelerate();
             decelerateAssistCooldown = 1;
         }
 
-        mainEngineParticles.startLifetime = input.Throttle * 3;
+        ParticleSystem.MainModule psMain = mainEngineParticles.main;
+        psMain.startLifetime = input.Throttle * 3;
 
     }
 
@@ -103,6 +104,14 @@ public class Control : MonoBehaviour
 
     }
 
+    private void Decelerate()
+    {
+        Autopilot ap = GetComponent<Autopilot>();
+        ap.autopilotActive = true;
+        ap.decelerateAssistActive = true;
+    }
+
+    /*
     private IEnumerator DecelerateAssist()
     {
         thrusters.SetManual(Axis.Forward, true);
@@ -120,6 +129,7 @@ public class Control : MonoBehaviour
         decelerateAssistCooldown = 0;
 
     }
+    */
 
     private IEnumerator RailgunDelay()
     {

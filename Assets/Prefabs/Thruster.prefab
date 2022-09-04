@@ -98,4 +98,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: {fileID: 0}
   thrustLevel: 0
+  isNegative: 0
   inGroups: 

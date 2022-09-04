@@ -7,6 +7,9 @@ public class Thruster : MonoBehaviour
 
     [SerializeField]
     private ThrusterType type;
+
+    private ParticleSystem exhaustParticles;
+
     public Vector3 position => transform.localPosition;
     public Quaternion rotation => transform.localRotation;
     public float thrust {
@@ -30,6 +33,9 @@ public class Thruster : MonoBehaviour
     [SerializeField]
     private Axis[] inGroups = { };
 
+    private ParticleSystem.MainModule PSMain;
+    private ParticleSystem.EmissionModule PSEmission;
+
     private void Awake()
     {
         isInAxis = new Dictionary<Axis, bool>();
@@ -43,6 +49,25 @@ public class Thruster : MonoBehaviour
         {
             isInAxis[t] = true;
         }
+        exhaustParticles = Instantiate(type.exhaust, gameObject.transform);
+        exhaustParticles.transform.rotation = Quaternion.Euler(-exhaustParticles.transform.rotation.eulerAngles);
+        PSMain = exhaustParticles.main;
+        PSEmission = exhaustParticles.emission;
 
+        PSEmission.rateOverTimeMultiplier = 0f;
+        exhaustParticles.Play();
+    }
+
+    private void Update()
+    {
+        if((thrustLevel > 0f && !isNegative) || (thrustLevel < 0f && isNegative))
+        {
+            PSEmission.rateOverTimeMultiplier = type.exhaust.emission.rateOverTimeMultiplier;
+            PSMain.startLifetimeMultiplier = type.exhaust.main.startLifetimeMultiplier * Mathf.Abs(thrustLevel);
+        }
+        else
+        {
+            PSEmission.rateOverTimeMultiplier = 0f;
+        }
     }
 }

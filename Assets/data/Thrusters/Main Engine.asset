@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Main Engine
   m_EditorClassIdentifier: 
   power: 490.5
-  mesh: {fileID: 0}
+  exhaust: {fileID: 7351714715835138765, guid: 0faeca86cb278644583d13e364d289c6, type: 3}

@@ -5,5 +5,5 @@ using UnityEngine;
 public class ThrusterType : ScriptableObject
 {
     public float power;
-    public Mesh mesh;
+    public ParticleSystem exhaust;
 }
