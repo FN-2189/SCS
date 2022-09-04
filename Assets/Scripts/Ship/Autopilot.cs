@@ -72,6 +72,8 @@ public class Autopilot : MonoBehaviour
             tm.SetManual(Axis.Forward, true);
             tm.SetThrust(Axis.Forward, 0f);
             tm.SetManual(Axis.Forward, false);
+            decelerateAssistActive = false;
+            autopilotActive = false;
             return;
         }
     }
