@@ -111,9 +111,9 @@ public class Control : MonoBehaviour
         Autopilot ap = GetComponent<Autopilot>();
         ap.autopilotActive = true;
         ap.decelerateAssistActive = true;
-    }
 
-    /*
+    }
+    
     private IEnumerator DecelerateAssist()
     {
         Vector3 decelerateTargetVector = -rb.velocity;
@@ -136,7 +136,7 @@ public class Control : MonoBehaviour
         decelerateAssistCooldown = 0;
 
     }
-    */
+    
 
     private IEnumerator RailgunDelay()
     {
