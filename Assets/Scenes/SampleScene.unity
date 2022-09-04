@@ -15623,7 +15623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3acd07168f20ee84bac751b86df6297d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2000
+  health: 200
   explosionParticleSystem: {fileID: 886384276}
   destroyed: 0
 --- !u!135 &941140679
@@ -15983,8 +15983,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b0268d5116605c4db0945debbcaeee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autopilotActive: 1
-  decelerateAssistActive: 1
+  autopilotActive: 0
+  decelerateAssistActive: 0
   targetVector: {x: 0.5, y: 1, z: 0.3}
   targetPosition: {x: 163.4, y: -5.1, z: 779.1}
   targetPosOrTargetVector: 1

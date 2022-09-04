@@ -97,6 +97,8 @@ public class Control : MonoBehaviour
         ParticleSystem.MainModule psMain = mainEngineParticles.main;
         psMain.startLifetime = input.Throttle * 3;
 
+        //mainEngineParticles.startLifetime = input.Throttle * 3;
+
     }
 
     private void CameraMovement()
@@ -114,13 +116,18 @@ public class Control : MonoBehaviour
     /*
     private IEnumerator DecelerateAssist()
     {
+        Vector3 decelerateTargetVector = -rb.velocity;
         thrusters.SetManual(Axis.Forward, true);
         thrusters.SetThrust(Axis.Forward, 0f);
         GetComponent<Autopilot>().decelerateAssistActive = true;
         GetComponent<Autopilot>().autopilotActive = true;
 
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(10);
         //This could use actual Vector verification but it's to late rn lul
+        /*while (true)
+        {
+            Debug.Log(transform.forward);
+        }*/
 
         thrusters.SetManual(Axis.Forward, false);
         GetComponent<Autopilot>().autopilotActive = false;
@@ -135,5 +142,13 @@ public class Control : MonoBehaviour
     {
         yield return new WaitForSeconds(7);
         railgunCool = true;
+    }
+
+    private void ThrottleParticles()
+    {
+        for (int i = 0; i < thrusters.thrusters.Length; i++)
+        {
+            if (thrusters.thrusters[i].isInAxis[Axis.Forward]) mainEngineParticles.startLifetime = thrusters.thrusters[i].thrustLevel * 3;
+        }
     }
 }
