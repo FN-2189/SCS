@@ -22,7 +22,7 @@ public class InputManager : MonoBehaviour
 
     private void Awake()
     {
-        Cursor.visible = false;
+        //Cursor.visible = false;
         input = new PlayerInputActions();
         input.Enable();
     }
