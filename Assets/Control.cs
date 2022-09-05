@@ -72,13 +72,14 @@ public class Control : MonoBehaviour
                 break;
         }
 
+        /*
         //Autoaim toggle, doesn't disengage autopilot if in Decelerate assist mode
         switch (input.AAtoggle)
         {
             case 0:
-                if (decelerateAssistCooldown != 1)
+                if (decelerateAssistCooldown == 0)
                 {
-                    GetComponent<Autopilot>().autopilotActive = false;
+                    //GetComponent<Autopilot>().autopilotActive = false;
                 }
                 break;
             case 1:
@@ -86,14 +87,28 @@ public class Control : MonoBehaviour
                 GetComponent<Autopilot>().InPosMode = true;
                 break;
         }
-
-        //Decelerate assist
-        if (input.DeAtoggle == 1 && decelerateAssistCooldown == 0)
+        */
+        // Good Code \/
+        Autopilot ap = GetComponent<Autopilot>();
+        if (input.AAtoggle > 0 || input.DeAtoggle > 0) 
         {
-            Decelerate();
-            decelerateAssistCooldown = 1;
+            GetComponent<Autopilot>().autopilotActive = true;
+            GetComponent<Autopilot>().InPosMode = true;
         }
-
+        else 
+        {
+            GetComponent<Autopilot>().autopilotActive = false;
+        }
+        
+        //Decelerate assist
+        if (input.DeAtoggle > 0 /*&& decelerateAssistCooldown == 0*/)
+        {
+            ap.decelerateAssistActive = true;
+        }
+        else
+        {
+            ap.decelerateAssistActive = false;
+        }
         ParticleSystem.MainModule psMain = mainEngineParticles.main;
         psMain.startLifetime = input.Throttle * 3;
 
@@ -108,10 +123,7 @@ public class Control : MonoBehaviour
 
     private void Decelerate()
     {
-        Autopilot ap = GetComponent<Autopilot>();
-        ap.autopilotActive = true;
-        ap.decelerateAssistActive = true;
-
+        
     }
     
     private IEnumerator DecelerateAssist()
@@ -134,7 +146,6 @@ public class Control : MonoBehaviour
         GetComponent<Autopilot>().decelerateAssistActive = false;
         Debug.Log("Flip complete");
         decelerateAssistCooldown = 0;
-
     }
     
 

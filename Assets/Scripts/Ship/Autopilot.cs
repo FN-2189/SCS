@@ -48,6 +48,7 @@ public class Autopilot : MonoBehaviour
             {
                 targetVector = -rb.velocity.normalized;
                 StopShip();
+
             }
             TurnToTarget();
         }
@@ -55,26 +56,30 @@ public class Autopilot : MonoBehaviour
         {
             if (tm.isManual(Axis.Yaw)) tm.SetManual(Axis.Yaw, false);
             if (tm.isManual(Axis.Pitch)) tm.SetManual(Axis.Pitch, false);
+            if (tm.isManual(Axis.Forward)) tm.SetManual(Axis.Forward, false);
         }
     }
 
     public void StopShip()
     {
+        if(!tm.isManual(Axis.Forward)) tm.SetManual(Axis.Forward, true);
         Vector3 targetDirection = targetVector.normalized - transform.forward;
 
-        if (targetDirection.magnitude < 0.1f && rb.velocity.magnitude > 1f)
+        if (targetDirection.magnitude < 0.1f)
         {
-            tm.SetManual(Axis.Forward, true);
             tm.SetThrust(Axis.Forward, 1f);
         }
         else
         {
-            tm.SetManual(Axis.Forward, true);
             tm.SetThrust(Axis.Forward, 0f);
-            tm.SetManual(Axis.Forward, false);
+            
+        }
+
+        if(rb.velocity.magnitude < 1f)
+        {
+            Debug.Log("Done");
             decelerateAssistActive = false;
             autopilotActive = false;
-            return;
         }
     }
 
