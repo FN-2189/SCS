@@ -494,6 +494,34 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""GeneralControls"",
+            ""id"": ""f0d3f4dc-c316-4ff6-85e2-7055d7235647"",
+            ""actions"": [
+                {
+                    ""name"": ""Escape"",
+                    ""type"": ""Button"",
+                    ""id"": ""34cdb185-1499-4df5-b8dd-f20bb8025609"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Tap"",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""fef32e47-ebf4-44db-a25a-ec827236f914"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Escape"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -553,6 +581,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_ManualShipThrusterControl_FlightAssistToggle = m_ManualShipThrusterControl.FindAction("FlightAssistToggle", throwIfNotFound: true);
         m_ManualShipThrusterControl_AimAissistToggle = m_ManualShipThrusterControl.FindAction("AimAissistToggle", throwIfNotFound: true);
         m_ManualShipThrusterControl_DecelerateAssistToggle = m_ManualShipThrusterControl.FindAction("DecelerateAssistToggle", throwIfNotFound: true);
+        // GeneralControls
+        m_GeneralControls = asset.FindActionMap("GeneralControls", throwIfNotFound: true);
+        m_GeneralControls_Escape = m_GeneralControls.FindAction("Escape", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -713,6 +744,39 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         }
     }
     public ManualShipThrusterControlActions @ManualShipThrusterControl => new ManualShipThrusterControlActions(this);
+
+    // GeneralControls
+    private readonly InputActionMap m_GeneralControls;
+    private IGeneralControlsActions m_GeneralControlsActionsCallbackInterface;
+    private readonly InputAction m_GeneralControls_Escape;
+    public struct GeneralControlsActions
+    {
+        private @PlayerInputActions m_Wrapper;
+        public GeneralControlsActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Escape => m_Wrapper.m_GeneralControls_Escape;
+        public InputActionMap Get() { return m_Wrapper.m_GeneralControls; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(GeneralControlsActions set) { return set.Get(); }
+        public void SetCallbacks(IGeneralControlsActions instance)
+        {
+            if (m_Wrapper.m_GeneralControlsActionsCallbackInterface != null)
+            {
+                @Escape.started -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnEscape;
+                @Escape.performed -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnEscape;
+                @Escape.canceled -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnEscape;
+            }
+            m_Wrapper.m_GeneralControlsActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Escape.started += instance.OnEscape;
+                @Escape.performed += instance.OnEscape;
+                @Escape.canceled += instance.OnEscape;
+            }
+        }
+    }
+    public GeneralControlsActions @GeneralControls => new GeneralControlsActions(this);
     private int m_KandMSchemeIndex = -1;
     public InputControlScheme KandMScheme
     {
@@ -743,5 +807,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnFlightAssistToggle(InputAction.CallbackContext context);
         void OnAimAissistToggle(InputAction.CallbackContext context);
         void OnDecelerateAssistToggle(InputAction.CallbackContext context);
+    }
+    public interface IGeneralControlsActions
+    {
+        void OnEscape(InputAction.CallbackContext context);
     }
 }
