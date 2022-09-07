@@ -16380,6 +16380,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   autopilotActive: 1
   decelerateAssistActive: 0
+  autoDecelerateOn: 0
   targetVector: {x: 0.5, y: 1, z: 0.3}
   targetPosition: {x: 163.4, y: -5.1, z: 779.1}
   InPosMode: 0
@@ -22332,6 +22333,7 @@ MonoBehaviour:
   rb: {fileID: 980771548}
   input: {fileID: 1221816534}
   flightAssistOn: 1
+  velFlightAssistOn: 0
   flighAssistStrength: 0.8
   manualAxes: 
 --- !u!1 &1124640106
@@ -22580,6 +22582,10 @@ PrefabInstance:
     - target: {fileID: 3444483951517069248, guid: 95a76ad00dbb22844b55b9a6f8299e40, type: 3}
       propertyPath: isNegative
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444483951517069248, guid: 95a76ad00dbb22844b55b9a6f8299e40, type: 3}
+      propertyPath: thrustLevel
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3444483951517069248, guid: 95a76ad00dbb22844b55b9a6f8299e40, type: 3}
       propertyPath: inGroups.Array.size

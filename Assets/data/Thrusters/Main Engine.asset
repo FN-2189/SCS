@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3362f436859c7df4c8cfac341383b31b, type: 3}
   m_Name: Main Engine
   m_EditorClassIdentifier: 
-  power: 490.5
+  power: 981
   exhaust: {fileID: 7351714715835138765, guid: 0faeca86cb278644583d13e364d289c6, type: 3}

@@ -7,6 +7,7 @@ public class Autopilot : MonoBehaviour
     private ThrustManager tm;
     public bool autopilotActive;
     public bool decelerateAssistActive;
+    public bool autoDecelerateOn;
     public Vector3 targetVector;
     public Vector3 targetPosition;
     public bool InPosMode;
@@ -47,8 +48,10 @@ public class Autopilot : MonoBehaviour
             if (decelerateAssistActive)
             {
                 targetVector = -rb.velocity.normalized;
-                StopShip();
-
+                if (autoDecelerateOn)
+                {
+                    StopShip();
+                }
             }
             TurnToTarget();
         }
