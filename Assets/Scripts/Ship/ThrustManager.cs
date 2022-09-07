@@ -21,6 +21,8 @@ public class ThrustManager : MonoBehaviour
 
     [SerializeField] public bool flightAssistOn;
 
+    public bool velFlightAssistOn;
+
     [SerializeField] [Range(0f, 1f)] private float flighAssistStrength;
 
     private Dictionary<Axis, bool> inManualMode;
@@ -128,7 +130,7 @@ public class ThrustManager : MonoBehaviour
         Vector3 goalV = Vector3.zero;
 
         //flight assist pitch
-        if (Mathf.Abs(input.Stick.y) < deadZone)
+        if (Mathf.Abs(input.Stick.y) < deadZone && angularV.magnitude > 0.01)
         {
             if (angularV.x < goalAngularVelocity.x)
             {
@@ -154,7 +156,7 @@ public class ThrustManager : MonoBehaviour
         }
 
         //flight assist yaw
-        if (Mathf.Abs(input.Stick.x) < deadZone)
+        if (Mathf.Abs(input.Stick.x) < deadZone && angularV.magnitude > 0.01)
         {
             if (angularV.y < goalAngularVelocity.y)
             {
@@ -180,7 +182,7 @@ public class ThrustManager : MonoBehaviour
         }
 
         //flight assist roll
-        if (Mathf.Abs(input.Stick.z) < deadZone)
+        if (Mathf.Abs(input.Stick.z) < deadZone && angularV.magnitude > 0.01)
         {
             if (angularV.z < goalAngularVelocity.z)
             {
@@ -205,57 +207,64 @@ public class ThrustManager : MonoBehaviour
             }
         }
 
-        //flight assist Horizontal
-        if (Mathf.Abs(input.Translate.x) < deadZone)
+        //Velocity Flight assist
+        if (velFlightAssistOn)
         {
-            if (v.x < goalV.x)
+            //flight assist Horizontal
+            if (Mathf.Abs(input.Translate.x) < deadZone)
             {
-                for (int i = 0; i < thrusters.Length; i++)
+                if (v.x < goalV.x)
                 {
-                    if (thrusters[i].isInAxis[Axis.Horizontal] && !inManualMode[Axis.Horizontal])
+                    for (int i = 0; i < thrusters.Length; i++)
                     {
-                        thrusters[i].thrustLevel = -flighAssistStrength;
+                        if (thrusters[i].isInAxis[Axis.Horizontal] && !inManualMode[Axis.Horizontal])
+                        {
+                            thrusters[i].thrustLevel = -flighAssistStrength;
+                        }
+                    }
+                }
+
+                if (v.x > goalV.x)
+                {
+                    for (int i = 0; i < thrusters.Length; i++)
+                    {
+                        if (thrusters[i].isInAxis[Axis.Horizontal] && !inManualMode[Axis.Horizontal])
+                        {
+                            thrusters[i].thrustLevel = flighAssistStrength;
+                        }
                     }
                 }
             }
 
-            if (v.x > goalV.x)
+            //flight assist Vertical
+            if (Mathf.Abs(input.Translate.y) < deadZone)
             {
-                for (int i = 0; i < thrusters.Length; i++)
+                if (v.y < goalV.y)
                 {
-                    if (thrusters[i].isInAxis[Axis.Horizontal] && !inManualMode[Axis.Horizontal])
+                    for (int i = 0; i < thrusters.Length; i++)
                     {
-                        thrusters[i].thrustLevel = flighAssistStrength;
+                        if (thrusters[i].isInAxis[Axis.Vertical] && !inManualMode[Axis.Vertical])
+                        {
+                            thrusters[i].thrustLevel = -flighAssistStrength;
+                        }
+                    }
+                }
+
+                if (v.y > goalV.y)
+                {
+                    for (int i = 0; i < thrusters.Length; i++)
+                    {
+                        if (thrusters[i].isInAxis[Axis.Vertical] && !inManualMode[Axis.Vertical])
+                        {
+                            thrusters[i].thrustLevel = flighAssistStrength;
+                        }
                     }
                 }
             }
         }
+        
 
-        //flight assist Vertical
-        if (Mathf.Abs(input.Translate.y) < deadZone)
-        {
-            if (v.y < goalV.y)
-            {
-                for (int i = 0; i < thrusters.Length; i++)
-                {
-                    if (thrusters[i].isInAxis[Axis.Vertical] && !inManualMode[Axis.Vertical])
-                    {
-                        thrusters[i].thrustLevel = -flighAssistStrength;
-                    }
-                }
-            }
-
-            if (v.y > goalV.y)
-            {
-                for (int i = 0; i < thrusters.Length; i++)
-                {
-                    if (thrusters[i].isInAxis[Axis.Vertical] && !inManualMode[Axis.Vertical])
-                    {
-                        thrusters[i].thrustLevel = flighAssistStrength;
-                    }
-                }
-            }
-        }
+        Debug.Log(v.magnitude);
     }
 
     public void SetManual(Axis axis, bool manual)
