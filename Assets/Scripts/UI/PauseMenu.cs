@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
     private InputManager input;
     public GameObject pauseMenuUI;
     public GameObject quitScreen;
+    public GameObject settingsScreen;
 
     public bool isPaused = false;
     private bool quitScreenActive = false;
@@ -19,6 +20,7 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
         pauseMenuUI.SetActive(false);
         quitScreen.SetActive(false);
+        settingsScreen.SetActive(false);
     }
 
     // Update is called once per frame
@@ -75,5 +77,11 @@ public class PauseMenu : MonoBehaviour
     {
         quitScreenActive = false;
         quitScreen.SetActive(false);
+    }
+
+    public void OpenSettings()
+    {
+        settingsScreen.SetActive(true);
+        settingsScreen.GetComponent<Options>().Setup();
     }
 }
