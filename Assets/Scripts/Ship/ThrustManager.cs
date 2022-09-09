@@ -6,6 +6,7 @@ using UnityEngine;
 public class ThrustManager : MonoBehaviour
 {
     public Thruster[] thrusters;
+    public TMPro.TMP_Text velMeter;
 
     private Vector3 thrustVector;
     private Vector3 thrustPosition;
@@ -262,7 +263,8 @@ public class ThrustManager : MonoBehaviour
                 }
             }
         }
-        
+
+        velMeter.text = "Vel: " + rb.velocity;
     }
 
     public void SetManual(Axis axis, bool manual)
