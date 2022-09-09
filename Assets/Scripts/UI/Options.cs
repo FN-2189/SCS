@@ -11,11 +11,14 @@ public class Options : MonoBehaviour
     public GameObject SettingsAudioPanel;
     public GameObject SettingsPanel;
     public TMPro.TMP_Dropdown qualityDropdown;
+    public TMPro.TMP_Dropdown msaaDropdown;
 
     //Settings
     public Toggle fullscreenToggle, vSyncToggle;
     public bool changedSettings = false;
     private int quality;
+    private int msaaQuality;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -111,6 +114,10 @@ public class Options : MonoBehaviour
         }
 
         QualitySettings.SetQualityLevel(quality);
+
+        QualitySettings.antiAliasing = msaaQuality;
+
+        Debug.Log(QualitySettings.antiAliasing);
     }
 
     //Settings
@@ -119,5 +126,16 @@ public class Options : MonoBehaviour
     {
         quality = qualityDropdown.value;
         Debug.Log(quality);
+    }
+
+    public void MSAA()
+    {
+        msaaQuality = (int)Mathf.Pow(2f, msaaDropdown.value);
+        switch (msaaQuality)
+        {
+            case 1:
+                msaaQuality = 0;
+                break;
+        }
     }
 }
