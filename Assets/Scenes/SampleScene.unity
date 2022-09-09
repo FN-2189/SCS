@@ -16772,7 +16772,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 14
+  m_Constraints: 8
   m_CollisionDetection: 1
 --- !u!4 &980771550
 Transform:
@@ -27292,6 +27292,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6836410603931094271, guid: 001362acfa5cb564c8f44245cac5850b, type: 3}
+      propertyPath: m_Height
+      value: 12.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 6836410603931094271, guid: 001362acfa5cb564c8f44245cac5850b, type: 3}
+      propertyPath: m_Radius
+      value: 1.3
+      objectReference: {fileID: 0}
     - target: {fileID: 7444014706684791175, guid: 001362acfa5cb564c8f44245cac5850b, type: 3}
       propertyPath: target
       value: 
@@ -27302,7 +27310,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7444014706684791175, guid: 001362acfa5cb564c8f44245cac5850b, type: 3}
       propertyPath: torque
-      value: 0.1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7444014706684791175, guid: 001362acfa5cb564c8f44245cac5850b, type: 3}
       propertyPath: maxSpin
@@ -27310,7 +27318,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7444014706684791175, guid: 001362acfa5cb564c8f44245cac5850b, type: 3}
       propertyPath: threshold
-      value: 0.05
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 001362acfa5cb564c8f44245cac5850b, type: 3}
