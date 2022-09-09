@@ -2125,6 +2125,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1332201540}
     m_Modifications:
+    - target: {fileID: 2627442249663544480, guid: a97fe8958ace5b44f92b49fbfe99b2ad, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2627442249663544480, guid: a97fe8958ace5b44f92b49fbfe99b2ad, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2627442249663544480, guid: a97fe8958ace5b44f92b49fbfe99b2ad, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4969897592974415291, guid: a97fe8958ace5b44f92b49fbfe99b2ad, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2212,6 +2224,18 @@ PrefabInstance:
     - target: {fileID: 4969897592974415292, guid: a97fe8958ace5b44f92b49fbfe99b2ad, type: 3}
       propertyPath: m_Name
       value: SettingsPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5553216253583879264, guid: a97fe8958ace5b44f92b49fbfe99b2ad, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000030517578
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946140219015669007, guid: a97fe8958ace5b44f92b49fbfe99b2ad, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946140219015669007, guid: a97fe8958ace5b44f92b49fbfe99b2ad, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a97fe8958ace5b44f92b49fbfe99b2ad, type: 3}

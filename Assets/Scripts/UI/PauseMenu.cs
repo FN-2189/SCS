@@ -30,10 +30,12 @@ public class PauseMenu : MonoBehaviour
         {
             if (isPaused)
             {
+                Cursor.visible = false;
                 Resume();
             }
             else
             {
+                Cursor.visible = true;
                 Pause();
             }
         }

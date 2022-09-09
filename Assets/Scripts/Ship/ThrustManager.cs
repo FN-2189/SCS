@@ -263,8 +263,6 @@ public class ThrustManager : MonoBehaviour
             }
         }
         
-
-        Debug.Log(v.magnitude);
     }
 
     public void SetManual(Axis axis, bool manual)

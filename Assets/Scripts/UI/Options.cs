@@ -10,16 +10,19 @@ public class Options : MonoBehaviour
     public GameObject SettingsBindingsPanel;
     public GameObject SettingsAudioPanel;
     public GameObject SettingsPanel;
+    public TMPro.TMP_Dropdown qualityDropdown;
 
     //Settings
     public Toggle fullscreenToggle, vSyncToggle;
     public bool changedSettings = false;
-
+    private int quality;
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Quality Level is " + QualitySettings.GetQualityLevel() + " AA: " + QualitySettings.antiAliasing);
+        
         Setup();
-
+        
     }
 
     public void Setup()
@@ -41,6 +44,8 @@ public class Options : MonoBehaviour
             vSyncToggle.isOn = false;
         }
 
+        quality = QualitySettings.GetQualityLevel();
+        qualityDropdown.value = quality;
     }
 
     // Update is called once per frame
@@ -104,9 +109,15 @@ public class Options : MonoBehaviour
         {
             QualitySettings.vSyncCount = 0;
         }
+
+        QualitySettings.SetQualityLevel(quality);
     }
 
     //Settings
     //Graphics
-
+    public void GrapicsQuality()
+    {
+        quality = qualityDropdown.value;
+        Debug.Log(quality);
+    }
 }
