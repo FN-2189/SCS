@@ -17,6 +17,8 @@ public class Missile : MonoBehaviour
     [SerializeField]
     ThrusterType type;
 
+    public LineRenderer l;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -28,7 +30,8 @@ public class Missile : MonoBehaviour
     {
         Vector3 targetV = target.GetComponent<Rigidbody>().velocity;
 
-        Vector3 targetLead = Lead(target.position, targetV - rb.velocity, rb.velocity.magnitude + 0.0001f);
+        Vector3 targetLead = Vector3.zero;
+        l.SetPositions(new Vector3[] { transform.position, targetLead });
         print(target.GetComponent<Rigidbody>().velocity);
 
         Vector3 dir = (targetLead - transform.position).normalized - transform.forward;
@@ -69,39 +72,14 @@ public class Missile : MonoBehaviour
         Debug.Log("Hit " + collision.gameObject.name);
     }
 
-
-    //shamelessly stolen
-    Vector3 Lead(Vector3 targetPosition, Vector3 targetSpeed, float missileSpeed)
-    {
-        Vector3 q = targetPosition - transform.position;
-        //solving quadratic ecuation from t*t(Vx*Vx + Vy*Vy - S*S) + 2*t*(Vx*Qx)(Vy*Qy) + Qx*Qx + Qy*Qy = 0
-
-        float a = Vector3.Dot(targetSpeed, targetSpeed) - (missileSpeed * missileSpeed); //Dot is basicly (targetSpeed.x * targetSpeed.x) + (targetSpeed.y * targetSpeed.y)
-        float b = 2 * Vector3.Dot(targetSpeed, q); //Dot is basicly (targetSpeed.x * q.x) + (targetSpeed.y * q.y)
-        float c = Vector3.Dot(q, q); //Dot is basicly (q.x * q.x) + (q.y * q.y)
-
-        //Discriminant
-        float D = Mathf.Sqrt((b * b) - 4 * a * c);
-        print("(b * b) - 4 * a * c = "+ ((b * b) - 4 * a * c));
-        print(a);
-        float t1 = (-b + D) / (2 * a);
-        float t2 = (-b - D) / (2 * a);
-
-        Debug.Log("t1: " + t1 + " t2: " + t2);
-
-        float time = Mathf.Max(t1, t2);
-
-        Vector3 ret = targetPosition + targetSpeed * time;
-        return ret;
-    }
-
-    Vector3 GetHitPoint(Vector3 targetPosition, Vector3 targetSpeed, Vector3 attackerPosition, float bulletSpeed)
+    Vector3 GetHitPoint(Vector3 targetPosition, Vector3 targetSpeed, Vector3 targetAccel, Vector3 attackerPosition, float bulletSpeed)
     {
         Vector3 q = targetPosition - attackerPosition;
 
         //solving quadratic ecuation from t*t(Vx*Vx + Vy*Vy - S*S) + 2*t*(Vx*Qx)(Vy*Qy) + Qx*Qx + Qy*Qy = 0
 
-        float a = Vector3.Dot(targetSpeed, targetSpeed) - (bulletSpeed * bulletSpeed); //Dot is basicly (targetSpeed.x * targetSpeed.x) + (targetSpeed.y * targetSpeed.y)
+        //float a = Vector3.Dot(targetSpeed, targetSpeed) - (bulletSpeed * bulletSpeed); //Dot is basicly (targetSpeed.x * targetSpeed.x) + (targetSpeed.y * targetSpeed.y)
+        float a = 0;
         float b = 2 * Vector3.Dot(targetSpeed, q); //Dot is basicly (targetSpeed.x * q.x) + (targetSpeed.y * q.y)
         float c = Vector3.Dot(q, q); //Dot is basicly (q.x * q.x) + (q.y * q.y)
 

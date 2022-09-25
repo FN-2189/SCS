@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3362f436859c7df4c8cfac341383b31b, type: 3}
   m_Name: Missile Engine
   m_EditorClassIdentifier: 
-  power: 500
+  power: 100
   exhaust: {fileID: 2715044521580268067, guid: ee4e5dbd34e9ef54590fec38d2dc5be6, type: 3}
