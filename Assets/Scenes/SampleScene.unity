@@ -17210,7 +17210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b0268d5116605c4db0945debbcaeee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autopilotActive: 1
+  autopilotActive: 0
   decelerateAssistActive: 0
   autoDecelerateOn: 0
   targetVector: {x: 0.5, y: 1, z: 0.3}
@@ -23992,12 +23992,13 @@ MonoBehaviour:
   Turret: {fileID: 1570270020}
   BarrelMount: {fileID: 1248063289}
   Barrel: {fileID: 329908405}
+  barrelLength: 2
   target: {fileID: 1775464272}
   localTarget: {x: 0, y: 0, z: 0}
   line: {fileID: 1617912140}
   laser: {fileID: 1890254359}
   bullet: {fileID: 206168842209807284, guid: d7b196708e5b4b040a3fb6e7d63104d2, type: 3}
-  bulletV: 300
+  bulletV: 10
   leadIndicator: {fileID: 897933077}
 --- !u!114 &1185359507
 MonoBehaviour:
@@ -28855,7 +28856,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 118
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!114 &1775464274
 MonoBehaviour:
@@ -28864,7 +28865,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1775464268}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0d7e275065b3614396bd64c270721b8, type: 3}
   m_Name: 

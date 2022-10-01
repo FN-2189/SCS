@@ -15,6 +15,7 @@ public class CannonController : MonoBehaviour
     public Transform Turret;
     public Transform BarrelMount;
     public Transform Barrel;
+    public float barrelLength;
 
     public Transform target;
     private Rigidbody targetRb;
@@ -24,7 +25,7 @@ public class CannonController : MonoBehaviour
     public LineRenderer line;
     public LineRenderer laser;
 
-    private Rigidbody rb;
+    private Rigidbody rb => GetComponentInParent<Rigidbody>();
 
     public GameObject bullet;
 
@@ -35,7 +36,6 @@ public class CannonController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponentInParent<Rigidbody>();
         targetRb = target.GetComponent<Rigidbody>();
     }
 
@@ -88,8 +88,10 @@ public class CannonController : MonoBehaviour
 
     private void Shoot()
     {
-        GameObject g = Instantiate(bullet, Barrel.position, Barrel.rotation);
+        GameObject g = Instantiate(bullet, Barrel.position + Barrel.forward * barrelLength, Barrel.rotation);
         g.GetComponent<Rigidbody>().velocity = rb.velocity;
         g.GetComponent<Rigidbody>().AddForce(bulletV * g.transform.forward, ForceMode.VelocityChange);
     }
+
+    
 }
