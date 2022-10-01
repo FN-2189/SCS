@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 206168842209807287}
   - component: {fileID: -2939878789465712157}
   - component: {fileID: -7797126782339425754}
-  - component: {fileID: 4195972519113693372}
+  - component: {fileID: -6046514928117761423}
   m_Layer: 0
   m_Name: RailgunSlug
   m_TagString: Untagged
@@ -64,8 +64,8 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!65 &4195972519113693372
-BoxCollider:
+--- !u!136 &-6046514928117761423
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -74,8 +74,9 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1, z: 0.5}
+  m_Radius: 0.06
+  m_Height: 0.26
+  m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &206168843070899643
 GameObject:

@@ -72,15 +72,14 @@ public class Missile : MonoBehaviour
         Debug.Log("Hit " + collision.gameObject.name);
     }
 
-    Vector3 GetHitPoint(Vector3 targetPosition, Vector3 targetSpeed, Vector3 targetAccel, Vector3 attackerPosition, float bulletSpeed)
+    Vector3 GetHitPoint(Vector3 targetPosition, Vector3 relV, Vector3 targetAccel, Vector3 attackerPosition, float bulletSpeed)
     {
         Vector3 q = targetPosition - attackerPosition;
 
-        //solving quadratic ecuation from t*t(Vx*Vx + Vy*Vy - S*S) + 2*t*(Vx*Qx)(Vy*Qy) + Qx*Qx + Qy*Qy = 0
+        //solving quadratic equation from t*t(Vx*Vx + Vy*Vy - S*S) + 2*t*(Vx*Qx)(Vy*Qy) + Qx*Qx + Qy*Qy = 0
 
-        //float a = Vector3.Dot(targetSpeed, targetSpeed) - (bulletSpeed * bulletSpeed); //Dot is basicly (targetSpeed.x * targetSpeed.x) + (targetSpeed.y * targetSpeed.y)
-        float a = 0;
-        float b = 2 * Vector3.Dot(targetSpeed, q); //Dot is basicly (targetSpeed.x * q.x) + (targetSpeed.y * q.y)
+        float a = Vector3.Dot(relV, relV) - (bulletSpeed * bulletSpeed); //Dot is basicly (relV.x * relV.x) + (relV.y * relV.y)
+        float b = 2 * Vector3.Dot(relV, q); //Dot is basicly (relV.x * q.x) + (relV.y * q.y)
         float c = Vector3.Dot(q, q); //Dot is basicly (q.x * q.x) + (q.y * q.y)
 
         //Discriminant
@@ -93,7 +92,7 @@ public class Missile : MonoBehaviour
 
         float time = Mathf.Max(t1, t2);
 
-        Vector3 ret = targetPosition + targetSpeed * time;
+        Vector3 ret = targetPosition + relV * time;
         return ret;
     }
 }

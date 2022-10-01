@@ -17,31 +17,34 @@ public class CannonController : MonoBehaviour
     public Transform Barrel;
 
     public Transform target;
+    private Rigidbody targetRb;
 
     public Vector3 localTarget;
 
     public LineRenderer line;
     public LineRenderer laser;
 
+    private Rigidbody rb;
+
+    public GameObject bullet;
+
+    public float bulletV;
+
+    public Transform leadIndicator;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponentInParent<Rigidbody>();
+        targetRb = target.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        Vector3 targetDir = target.position - transform.position;
-
+        Vector3 targetDir = LeadCalculator.CaculateLead(targetRb.velocity - rb.velocity, transform.position, target.position, bulletV) - transform.position;
+        leadIndicator.position = targetDir + transform.position;
         localTarget = transform.InverseTransformDirection(targetDir);
-
-
-
-        line.SetPositions(new Vector3[] { transform.position, localTarget + transform.position });
-        laser.SetPositions(new Vector3[] { Barrel.position, Barrel.position + Barrel.forward * 50000 });
-
 
         GunAim.x = -Mathf.Atan2(localTarget.z, localTarget.x) * Mathf.Rad2Deg + 90;
 
@@ -59,14 +62,11 @@ public class CannonController : MonoBehaviour
         if (RelativeRotation.y > 180f) RelativeRotation.y -= 360f;
         else if (RelativeRotation.y < -180f) RelativeRotation.y += 360f;
 
-
+        Shoot();
     }
 
     private void FixedUpdate()
     {
-
-        
-
         if (RelativeRotation.x > deadZone || RelativeRotation.x < -deadZone) currentAim.x += rotateSpeed * Mathf.Clamp(RelativeRotation.x/(180*rate), -1f, 1f) * Time.fixedDeltaTime;
 
         if (RelativeRotation.y < -deadZone || RelativeRotation.y > deadZone) currentAim.y += rotateSpeed * Mathf.Clamp(RelativeRotation.y/(180*rate), -1f, 1f) * Time.fixedDeltaTime;
@@ -78,5 +78,18 @@ public class CannonController : MonoBehaviour
 
         Turret.localRotation = Quaternion.Euler(0, currentAim.x, 0);
         BarrelMount.localRotation = Quaternion.Euler(currentAim.y, 0, 0);
+    }
+
+    private void LateUpdate()
+    {
+        line.SetPositions(new Vector3[] { transform.position, localTarget + transform.position });
+        //laser.SetPositions(new Vector3[] { Barrel.position, Barrel.position + Barrel.forward * 50000 });
+    }
+
+    private void Shoot()
+    {
+        GameObject g = Instantiate(bullet, Barrel.position, Barrel.rotation);
+        g.GetComponent<Rigidbody>().velocity = rb.velocity;
+        g.GetComponent<Rigidbody>().AddForce(bulletV * g.transform.forward, ForceMode.VelocityChange);
     }
 }
