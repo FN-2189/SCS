@@ -62,7 +62,7 @@ public class CannonController : MonoBehaviour
         if (RelativeRotation.y > 180f) RelativeRotation.y -= 360f;
         else if (RelativeRotation.y < -180f) RelativeRotation.y += 360f;
 
-        Shoot();
+        
     }
 
     private void FixedUpdate()
@@ -74,10 +74,12 @@ public class CannonController : MonoBehaviour
         // TODO add PISS i mean PID already have P
 
 
-        print(RelativeRotation);
+        //print(RelativeRotation);
 
         Turret.localRotation = Quaternion.Euler(0, currentAim.x, 0);
         BarrelMount.localRotation = Quaternion.Euler(currentAim.y, 0, 0);
+
+        Shoot();
     }
 
     private void LateUpdate()

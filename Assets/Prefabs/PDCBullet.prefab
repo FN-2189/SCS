@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -7797126782339425754}
   - component: {fileID: 3678997849570837459}
   m_Layer: 7
-  m_Name: RailgunSlug
+  m_Name: PDCBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,7 +139,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: aa4f096a793df85449cb0891263ea4ca, type: 2}
+  - {fileID: 2100000, guid: 557860b3ec50e774e815d7aad7352b35, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

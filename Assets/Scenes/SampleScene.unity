@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1642267006}
-  m_IndirectSpecularColor: {r: 0.0083269635, g: 0.0155984955, b: 0.03217811, a: 1}
+  m_IndirectSpecularColor: {r: 0.008344616, g: 0.01564558, b: 0.03226539, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3696,7 +3696,7 @@ MonoBehaviour:
   sharedProfile: {fileID: 11400000, guid: d0702bca81181044d8c0f526f469d11b, type: 2}
   isGlobal: 1
   blendDistance: 0
-  weight: 0
+  weight: 1
   priority: 0
 --- !u!4 &416594257
 Transform:
@@ -17155,7 +17155,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 126
+  m_Constraints: 0
   m_CollisionDetection: 1
 --- !u!4 &980771550
 Transform:
@@ -17214,7 +17214,7 @@ MonoBehaviour:
   decelerateAssistActive: 0
   autoDecelerateOn: 0
   targetVector: {x: 0.5, y: 1, z: 0.3}
-  targetPosition: {x: 163.4, y: -5.1, z: 779.1}
+  targetPosition: {x: 1894, y: 1592, z: 1556}
   InPosMode: 0
   maxRotationSpeed: 0.8
   power: 4
@@ -23997,8 +23997,8 @@ MonoBehaviour:
   localTarget: {x: 0, y: 0, z: 0}
   line: {fileID: 1617912140}
   laser: {fileID: 1890254359}
-  bullet: {fileID: 206168842209807284, guid: d7b196708e5b4b040a3fb6e7d63104d2, type: 3}
-  bulletV: 10
+  bullet: {fileID: 206168842209807284, guid: df9ddadaee3e1214a9c25bea357a3032, type: 3}
+  bulletV: 300
   leadIndicator: {fileID: 897933077}
 --- !u!114 &1185359507
 MonoBehaviour:
@@ -27870,13 +27870,13 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 3.19
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -27927,14 +27927,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1642267005}
-  m_LocalRotation: {x: -0.7235655, y: 0.22361827, z: 0.5825333, w: 0.295132}
-  m_LocalPosition: {x: 25.2, y: 83.2, z: 46}
+  m_LocalRotation: {x: -0.94841295, y: 0.24526645, z: 0.18404852, w: 0.080519}
+  m_LocalPosition: {x: 24.22, y: 84.14, z: 45.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: -136.558, y: 78.311, z: -1.5980225}
+  m_LocalEulerAnglesHint: {x: -165.936, y: 18.613007, z: 26.682999}
 --- !u!1001 &1648694139
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28775,7 +28775,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 11.92, y: 9.2, z: 37.55}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1775464270
 MeshRenderer:
@@ -28797,7 +28797,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: -6478536213147159724, guid: 3568db7b0b8c6d14f8c5cfedbd548700, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -28850,14 +28850,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1775464268}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
+  m_Interpolate: 1
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!114 &1775464274
 MonoBehaviour:
   m_ObjectHideFlags: 0
