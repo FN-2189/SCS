@@ -242,6 +242,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""40659b34-6c8d-4140-b977-e0b85b85cea3"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""79461b7a-77d7-45d5-a8f4-3845b42eb004"",
                     ""path"": ""<Joystick>/stick"",
                     ""interactions"": """",

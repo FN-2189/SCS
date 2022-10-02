@@ -4,19 +4,7 @@ using UnityEngine;
 
 public class LeadCalculator : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public static Vector3 CaculateLead(Vector3 relV, Vector3 pos, Vector3 targetPos, float bulletV) // it no work AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+    public static Vector3? CaculateLead(Vector3 relV, Vector3 pos, Vector3 targetPos, float bulletV) // it no work AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
     {
         Vector3 q = targetPos - pos;
 
@@ -34,6 +22,7 @@ public class LeadCalculator : MonoBehaviour
 
         //Debug.Log("t1: " + t1 + " t2: " + t2);
 
+        if (float.IsNaN(t1) && float.IsNaN(t2)) return null;
         float time = Mathf.Max(t1, t2);
 
         Vector3 ret = targetPos + relV * time;
