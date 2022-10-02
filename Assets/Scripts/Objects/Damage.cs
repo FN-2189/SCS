@@ -31,6 +31,8 @@ public class Damage : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        print("Collision");
+
         if (collision.gameObject.name == "RailgunSlug(Clone)")
         {
             Debug.Log("RailgunHit");

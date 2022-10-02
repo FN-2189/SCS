@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RailgunSlug
+  m_Name: PDCBulets
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ValidKeywords:
   - _EMISSION
@@ -77,5 +77,5 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 45.17647, g: 29.866667, b: 47.937256, a: 1}
+    - _EmissionColor: {r: 11.984314, g: 10.227451, b: 9.788236, a: 1}
   m_BuildTextureStacks: []
