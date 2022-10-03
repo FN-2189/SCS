@@ -12,6 +12,7 @@ public class CannonController : MonoBehaviour
     public float rotateSpeed;
     public float rate = 0.5f;
     public float deadZone = 0.01f;
+    public float maxShootAngle = 10f;
 
     public Transform Turret;
     public Transform BarrelMount;
@@ -105,16 +106,16 @@ public class CannonController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_relativeRotation.x > deadZone || _relativeRotation.x < -deadZone) _currentAim.x += rotateSpeed * Mathf.Clamp(_relativeRotation.x/(180*rate), -1f, 1f) * Time.fixedDeltaTime;
+        if (Mathf.Abs(_relativeRotation.x) > deadZone) _currentAim.x += rotateSpeed * Mathf.Clamp(_relativeRotation.x/(180*rate), -1f, 1f) * Time.fixedDeltaTime;
 
-        if (_relativeRotation.y < -deadZone || _relativeRotation.y > deadZone) _currentAim.y += rotateSpeed * Mathf.Clamp(_relativeRotation.y/(180*rate), -1f, 1f) * Time.fixedDeltaTime;
+        if (Mathf.Abs(_relativeRotation.y) > deadZone) _currentAim.y += rotateSpeed * Mathf.Clamp(_relativeRotation.y/(180*rate), -1f, 1f) * Time.fixedDeltaTime;
 
         // TODO add PISS i mean PID already have P kinda
 
 
-        //print(RelativeRotation);
+        //print(_relativeRotation);
 
-        if(Time.time >= _timeNextShot && _canHitTarget)
+        if(Time.time >= _timeNextShot && _canHitTarget && Mathf.Abs(_relativeRotation.x) <= maxShootAngle && Mathf.Abs(_relativeRotation.y) <= maxShootAngle)
         {
             Shoot();
             _shotsFired++;
@@ -135,7 +136,7 @@ public class CannonController : MonoBehaviour
     private void Shoot()
     {
         var g = Instantiate(bullet, Barrel.position + Barrel.forward * barrelLength, Barrel.rotation);
-        g.GetComponent<RailgunSlug>().SendIt(Barrel.forward * bulletV + rb.velocity);
+        g.GetComponent<RailgunSlug>().SendIt(Barrel.forward * bulletV + rb.velocity, GetComponentInParent<Collider>());
 
     }
 

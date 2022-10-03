@@ -15,22 +15,23 @@ public class RailgunSlug : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.magnitude > 100000f) Destroy(gameObject);
+        if(transform.position.magnitude > 20000f) Destroy(gameObject);
     }
 
-    private void OnTriggerEnter(Collider collider)
+    private void OnCollisionEnter(Collision collision)
     {
-
+        Debug.Log("Hit " + collision.gameObject.name);
+        Destroy(gameObject);
     }
 
-    public void SendIt(Vector3 v)
+    public void SendIt(Vector3 v, Collider shooterCollider)
     {
-        _v = v;
-        transform.position += _v * Time.fixedDeltaTime;
+        Physics.IgnoreCollision(GetComponent<Collider>(), shooterCollider, true);
+        GetComponent<Rigidbody>().velocity = v;
     }
 
     private void FixedUpdate()
     {
-        transform.position += _v * Time.fixedDeltaTime;
+        //transform.position += _v * Time.fixedDeltaTime;
     }
 }
