@@ -20,7 +20,7 @@ public class RailgunSlug : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Hit " + collision.gameObject.name);
+        //Debug.Log("Hit " + collision.gameObject.name);
         Destroy(gameObject);
     }
 

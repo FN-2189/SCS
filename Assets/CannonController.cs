@@ -42,6 +42,7 @@ public class CannonController : MonoBehaviour
     private float _lastTime;
     public float RPMTimestep = 1f;
 
+    [SerializeField]
     private bool _canHitTarget = false;
 
     // Start is called before the first frame update
