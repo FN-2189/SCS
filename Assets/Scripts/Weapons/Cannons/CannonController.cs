@@ -18,6 +18,7 @@ public class CannonController : MonoBehaviour
     public Transform BarrelMount;
     public Transform Barrel;
     public float barrelLength;
+    public Transform Muzzle;
 
     public Transform target;
     private Rigidbody _targetRb;
@@ -36,6 +37,9 @@ public class CannonController : MonoBehaviour
     public float FireRate = 1500f;
     private float _timeNextShot = 0f;
 
+    private Animator _gunAnimator;
+    private ParticleSystem[] _muzzleParticles;
+
     public Transform leadIndicator;
 
     private int _shotsFired = 0;
@@ -49,6 +53,8 @@ public class CannonController : MonoBehaviour
     void Start()
     {
         _targetRb = target.GetComponent<Rigidbody>();
+        _gunAnimator = GetComponent<Animator>();
+        _muzzleParticles = Muzzle.GetComponentsInChildren<ParticleSystem>();
         _timeNextShot = Time.time;
         _lastTime = Time.time;
     }
@@ -116,11 +122,16 @@ public class CannonController : MonoBehaviour
 
         //print(_relativeRotation);
 
+        // allowed to shoot
         if(Time.time >= _timeNextShot && _canHitTarget && Mathf.Abs(_relativeRotation.x) <= maxShootAngle && Mathf.Abs(_relativeRotation.y) <= maxShootAngle)
         {
             Shoot();
             _shotsFired++;
             _timeNextShot = Time.time + 60f / FireRate;
+        }
+        else
+        {
+            _gunAnimator.SetBool("Shoot", false);
         }
 
         Turret.localRotation = Quaternion.Euler(0, _currentAim.x, 0);
@@ -140,6 +151,11 @@ public class CannonController : MonoBehaviour
         g.GetComponent<Rigidbody>().velocity = rb.velocity + Barrel.forward * bulletV;
         BulletManager.AddToList(g.GetComponent<Bullet>());
 
+        _gunAnimator.SetBool("Shoot", true);
+        foreach(var p in _muzzleParticles)
+        {
+            p.Play();
+        }
     }
 
     
