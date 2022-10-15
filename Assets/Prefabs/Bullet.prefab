@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb7cbfe5d2a25d046ba59d98f20c34a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
+  rb: {fileID: 7972238693300655531}
   type: {fileID: 0}
 --- !u!23 &6863468731240498070
 MeshRenderer:

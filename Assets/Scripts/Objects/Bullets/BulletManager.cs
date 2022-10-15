@@ -1,6 +1,6 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using Unity.Collections;
 using Unity.Jobs;
 using UnityEngine;
@@ -44,29 +44,39 @@ public class BulletManager : MonoBehaviour
 
         var commands = new NativeArray<RaycastCommand>(_bullets.Count, Allocator.TempJob);
 
-        // Set the data of the first command
+        try {
+            // Set the data of the first command
 
-        for(int i = 0; i< _bullets.Count; i++)
-        {
-            commands[i] = new RaycastCommand(_bullets[i].transform.position, _bullets[i].rb.velocity.normalized, _bullets[i].rb.velocity.magnitude * Time.fixedDeltaTime);
-        }
-
-        // Schedule the batch of raycasts
-        JobHandle handle = RaycastCommand.ScheduleBatch(commands, results, 1, default);
-
-        Debug.Log("Starting Job", this);
-        // Wait for the batch processing job to complete
-        handle.Complete();
-
-        Debug.Log("Completed Raycast Job", this);
-
-        for(int i = 0; i < _bullets.Count; i++)
-        {
-            if (results[i].collider)
+            for (int i = 0; i < _bullets.Count; i++)
             {
-                _bullets[i].Hit(results[i].collider);
-                _bullets.Remove(_bullets[i]);
+                commands[i] = new RaycastCommand(_bullets[i].transform.position, _bullets[i].rb.velocity.normalized, _bullets[i].rb.velocity.magnitude * Time.fixedDeltaTime);
             }
+
+            // Schedule the batch of raycasts
+            JobHandle handle = RaycastCommand.ScheduleBatch(commands, results, 1, default);
+
+            Debug.Log("Starting Job", this);
+            // Wait for the batch processing job to complete
+            handle.Complete();
+
+            Debug.Log("Completed Raycast Job", this);
+
+            for (int i = 0; i < _bullets.Count; i++)
+            {
+                if (results[i].collider)
+                {
+                    _bullets[i].Hit(results[i].collider);
+                    _bullets.Remove(_bullets[i]);
+                }
+            }
+
+        } 
+        catch (Exception e)
+        {
+            results.Dispose();
+            commands.Dispose();
+            Debug.LogError("An Error occured in the Raycast Job!");
+            return;
         }
 
         // Dispose the buffers
