@@ -20,11 +20,13 @@ public class BulletManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        foreach (Bullet bullet in _bullets)
+        // Destroy when to far away
+        for (int i = 0; i < _bullets.Count; i++)
         {
-            if(bullet.transform.position.magnitude > 20000f)
+            if (_bullets[i].transform.position.magnitude > 20000f)
             {
-                _bullets.Remove(bullet);
+                var bullet = _bullets[i];
+                _bullets.RemoveAt(i);
                 Destroy(bullet.gameObject);
             }
         }
@@ -50,6 +52,7 @@ public class BulletManager : MonoBehaviour
             for (int i = 0; i < _bullets.Count; i++)
             {
                 commands[i] = new RaycastCommand(_bullets[i].transform.position, _bullets[i].rb.velocity.normalized, _bullets[i].rb.velocity.magnitude * Time.fixedDeltaTime);
+                _bullets[i].lineRenderer.SetPositions(new Vector3[] { _bullets[i].transform.position + _bullets[i].rb.velocity * Time.fixedDeltaTime, _bullets[i].transform.position + _bullets[i].rb.velocity * Time.fixedDeltaTime * 2 });// What is this
             }
 
             // Schedule the batch of raycasts

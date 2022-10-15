@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
 {
     public Rigidbody rb;
     public BulletType type;
+    public LineRenderer lineRenderer;
 
     // Start is called before the first frame update
     void Start()
