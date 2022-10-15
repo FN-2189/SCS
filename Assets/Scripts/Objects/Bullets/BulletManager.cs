@@ -11,8 +11,6 @@ public class BulletManager : MonoBehaviour
 
     public GameObject bulletPrefab;
 
-    public CannonController cannon;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +20,14 @@ public class BulletManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        foreach (Bullet bullet in _bullets)
+        {
+            if(bullet.transform.position.magnitude > 20000f)
+            {
+                _bullets.Remove(bullet);
+                Destroy(bullet.gameObject);
+            }
+        }
         RaycastForAll();
     }
 
@@ -48,10 +54,11 @@ public class BulletManager : MonoBehaviour
         // Schedule the batch of raycasts
         JobHandle handle = RaycastCommand.ScheduleBatch(commands, results, 1, default);
 
+        Debug.Log("Starting Job", this);
         // Wait for the batch processing job to complete
         handle.Complete();
 
-        // Copy the result. If batchedHit.collider is null there was no hit
+        Debug.Log("Completed Raycast Job", this);
 
         for(int i = 0; i < _bullets.Count; i++)
         {
@@ -59,7 +66,6 @@ public class BulletManager : MonoBehaviour
             {
                 _bullets[i].Hit(results[i].collider);
                 _bullets.Remove(_bullets[i]);
-                i--;
             }
         }
 
