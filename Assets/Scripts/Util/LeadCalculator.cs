@@ -20,7 +20,7 @@ public class LeadCalculator : MonoBehaviour
         float t1 = (-b + D) / (2 * a);
         float t2 = (-b - D) / (2 * a);
 
-        Debug.Log("t1: " + t1 + " t2: " + t2);
+        //Debug.Log("t1: " + t1 + " t2: " + t2);
 
         if (float.IsNaN(t1) && float.IsNaN(t2)) return null;
         if(t1 < 0f && t2 < 0f) return null;

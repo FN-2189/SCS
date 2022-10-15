@@ -137,7 +137,8 @@ public class CannonController : MonoBehaviour
     private void Shoot()
     {
         var g = Instantiate(bullet, Barrel.position + Barrel.forward * barrelLength, Barrel.rotation);
-        g.GetComponent<RailgunSlug>().SendIt(Barrel.forward * bulletV + rb.velocity, GetComponentInParent<Collider>());
+        g.GetComponent<Rigidbody>().velocity = rb.velocity + Barrel.forward * bulletV;
+        BulletManager.AddToList(g.GetComponent<Bullet>());
 
     }
 
