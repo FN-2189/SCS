@@ -129,10 +129,6 @@ public class CannonController : MonoBehaviour
             _shotsFired++;
             _timeNextShot = Time.time + 60f / FireRate;
         }
-        else
-        {
-            _gunAnimator.SetBool("Shoot", false);
-        }
 
         Turret.localRotation = Quaternion.Euler(0, _currentAim.x, 0);
         BarrelMount.localRotation = Quaternion.Euler(_currentAim.y, 0, 0);
@@ -151,8 +147,8 @@ public class CannonController : MonoBehaviour
         g.GetComponent<Rigidbody>().velocity = rb.velocity + Barrel.forward * bulletV;
         BulletManager.AddToList(g.GetComponent<Bullet>());
 
-        _gunAnimator.SetBool("Shoot", true);
-        foreach(var p in _muzzleParticles)
+        _gunAnimator.Play("ShootAnim");
+        foreach (var p in _muzzleParticles)
         {
             p.Play();
         }
