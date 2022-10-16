@@ -26,6 +26,7 @@ public class BulletManager : MonoBehaviour
             if (_bullets[i].transform.position.magnitude > 20000f)
             {
                 var bullet = _bullets[i];
+                RelativeSpace.removeObject(bullet.transform);
                 _bullets.RemoveAt(i);
                 Destroy(bullet.gameObject);
             }
@@ -36,6 +37,7 @@ public class BulletManager : MonoBehaviour
     public static void AddToList(Bullet bullet)
     {
         _bullets.Add(bullet);
+        RelativeSpace.addObject(bullet.transform);
     }
 
     private void RaycastForAll()
@@ -69,7 +71,10 @@ public class BulletManager : MonoBehaviour
                 if (results[i].collider)
                 {
                     _bullets[i].Hit(results[i].collider);
+
+                    RelativeSpace.removeObject(_bullets[i].transform);
                     _bullets.Remove(_bullets[i]);
+
                 }
             }
 
