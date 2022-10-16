@@ -140,7 +140,7 @@ public class CannonController : MonoBehaviour
 
     private void LateUpdate()
     {
-        line.SetPositions(new Vector3[] { transform.position, _localTarget + transform.position });
+        //line.SetPositions(new Vector3[] { transform.position, _localTarget + transform.position });
         //laser.SetPositions(new Vector3[] { Barrel.position, Barrel.position + Barrel.forward * 50000 });
         Debug.DrawLine(Barrel.position, Barrel.position + Barrel.forward * 50000);
     }
