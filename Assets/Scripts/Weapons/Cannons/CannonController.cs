@@ -147,6 +147,7 @@ public class CannonController : MonoBehaviour
         g.GetComponent<Rigidbody>().velocity = rb.velocity + Barrel.forward * bulletV;
         BulletManager.AddToList(g.GetComponent<Bullet>());
 
+        _gunAnimator.StopPlayback();
         _gunAnimator.Play("ShootAnim");
         foreach (var p in _muzzleParticles)
         {
