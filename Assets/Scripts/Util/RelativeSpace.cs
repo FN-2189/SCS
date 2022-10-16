@@ -26,7 +26,7 @@ public class RelativeSpace : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void LateUpdate()
     {
         // x-axis
         if(Player.position.x > maxDistance)

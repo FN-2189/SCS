@@ -996,7 +996,7 @@ GameObject:
   - component: {fileID: 99172219}
   m_Layer: 0
   m_Name: Enemy (1)
-  m_TagString: Untagged
+  m_TagString: Relative
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21863,7 +21863,7 @@ GameObject:
   - component: {fileID: 941140680}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Relative
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22355,7 +22355,7 @@ GameObject:
   - component: {fileID: 980771553}
   m_Layer: 0
   m_Name: B O A T
-  m_TagString: Untagged
+  m_TagString: Relative
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29668,6 +29668,7 @@ GameObject:
   - component: {fileID: 1221816537}
   - component: {fileID: 1221816538}
   - component: {fileID: 1221816539}
+  - component: {fileID: 1221816540}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -29756,6 +29757,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 5141249847025850347, guid: d6e7b3488d067d246b100b40b660339a, type: 3}
+--- !u!114 &1221816540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221816533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c115e0fcf2e964439dec17428a23346, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 980771550}
+  maxDistance: 1000
 --- !u!1 &1248063288
 GameObject:
   m_ObjectHideFlags: 0
@@ -32909,7 +32924,7 @@ GameObject:
   - component: {fileID: 1567322292}
   m_Layer: 0
   m_Name: Scenery
-  m_TagString: Untagged
+  m_TagString: Relative
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39223,7 +39238,7 @@ GameObject:
   - component: {fileID: 1775464274}
   m_Layer: 0
   m_Name: AcceleratingTarget
-  m_TagString: Untagged
+  m_TagString: Relative
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39544,7 +39559,7 @@ GameObject:
   - component: {fileID: 1794374658}
   m_Layer: 0
   m_Name: StaticTarget
-  m_TagString: Untagged
+  m_TagString: Relative
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
