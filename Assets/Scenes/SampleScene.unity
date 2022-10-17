@@ -43041,6 +43041,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 980771550}
     m_Modifications:
+    - target: {fileID: 8195492000807360944, guid: 0f9337ec48594894bb55341accf3fd04, type: 3}
+      propertyPath: ShapeModule.m_Rotation.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8195492000807360946, guid: 0f9337ec48594894bb55341accf3fd04, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -43088,6 +43092,10 @@ PrefabInstance:
     - target: {fileID: 8195492000807360947, guid: 0f9337ec48594894bb55341accf3fd04, type: 3}
       propertyPath: m_Name
       value: MainEngineParticles
+      objectReference: {fileID: 0}
+    - target: {fileID: 8195492000807360947, guid: 0f9337ec48594894bb55341accf3fd04, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f9337ec48594894bb55341accf3fd04, type: 3}
