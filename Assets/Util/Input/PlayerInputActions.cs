@@ -518,6 +518,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Tap"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Delta"",
+                    ""type"": ""Value"",
+                    ""id"": ""daf4a42a-fc22-4809-93f6-10f7d0078b4b"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -529,6 +538,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Escape"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fa757e98-ffd3-4714-81af-89970baf9c08"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Delta"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -595,6 +615,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         // GeneralControls
         m_GeneralControls = asset.FindActionMap("GeneralControls", throwIfNotFound: true);
         m_GeneralControls_Escape = m_GeneralControls.FindAction("Escape", throwIfNotFound: true);
+        m_GeneralControls_Delta = m_GeneralControls.FindAction("Delta", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -760,11 +781,13 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_GeneralControls;
     private IGeneralControlsActions m_GeneralControlsActionsCallbackInterface;
     private readonly InputAction m_GeneralControls_Escape;
+    private readonly InputAction m_GeneralControls_Delta;
     public struct GeneralControlsActions
     {
         private @PlayerInputActions m_Wrapper;
         public GeneralControlsActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Escape => m_Wrapper.m_GeneralControls_Escape;
+        public InputAction @Delta => m_Wrapper.m_GeneralControls_Delta;
         public InputActionMap Get() { return m_Wrapper.m_GeneralControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -777,6 +800,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Escape.started -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnEscape;
                 @Escape.performed -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnEscape;
                 @Escape.canceled -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnEscape;
+                @Delta.started -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnDelta;
+                @Delta.performed -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnDelta;
+                @Delta.canceled -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnDelta;
             }
             m_Wrapper.m_GeneralControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -784,6 +810,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Escape.started += instance.OnEscape;
                 @Escape.performed += instance.OnEscape;
                 @Escape.canceled += instance.OnEscape;
+                @Delta.started += instance.OnDelta;
+                @Delta.performed += instance.OnDelta;
+                @Delta.canceled += instance.OnDelta;
             }
         }
     }
@@ -822,5 +851,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     public interface IGeneralControlsActions
     {
         void OnEscape(InputAction.CallbackContext context);
+        void OnDelta(InputAction.CallbackContext context);
     }
 }

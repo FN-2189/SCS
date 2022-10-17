@@ -18,6 +18,7 @@ public class InputManager : MonoBehaviour
     public static float AAtoggle { get; private set; }
     public static float DeAtoggle { get; private set; }
     public static bool Escape { get; private set; }
+    public static Vector2 MouseDelta { get; private set; }
 
     private float faTriggerCooldown;
 
@@ -67,6 +68,8 @@ public class InputManager : MonoBehaviour
         //general inputs
         bool escape = input.GeneralControls.Escape.triggered;
 
+        Vector2 delta = input.GeneralControls.Delta.ReadValue<Vector2>();
+
         Vector3 stick = Vector3.zero;
         stick.x = yawIn;
         stick.y = -pitchAndRollIn.y;
@@ -81,6 +84,8 @@ public class InputManager : MonoBehaviour
         AAtoggle = aimAssistToggleIn;
         DeAtoggle = decelAssistToggleIn;
         Escape = escape;
+
+        MouseDelta = delta;
 
     }
 }

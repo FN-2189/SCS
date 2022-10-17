@@ -496,6 +496,15 @@
                     "processors": "",
                     "interactions": "Tap",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Delta",
+                    "type": "Value",
+                    "id": "daf4a42a-fc22-4809-93f6-10f7d0078b4b",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -507,6 +516,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Escape",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fa757e98-ffd3-4714-81af-89970baf9c08",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Delta",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

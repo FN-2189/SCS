@@ -1538,6 +1538,7 @@ GameObject:
   - component: {fileID: 160561889}
   - component: {fileID: 160561888}
   - component: {fileID: 160561890}
+  - component: {fileID: 160561891}
   m_Layer: 6
   m_Name: ShipCamera
   m_TagString: Untagged
@@ -1552,14 +1553,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160561886}
-  m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0.912, y: 0.723, z: 9.305}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 980771550}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 180, y: -90, z: -90}
+  m_Father: {fileID: 1020082907}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!81 &160561888
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1671,6 +1672,19 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &160561891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160561886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87d45a8a89bc12247a1c8665f09e29cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensitivity: 10
 --- !u!1 &179481191
 GameObject:
   m_ObjectHideFlags: 0
@@ -2121,7 +2135,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b20f2a82d8bceb42a50a51aedf3bd54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: {fileID: 1221816534}
 --- !u!114 &234020762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22389,8 +22402,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1405151582}
+  - {fileID: 1020082907}
   - {fileID: 1110581364}
-  - {fileID: 160561887}
   - {fileID: 2033231597}
   - {fileID: 8937954517903458555}
   - {fileID: 1539992795}
@@ -27638,6 +27651,38 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1018185520}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1020082906
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1020082907}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1020082907
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1020082906}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 1.121, y: 0.712, z: 9.309}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 160561887}
+  m_Father: {fileID: 980771550}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
 --- !u!1 &1023507427
 GameObject:
   m_ObjectHideFlags: 0
@@ -28792,7 +28837,7 @@ Transform:
   - {fileID: 150943304}
   - {fileID: 8672130}
   m_Father: {fileID: 980771550}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1110581365
 MonoBehaviour:
@@ -28810,7 +28855,6 @@ MonoBehaviour:
   velMeter: {fileID: 377410006}
   deadZone: 0.05
   rb: {fileID: 980771548}
-  input: {fileID: 1221816534}
   flightAssistOn: 1
   velFlightAssistOn: 0
   flighAssistStrength: 0.8
