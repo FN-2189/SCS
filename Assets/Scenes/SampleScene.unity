@@ -29663,8 +29663,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1221816535}
-  - component: {fileID: 1221816534}
   - component: {fileID: 1221816536}
+  - component: {fileID: 1221816534}
   - component: {fileID: 1221816537}
   - component: {fileID: 1221816538}
   - component: {fileID: 1221816539}
@@ -29756,7 +29756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd48824c37cb6a44c876f628cea6c78b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 5141249847025850347, guid: d6e7b3488d067d246b100b40b660339a, type: 3}
+  maxDistance: 20000
 --- !u!114 &1221816540
 MonoBehaviour:
   m_ObjectHideFlags: 0

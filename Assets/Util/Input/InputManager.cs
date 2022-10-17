@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    private PlayerInputActions input;
+    private static PlayerInputActions input;
 
     [SerializeField] private float mouseSensitivity;
     [SerializeField] private GameObject thrusterObject;
     [SerializeField] private GameObject shipObject;
 
-    public Vector3 Stick { get; private set; }
-    public Vector2 Translate { get; private set; }
-    public float Throttle { get; private set; }
-    public float Trigger { get; private set; }
-    public float FAtoggle { get; private set; }
-    public float AAtoggle { get; private set; }
-    public float DeAtoggle { get; private set; }
-    public bool Escape { get; private set; }
+    public static Vector3 Stick { get; private set; }
+    public static Vector2 Translate { get; private set; }
+    public static float Throttle { get; private set; }
+    public static float Trigger { get; private set; }
+    public static float FAtoggle { get; private set; }
+    public static float AAtoggle { get; private set; }
+    public static float DeAtoggle { get; private set; }
+    public static bool Escape { get; private set; }
 
     private float faTriggerCooldown;
 
@@ -73,14 +73,14 @@ public class InputManager : MonoBehaviour
         stick.z = pitchAndRollIn.x;
 
         //this.Throttle = input.ManualShipThrusterControl.Throttle.ReadValue<float>();
-        this.Throttle = throttleIn;
-        this.Stick = stick;
-        this.Translate = translateIn;
-        this.Trigger = triggerIn;
-        this.FAtoggle = flightAssistToggleIn;
-        this.AAtoggle = aimAssistToggleIn;
-        this.DeAtoggle = decelAssistToggleIn;
-        this.Escape = escape;
+        Throttle = throttleIn;
+        Stick = stick;
+        Translate = translateIn;
+        Trigger = triggerIn;
+        FAtoggle = flightAssistToggleIn;
+        AAtoggle = aimAssistToggleIn;
+        DeAtoggle = decelAssistToggleIn;
+        Escape = escape;
 
     }
 }

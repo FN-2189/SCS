@@ -29,32 +29,32 @@ public class RelativeSpace : MonoBehaviour
     void LateUpdate()
     {
         // x-axis
-        if(Player.position.x > maxDistance)
+        while(Player.position.x > maxDistance)
         {
             moveObjects(new Vector3(-maxDistance, 0, 0));
         }
-        else if (Player.position.x < -maxDistance)
+        while (Player.position.x < -maxDistance)
         {
             moveObjects(new Vector3(maxDistance, 0, 0));
         }
 
         //y-axis
-        if (Player.position.y > maxDistance)
+        while (Player.position.y > maxDistance)
         {
             moveObjects(new Vector3(0, -maxDistance, 0));
         }
-        else if (Player.position.y < -maxDistance)
+        while (Player.position.y < -maxDistance)
         {
             moveObjects(new Vector3(0, maxDistance, 0));
         }
 
 
         //z-axis
-        if (Player.position.z > maxDistance)
+        while (Player.position.z > maxDistance)
         {
             moveObjects(new Vector3(0, 0, -maxDistance));
         }
-        else if (Player.position.z < -maxDistance)
+        while (Player.position.z < -maxDistance)
         {
             moveObjects(new Vector3(0, 0, maxDistance));
         }

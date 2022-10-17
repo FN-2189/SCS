@@ -9,7 +9,8 @@ public class BulletManager : MonoBehaviour
 {
     private static List<Bullet> _bullets = new List<Bullet>();
 
-    public GameObject bulletPrefab;
+    [SerializeField]
+    private float maxDistance;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +24,7 @@ public class BulletManager : MonoBehaviour
         // Destroy when to far away
         for (int i = 0; i < _bullets.Count; i++)
         {
-            if (_bullets[i].transform.position.magnitude > 20000f)
+            if (_bullets[i].transform.position.magnitude > maxDistance)
             {
                 var bullet = _bullets[i];
                 RelativeSpace.removeObject(bullet.transform);
