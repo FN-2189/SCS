@@ -17,10 +17,13 @@ public class InputManager : MonoBehaviour
     public static float FAtoggle { get; private set; }
     public static float AAtoggle { get; private set; }
     public static float DeAtoggle { get; private set; }
+    public static float CycleZoom { get; private set; }
     public static bool Escape { get; private set; }
     public static Vector2 MouseDelta { get; private set; }
 
     private float faTriggerCooldown;
+
+    
 
     private void Awake()
     {
@@ -65,6 +68,8 @@ public class InputManager : MonoBehaviour
         float aimAssistToggleIn = input.ManualShipThrusterControl.AimAissistToggle.ReadValue<float>();
         float decelAssistToggleIn = input.ManualShipThrusterControl.DecelerateAssistToggle.ReadValue<float>();
 
+        float zoom = input.GunnerControl.ToggleZoom.ReadValue<float>();
+
         //general inputs
         bool escape = input.GeneralControls.Escape.triggered;
 
@@ -83,6 +88,9 @@ public class InputManager : MonoBehaviour
         FAtoggle = flightAssistToggleIn;
         AAtoggle = aimAssistToggleIn;
         DeAtoggle = decelAssistToggleIn;
+
+        CycleZoom = zoom;
+
         Escape = escape;
 
         MouseDelta = delta;
