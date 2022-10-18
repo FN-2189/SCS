@@ -6,7 +6,7 @@ RenderTexture:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Gun_Cam_Screen_Tex
+  m_Name: Pilot_Cam_Screen
   m_ImageContentsHash:
     serializedVersion: 2
     Hash: 00000000000000000000000000000000
