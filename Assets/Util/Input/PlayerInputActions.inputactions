@@ -582,6 +582,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Laser",
+                    "type": "Button",
+                    "id": "b9187d95-c8b3-4087-9483-6813093506ec",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -703,6 +712,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ToggleZoom",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ac433531-76d5-4f87-b600-8968474dc1e5",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Laser",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

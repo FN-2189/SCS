@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using TMPro;
 
 namespace Assets.Scripts.Ship
 {
@@ -11,7 +12,16 @@ namespace Assets.Scripts.Ship
         private float maxUp;
 
         [SerializeField]
-        float[] zoomValues;
+        private float[] zoomValues;
+
+        [SerializeField]
+        private TMP_Text rangeDisplay;
+
+        [SerializeField]
+        private int maxPreciseRange;
+
+        [SerializeField]
+        private int maxRange;
 
         private Camera _cam;
 
@@ -48,14 +58,53 @@ namespace Assets.Scripts.Ship
                 CycleZoom();
                 _zoomReleased = false;
             }
+
+            if (InputManager.Rangefind) GetRange();
         }
 
-        public void CycleZoom()
+        private void CycleZoom()
         {
             _currentZoomStage++;
             _currentZoomStage = _currentZoomStage >= zoomValues.Length ? 0 : _currentZoomStage;
 
             _cam.fieldOfView = _baseFov / zoomValues[_currentZoomStage];
+        }
+
+        private void GetRange()
+        {
+            // find range
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.rotation * Vector3.forward, out hit))
+            {
+                // format string to display
+                string text = "R:";
+
+                // formatting is hard
+                int range = (int)Mathf.Floor(hit.distance);
+                if (range <= maxPreciseRange)
+                {
+                    for(int i = 0; i < 5 - range.ToString().Length; i++)
+                    {
+                        text += "0";
+                    }
+
+                    text += range;
+                }
+                else if(range <= maxRange)
+                {
+                    for (int i = 0; i < 5 - (range / 1000).ToString().Length; i++)
+                    {
+                        text += "0";
+                    }
+
+                    text += range / 1000 + "K";
+                }
+                else
+                {
+                    text += "00000";
+                }
+                rangeDisplay.text = text;
+            }
         }
     }
 }

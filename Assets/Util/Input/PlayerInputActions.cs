@@ -604,6 +604,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Laser"",
+                    ""type"": ""Button"",
+                    ""id"": ""b9187d95-c8b3-4087-9483-6813093506ec"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -727,6 +736,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""ToggleZoom"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ac433531-76d5-4f87-b600-8968474dc1e5"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Laser"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -798,6 +818,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_GunnerControl_Look = m_GunnerControl.FindAction("Look", throwIfNotFound: true);
         m_GunnerControl_Fire = m_GunnerControl.FindAction("Fire", throwIfNotFound: true);
         m_GunnerControl_ToggleZoom = m_GunnerControl.FindAction("ToggleZoom", throwIfNotFound: true);
+        m_GunnerControl_Laser = m_GunnerControl.FindAction("Laser", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1014,6 +1035,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_GunnerControl_Look;
     private readonly InputAction m_GunnerControl_Fire;
     private readonly InputAction m_GunnerControl_ToggleZoom;
+    private readonly InputAction m_GunnerControl_Laser;
     public struct GunnerControlActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -1021,6 +1043,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_GunnerControl_Look;
         public InputAction @Fire => m_Wrapper.m_GunnerControl_Fire;
         public InputAction @ToggleZoom => m_Wrapper.m_GunnerControl_ToggleZoom;
+        public InputAction @Laser => m_Wrapper.m_GunnerControl_Laser;
         public InputActionMap Get() { return m_Wrapper.m_GunnerControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1039,6 +1062,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @ToggleZoom.started -= m_Wrapper.m_GunnerControlActionsCallbackInterface.OnToggleZoom;
                 @ToggleZoom.performed -= m_Wrapper.m_GunnerControlActionsCallbackInterface.OnToggleZoom;
                 @ToggleZoom.canceled -= m_Wrapper.m_GunnerControlActionsCallbackInterface.OnToggleZoom;
+                @Laser.started -= m_Wrapper.m_GunnerControlActionsCallbackInterface.OnLaser;
+                @Laser.performed -= m_Wrapper.m_GunnerControlActionsCallbackInterface.OnLaser;
+                @Laser.canceled -= m_Wrapper.m_GunnerControlActionsCallbackInterface.OnLaser;
             }
             m_Wrapper.m_GunnerControlActionsCallbackInterface = instance;
             if (instance != null)
@@ -1052,6 +1078,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @ToggleZoom.started += instance.OnToggleZoom;
                 @ToggleZoom.performed += instance.OnToggleZoom;
                 @ToggleZoom.canceled += instance.OnToggleZoom;
+                @Laser.started += instance.OnLaser;
+                @Laser.performed += instance.OnLaser;
+                @Laser.canceled += instance.OnLaser;
             }
         }
     }
@@ -1098,5 +1127,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnToggleZoom(InputAction.CallbackContext context);
+        void OnLaser(InputAction.CallbackContext context);
     }
 }
