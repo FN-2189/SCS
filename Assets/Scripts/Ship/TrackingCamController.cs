@@ -18,6 +18,9 @@ namespace Assets.Scripts.Ship
         private TMP_Text rangeDisplay;
 
         [SerializeField]
+        private TMP_Text zoomDisplay;
+
+        [SerializeField]
         private int maxPreciseRange;
 
         [SerializeField]
@@ -44,8 +47,15 @@ namespace Assets.Scripts.Ship
             // set z rotation to 0
             transform.localRotation = Quaternion.Euler(new Vector3(transform.localRotation.eulerAngles.x, transform.localRotation.eulerAngles.y, 0f));
 
+            float xRot = transform.localRotation.eulerAngles.x;
+
+            if(xRot > 180f)
+            {
+                xRot -= 360f;
+            }
+
             // clamp x rotation
-            float clampedAngle = Mathf.Clamp(transform.localRotation.eulerAngles.x - 360f, -maxUp, 0f);
+            float clampedAngle = Mathf.Clamp(xRot, -maxUp, 0f);
 
             transform.localRotation = Quaternion.Euler(new Vector3(clampedAngle, transform.localEulerAngles.y, 0f));
 
@@ -68,6 +78,16 @@ namespace Assets.Scripts.Ship
             _currentZoomStage = _currentZoomStage >= zoomValues.Length ? 0 : _currentZoomStage;
 
             _cam.fieldOfView = _baseFov / zoomValues[_currentZoomStage];
+
+            // formatting string to display
+            string text = "M:";
+            if (zoomValues[_currentZoomStage].ToString().Length < 2)
+            {
+                text += "0";
+            }
+
+            text += zoomValues[_currentZoomStage].ToString() + "x";
+            zoomDisplay.text = text;
         }
 
         private void GetRange()
