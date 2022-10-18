@@ -527,6 +527,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SwitchMode"",
+                    ""type"": ""Button"",
+                    ""id"": ""e8d5bf52-74ec-4330-bef3-f3cb026ec4cf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -549,6 +558,173 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Delta"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b4b6422f-b8e0-4a50-b823-aec2dfe350e1"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""GunnerControl"",
+            ""id"": ""87529a99-9613-4c7b-a697-3baa30174178"",
+            ""actions"": [
+                {
+                    ""name"": ""Look"",
+                    ""type"": ""Value"",
+                    ""id"": ""60cd1d2e-8c13-4fa5-9b62-31057b593f6b"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Fire"",
+                    ""type"": ""Button"",
+                    ""id"": ""44b9d46a-90ae-4efd-9495-8f578a706313"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ToggleZoom"",
+                    ""type"": ""Button"",
+                    ""id"": ""ad4dc5c1-d389-48f9-b5ba-67ea1ccc2720"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""611c705c-04bd-47ef-88e4-5ce2689ee399"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Keyboard"",
+                    ""id"": ""1e2a91cf-27a5-4b7e-8967-c05c875a7612"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""9c911985-b2c1-4091-a735-e45f3cc5345a"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""9452f059-c45f-42cf-98d2-d49693c4b1a6"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""83475510-cc02-44ab-9c9d-15f78cad2387"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""13ecc970-1342-4f8b-bbaf-7ca9a6193020"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3641bb0a-84f0-4fda-b525-f3b637df68dc"",
+                    ""path"": ""<Joystick>/stick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""24d6042c-ec39-4767-ace2-e263e3c34fae"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dc2d6b30-379a-4687-944e-c604a092c8d7"",
+                    ""path"": ""<Joystick>/trigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b76977cd-cebc-4c28-bf4c-4f07e37958d2"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleZoom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fcb7a9f9-648a-4348-ad67-9951325fea3a"",
+                    ""path"": ""<Keyboard>/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleZoom"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -616,6 +792,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_GeneralControls = asset.FindActionMap("GeneralControls", throwIfNotFound: true);
         m_GeneralControls_Escape = m_GeneralControls.FindAction("Escape", throwIfNotFound: true);
         m_GeneralControls_Delta = m_GeneralControls.FindAction("Delta", throwIfNotFound: true);
+        m_GeneralControls_SwitchMode = m_GeneralControls.FindAction("SwitchMode", throwIfNotFound: true);
+        // GunnerControl
+        m_GunnerControl = asset.FindActionMap("GunnerControl", throwIfNotFound: true);
+        m_GunnerControl_Look = m_GunnerControl.FindAction("Look", throwIfNotFound: true);
+        m_GunnerControl_Fire = m_GunnerControl.FindAction("Fire", throwIfNotFound: true);
+        m_GunnerControl_ToggleZoom = m_GunnerControl.FindAction("ToggleZoom", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -782,12 +964,14 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private IGeneralControlsActions m_GeneralControlsActionsCallbackInterface;
     private readonly InputAction m_GeneralControls_Escape;
     private readonly InputAction m_GeneralControls_Delta;
+    private readonly InputAction m_GeneralControls_SwitchMode;
     public struct GeneralControlsActions
     {
         private @PlayerInputActions m_Wrapper;
         public GeneralControlsActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Escape => m_Wrapper.m_GeneralControls_Escape;
         public InputAction @Delta => m_Wrapper.m_GeneralControls_Delta;
+        public InputAction @SwitchMode => m_Wrapper.m_GeneralControls_SwitchMode;
         public InputActionMap Get() { return m_Wrapper.m_GeneralControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -803,6 +987,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Delta.started -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnDelta;
                 @Delta.performed -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnDelta;
                 @Delta.canceled -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnDelta;
+                @SwitchMode.started -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnSwitchMode;
+                @SwitchMode.performed -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnSwitchMode;
+                @SwitchMode.canceled -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnSwitchMode;
             }
             m_Wrapper.m_GeneralControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -813,10 +1000,62 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Delta.started += instance.OnDelta;
                 @Delta.performed += instance.OnDelta;
                 @Delta.canceled += instance.OnDelta;
+                @SwitchMode.started += instance.OnSwitchMode;
+                @SwitchMode.performed += instance.OnSwitchMode;
+                @SwitchMode.canceled += instance.OnSwitchMode;
             }
         }
     }
     public GeneralControlsActions @GeneralControls => new GeneralControlsActions(this);
+
+    // GunnerControl
+    private readonly InputActionMap m_GunnerControl;
+    private IGunnerControlActions m_GunnerControlActionsCallbackInterface;
+    private readonly InputAction m_GunnerControl_Look;
+    private readonly InputAction m_GunnerControl_Fire;
+    private readonly InputAction m_GunnerControl_ToggleZoom;
+    public struct GunnerControlActions
+    {
+        private @PlayerInputActions m_Wrapper;
+        public GunnerControlActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Look => m_Wrapper.m_GunnerControl_Look;
+        public InputAction @Fire => m_Wrapper.m_GunnerControl_Fire;
+        public InputAction @ToggleZoom => m_Wrapper.m_GunnerControl_ToggleZoom;
+        public InputActionMap Get() { return m_Wrapper.m_GunnerControl; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(GunnerControlActions set) { return set.Get(); }
+        public void SetCallbacks(IGunnerControlActions instance)
+        {
+            if (m_Wrapper.m_GunnerControlActionsCallbackInterface != null)
+            {
+                @Look.started -= m_Wrapper.m_GunnerControlActionsCallbackInterface.OnLook;
+                @Look.performed -= m_Wrapper.m_GunnerControlActionsCallbackInterface.OnLook;
+                @Look.canceled -= m_Wrapper.m_GunnerControlActionsCallbackInterface.OnLook;
+                @Fire.started -= m_Wrapper.m_GunnerControlActionsCallbackInterface.OnFire;
+                @Fire.performed -= m_Wrapper.m_GunnerControlActionsCallbackInterface.OnFire;
+                @Fire.canceled -= m_Wrapper.m_GunnerControlActionsCallbackInterface.OnFire;
+                @ToggleZoom.started -= m_Wrapper.m_GunnerControlActionsCallbackInterface.OnToggleZoom;
+                @ToggleZoom.performed -= m_Wrapper.m_GunnerControlActionsCallbackInterface.OnToggleZoom;
+                @ToggleZoom.canceled -= m_Wrapper.m_GunnerControlActionsCallbackInterface.OnToggleZoom;
+            }
+            m_Wrapper.m_GunnerControlActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Look.started += instance.OnLook;
+                @Look.performed += instance.OnLook;
+                @Look.canceled += instance.OnLook;
+                @Fire.started += instance.OnFire;
+                @Fire.performed += instance.OnFire;
+                @Fire.canceled += instance.OnFire;
+                @ToggleZoom.started += instance.OnToggleZoom;
+                @ToggleZoom.performed += instance.OnToggleZoom;
+                @ToggleZoom.canceled += instance.OnToggleZoom;
+            }
+        }
+    }
+    public GunnerControlActions @GunnerControl => new GunnerControlActions(this);
     private int m_KandMSchemeIndex = -1;
     public InputControlScheme KandMScheme
     {
@@ -852,5 +1091,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     {
         void OnEscape(InputAction.CallbackContext context);
         void OnDelta(InputAction.CallbackContext context);
+        void OnSwitchMode(InputAction.CallbackContext context);
+    }
+    public interface IGunnerControlActions
+    {
+        void OnLook(InputAction.CallbackContext context);
+        void OnFire(InputAction.CallbackContext context);
+        void OnToggleZoom(InputAction.CallbackContext context);
     }
 }
