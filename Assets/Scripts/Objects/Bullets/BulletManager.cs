@@ -82,14 +82,14 @@ public class BulletManager : MonoBehaviour
         } 
         catch (Exception e)
         {
-            results.Dispose();
-            commands.Dispose();
-            Debug.LogError("An Error occured in the Raycast Job!");
+            Debug.LogError($"An Error occured in the Raycast Job!\n{e.StackTrace}");
             return;
         }
-
-        // Dispose the buffers
-        results.Dispose();
-        commands.Dispose();
+        finally
+        {
+            // Dispose the buffers
+            results.Dispose();
+            commands.Dispose();
+        }
     }
 }
