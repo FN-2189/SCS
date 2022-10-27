@@ -16,12 +16,6 @@ public class Bullet : MonoBehaviour
         if(!rb) rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-
-    }
-
     public void SendIt(Vector3 v)
     {
         rb.velocity = v;
@@ -29,7 +23,7 @@ public class Bullet : MonoBehaviour
 
     public void Hit(Collider hit)
     {
-        Debug.Log(gameObject.name + " hit " + hit.gameObject.name);
+        //Debug.Log(gameObject.name + " hit " + hit.gameObject.name);
         Destroy(gameObject);
     }
 

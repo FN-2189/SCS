@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.Collections;
 using Unity.Jobs;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BulletManager : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class BulletManager : MonoBehaviour
 
     [SerializeField]
     private float maxDistance;
+
+
+    private Vector3 v;
+    private Bullet b;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +34,7 @@ public class BulletManager : MonoBehaviour
                 var bullet = _bullets[i];
                 RelativeSpace.removeObject(bullet.transform);
                 _bullets.RemoveAt(i);
-                Destroy(bullet.gameObject);
+                Destroy(bullet);
             }
         }
         RaycastForAll();
@@ -54,18 +59,20 @@ public class BulletManager : MonoBehaviour
 
             for (int i = 0; i < _bullets.Count; i++)
             {
-                commands[i] = new RaycastCommand(_bullets[i].transform.position, _bullets[i].rb.velocity.normalized, _bullets[i].rb.velocity.magnitude * Time.fixedDeltaTime);
-                _bullets[i].lineRenderer.SetPositions(new Vector3[] { _bullets[i].transform.position + _bullets[i].rb.velocity * Time.fixedDeltaTime, _bullets[i].transform.position + _bullets[i].rb.velocity * Time.fixedDeltaTime * 2 });// What is this
+                b = _bullets[i];
+                v = b.rb.velocity;
+                commands[i] = new RaycastCommand(b.transform.position, v, v.magnitude * Time.fixedDeltaTime);
+                //_bullets[i].lineRenderer.SetPositions(new Vector3[] { _bullets[i].transform.position + _bullets[i].rb.velocity * Time.fixedDeltaTime, _bullets[i].transform.position + _bullets[i].rb.velocity * Time.fixedDeltaTime * 2 });// What is this
             }
 
             // Schedule the batch of raycasts
             JobHandle handle = RaycastCommand.ScheduleBatch(commands, results, 1, default);
 
-            Debug.Log("Starting Job", this);
+            //Debug.Log(_bullets.Count);
             // Wait for the batch processing job to complete
             handle.Complete();
 
-            Debug.Log("Completed Raycast Job", this);
+            //Debug.Log("Completed Raycast Job", this);
 
             for (int i = 0; i < _bullets.Count; i++)
             {
@@ -86,7 +93,7 @@ public class BulletManager : MonoBehaviour
             // Dispose the buffers
             results.Dispose();
             commands.Dispose();
-
+            return;
         }
         // Dispose the buffers
         results.Dispose();
