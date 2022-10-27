@@ -48760,8 +48760,8 @@ Transform:
   - {fileID: 2033231597}
   - {fileID: 8937954517903458555}
   - {fileID: 1539992795}
-  - {fileID: 1185359505}
   - {fileID: 1895262441}
+  - {fileID: 1185359505}
   - {fileID: 1374302557}
   - {fileID: 858562882}
   - {fileID: 578880229}
@@ -55869,7 +55869,7 @@ Transform:
   m_Children:
   - {fileID: 1570270020}
   m_Father: {fileID: 980771550}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45}
 --- !u!114 &1185359506
 MonoBehaviour:
@@ -73501,7 +73501,7 @@ Transform:
   - {fileID: 606821325}
   - {fileID: 1637299590}
   m_Father: {fileID: 980771550}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1911088949
 GameObject:
