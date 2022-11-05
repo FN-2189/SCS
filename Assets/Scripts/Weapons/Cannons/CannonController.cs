@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
+using Assets.Scripts.Objects;
 
 public class CannonController : MonoBehaviour
 {
@@ -9,7 +10,8 @@ public class CannonController : MonoBehaviour
     private Vector2 _currentAim;
     private Vector2 _relativeRotation = Vector2.zero;
 
-    public float rotateSpeed;
+    public Cannon type;
+
     public float rate = 0.5f;
     public float deadZone = 0.01f;
     public float maxShootAngle = 10f;
@@ -17,7 +19,6 @@ public class CannonController : MonoBehaviour
     public Transform Turret;
     public Transform BarrelMount;
     public Transform Barrel;
-    public float barrelLength;
     public Transform Muzzle;
 
     public Transform target;
@@ -28,13 +29,8 @@ public class CannonController : MonoBehaviour
     public LineRenderer line;
     public LineRenderer laser;
 
-    private Rigidbody rb => GetComponentInParent<Rigidbody>();
+    private Rigidbody rb;
 
-    public GameObject bullet;
-
-    public float bulletV;
-
-    public float FireRate = 1500f;
     private float _timeNextShot = 0f;
 
     private Animator _gunAnimator;
@@ -48,10 +44,12 @@ public class CannonController : MonoBehaviour
 
     [SerializeField]
     private bool _canHitTarget = false;
+    private bool _inBounds = true;
 
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponentInParent<Rigidbody>();
         _targetRb = target.GetComponent<Rigidbody>();
         _gunAnimator = GetComponent<Animator>();
         _muzzleParticles = Muzzle.GetComponentsInChildren<ParticleSystem>();
@@ -63,7 +61,7 @@ public class CannonController : MonoBehaviour
     void Update()
     {
         Vector3 targetDir;
-        Vector3? tryGetLead = LeadCalculator.CaculateLead(_targetRb.velocity - rb.velocity, transform.position, target.position, bulletV) - transform.position;
+        Vector3? tryGetLead = LeadCalculator.CaculateLead(_targetRb.velocity - rb.velocity, transform.position, target.position, type.MuzzleVelocity) - transform.position;
         if(tryGetLead == null)
         {
             print("Can't reach target!");
@@ -80,12 +78,17 @@ public class CannonController : MonoBehaviour
 
         _localTarget = transform.InverseTransformDirection(targetDir);
 
-        _gunAim.x = -Mathf.Atan2(_localTarget.z, _localTarget.x) * Mathf.Rad2Deg + 90;
+        // TODO fix target not being where it should be (Offset of Barrel)
+        float x = _localTarget.x;
+        float y = _localTarget.y;
+        float z = _localTarget.z;
 
-        float c = Mathf.Sqrt(_localTarget.x * _localTarget.x + _localTarget.z * _localTarget.z);
+        _gunAim.x = -Mathf.Atan2(z, x) * Mathf.Rad2Deg + 90;
 
-        c -= (Turret.forward * BarrelMount.localPosition.z).magnitude;
-        _gunAim.y = -Mathf.Atan2(_localTarget.y, c) * Mathf.Rad2Deg;
+        float c = Mathf.Sqrt(x * x + z * z);
+
+        //c -= (Turret.forward * Barrel.localPosition.z).magnitude;
+        _gunAim.y = -Mathf.Atan2(y, c) * Mathf.Rad2Deg;
 
         _relativeRotation = Vector2.zero;
 
@@ -113,9 +116,27 @@ public class CannonController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Mathf.Abs(_relativeRotation.x) > deadZone) _currentAim.x += rotateSpeed * Mathf.Clamp(_relativeRotation.x/(180*rate), -1f, 1f) * Time.fixedDeltaTime;
+        bool inBoundsX = true, inBoundsY = true;
 
-        if (Mathf.Abs(_relativeRotation.y) > deadZone) _currentAim.y += rotateSpeed * Mathf.Clamp(_relativeRotation.y/(180*rate), -1f, 1f) * Time.fixedDeltaTime;
+        if (Mathf.Abs(_relativeRotation.x) > deadZone)
+        {
+            _currentAim.x += type.traverseSpeed.x * Mathf.Clamp(_relativeRotation.x / (180 * rate), -1f, 1f) * Time.fixedDeltaTime;
+            
+            
+            float aimX = type.CanRotateAround ? _currentAim.x : Mathf.Clamp(_currentAim.x, -type.MaxTraverseLeft, type.MaxTraverseRight);
+            inBoundsX = aimX != _currentAim.x;
+            _currentAim.x = aimX;
+        }
+
+        if (Mathf.Abs(_relativeRotation.y) > deadZone)
+        {
+            _currentAim.y += type.traverseSpeed.y * Mathf.Clamp(_relativeRotation.y / (180 * rate), -1f, 1f) * Time.fixedDeltaTime;
+            float aimY = Mathf.Clamp(_currentAim.y, -type.MaxTraverseUp, type.MaxTraverseDown);
+            inBoundsY = aimY != _currentAim.y;
+            _currentAim.y = aimY;
+        }
+
+        _inBounds = inBoundsX && inBoundsY;
 
         // TODO add PISS i mean PID already have P kinda
 
@@ -123,11 +144,11 @@ public class CannonController : MonoBehaviour
         //print(_relativeRotation);
 
         // allowed to shoot
-        if(Time.time >= _timeNextShot && _canHitTarget && Mathf.Abs(_relativeRotation.x) <= maxShootAngle && Mathf.Abs(_relativeRotation.y) <= maxShootAngle)
+        if (Time.time >= _timeNextShot /*&& _inBounds*/ && _canHitTarget && Mathf.Abs(_relativeRotation.x) <= maxShootAngle && Mathf.Abs(_relativeRotation.y) <= maxShootAngle)
         {
             Shoot();
             _shotsFired++;
-            _timeNextShot = Time.time + 60f / FireRate;
+            _timeNextShot = Time.time + 60f / type.FireRate;
         }
 
         Turret.localRotation = Quaternion.Euler(0, _currentAim.x, 0);
@@ -143,8 +164,8 @@ public class CannonController : MonoBehaviour
 
     private void Shoot()
     {
-        var g = Instantiate(bullet, Barrel.position + Barrel.forward * barrelLength, Barrel.rotation);
-        g.GetComponent<Rigidbody>().velocity = rb.velocity + Barrel.forward * bulletV;
+        var g = Instantiate(type.BulletType, Barrel.position + Barrel.forward * type.BulletSpawnOffset, Barrel.rotation);
+        g.GetComponent<Rigidbody>().velocity = rb.velocity + Barrel.forward * type.MuzzleVelocity;
         BulletManager.AddToList(g.GetComponent<Bullet>());
 
         _gunAnimator.StopPlayback();

@@ -65,6 +65,7 @@ MonoBehaviour:
   rb: {fileID: 7972238693300655531}
   type: {fileID: 0}
   lineRenderer: {fileID: 0}
+  despawnTime: 30
 --- !u!96 &7303591718814356233
 TrailRenderer:
   serializedVersion: 2

@@ -274,6 +274,61 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""9b3f4aac-ddc4-4df0-a2fb-e9be4db29a67"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""pitchAndRollJoystick"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""731b4eae-311d-4860-ad6d-7a791790e6e2"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""pitchAndRollJoystick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""5d312988-62c4-4c1c-8d4c-16f81948fa01"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""pitchAndRollJoystick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""c79a1e01-dc1a-4dde-b735-7f92cd08c90c"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""pitchAndRollJoystick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""f244741b-43ae-418b-ae87-5cc3c0e87d13"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""pitchAndRollJoystick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": """",
                     ""id"": ""73d5f074-cc38-4173-a4cc-fad677ddfdf6"",
                     ""path"": ""<HID::Logitech X52 Professional H.O.T.A.S.>/rz"",
@@ -741,6 +796,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""ac433531-76d5-4f87-b600-8968474dc1e5"",
                     ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Laser"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ec38b1c7-97db-4ac1-8a19-893b8ebda336"",
+                    ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

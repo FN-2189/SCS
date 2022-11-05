@@ -1,6 +1,7 @@
 using Assets.Scripts.Util.Lib;
 using UnityEditor;
 
+#if UNITY_EDITOR
 namespace Assets.Scripts.Editors
 {
     [CustomEditor(typeof(Vector3d))]
@@ -12,3 +13,4 @@ namespace Assets.Scripts.Editors
         }
     }
 }
+#endif

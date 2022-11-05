@@ -3,7 +3,22 @@ guid: 9b0012eed2c722b46908a4ce460ddceb
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stick
+    second: {fileID: 2100000, guid: 0d0e309e975951c4e9bfcd03fd0e8937, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StickBase
+    second: {fileID: 2100000, guid: 937708d2a81234249b56038533f64b89, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Trigger
+    second: {fileID: 2100000, guid: 170072d3ddaee034ea56d95a022d6467, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

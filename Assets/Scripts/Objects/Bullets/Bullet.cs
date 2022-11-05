@@ -10,21 +10,30 @@ public class Bullet : MonoBehaviour
     public BulletType type;
     public LineRenderer lineRenderer;
 
+    [SerializeField]
+    private float despawnTime = 30f;
+
     // Start is called before the first frame update
     void Start()
     {
         if(!rb) rb = GetComponent<Rigidbody>();
     }
 
+    private void OnDestroy()
+    {
+        BulletManager.RemoveFromList(this);
+    }
+
     public void SendIt(Vector3 v)
     {
         rb.velocity = v;
+        Destroy(gameObject, 30f);
     }
 
     public void Hit(Collider hit)
     {
         Debug.Log(gameObject.name + " hit " + hit.gameObject.name);
-        Destroy(gameObject);
+        Destroy(gameObject, despawnTime);
     }
 
 

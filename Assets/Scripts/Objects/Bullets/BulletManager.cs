@@ -46,6 +46,12 @@ public class BulletManager : MonoBehaviour
         RelativeSpace.addObject(bullet.transform);
     }
 
+    public static void RemoveFromList(Bullet bullet)
+    {
+        _bullets.Remove(bullet);
+        RelativeSpace.removeObject(bullet.transform);
+    }
+
     private void RaycastForAll()
     {
         // Perform a raycast per bullet using RaycastCommand and wait for it to complete
