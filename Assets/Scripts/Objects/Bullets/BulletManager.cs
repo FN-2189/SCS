@@ -10,18 +10,11 @@ public class BulletManager : MonoBehaviour
 {
     private static List<Bullet> _bullets = new List<Bullet>();
 
-    [SerializeField]
-    private float maxDistance;
-
-
     private Vector3 v;
     private Bullet b;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private LayerMask mask;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -56,7 +49,7 @@ public class BulletManager : MonoBehaviour
             {
                 b = _bullets[i];
                 v = b.rb.velocity;
-                commands[i] = new RaycastCommand(b.transform.position, v, v.magnitude * Time.fixedDeltaTime);
+                commands[i] = new RaycastCommand(b.transform.position, v, v.magnitude * Time.fixedDeltaTime, mask);
                 //_bullets[i].lineRenderer.SetPositions(new Vector3[] { _bullets[i].transform.position + _bullets[i].rb.velocity * Time.fixedDeltaTime, _bullets[i].transform.position + _bullets[i].rb.velocity * Time.fixedDeltaTime * 2 });// What is this
             }
 

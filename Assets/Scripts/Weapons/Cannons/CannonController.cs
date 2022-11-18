@@ -74,6 +74,8 @@ public class CannonController : MonoBehaviour
         _localTarget = transform.InverseTransformDirection(targetDir);
 
         // TODO fix target not being where it should be (Offset of Barrel)
+        _localTarget -= Turret.localRotation * (BarrelMount.localPosition + new Vector3(Barrel.localPosition.x, Barrel.localPosition.y, 0f));
+
         float x = _localTarget.x;
         float y = _localTarget.y;
         float z = _localTarget.z;

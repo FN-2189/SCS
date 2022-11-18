@@ -48924,7 +48924,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 0
+  m_Constraints: 62
   m_CollisionDetection: 1
 --- !u!4 &980771550
 Transform:
@@ -56501,7 +56501,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd48824c37cb6a44c876f628cea6c78b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistance: 500
+  mask:
+    serializedVersion: 2
+    m_Bits: 87
 --- !u!114 &1221816540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72256,7 +72258,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 2
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 1
 --- !u!23 &1794374660
 MeshRenderer:
@@ -74203,7 +74205,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &1973039463
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -76005,6 +76007,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 543450652202175281}
+  - component: {fileID: 919132148546883980}
   m_Layer: 9
   m_Name: Cockpit 1
   m_TagString: Untagged
@@ -76012,6 +76015,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
+--- !u!54 &919132148546883980
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148546883979}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!33 &3568268475486678272
 MeshFilter:
   m_ObjectHideFlags: 0
