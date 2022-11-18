@@ -14,7 +14,7 @@ public class Thruster : MonoBehaviour
         get {
             if (isNegative && thrustLevel > 0f) return 0f;
             else if (!isNegative && thrustLevel < 0f) return 0f;
-            else return type.power * Mathf.Abs(thrustLevel);
+            else return type.power * Mathf.Clamp01(Mathf.Abs(thrustLevel));
         }
     }
 
