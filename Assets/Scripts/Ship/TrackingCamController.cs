@@ -33,6 +33,8 @@ namespace Assets.Scripts.Ship
 
         private bool _zoomReleased;
 
+        private bool _callRangefind;
+
         // Use this for initialization
         void Start()
         {
@@ -69,6 +71,21 @@ namespace Assets.Scripts.Ship
                 _zoomReleased = false;
             }
 
+            //if (InputManager.Rangefind && !_callRangefind) _callRangefind = true;
+            if (InputManager.Rangefind) GetRange();
+        }
+
+        private void FixedUpdate()
+        {
+            if (_callRangefind)
+            {
+                GetRange();
+                _callRangefind = false;
+            }
+        }
+
+        private void LateUpdate()
+        {
             if (InputManager.Rangefind) GetRange();
         }
 
