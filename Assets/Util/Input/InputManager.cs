@@ -19,6 +19,7 @@ public class InputManager : MonoBehaviour
     public static float DeAtoggle { get; private set; }
     public static float CycleZoom { get; private set; }
     public static bool Rangefind { get; private set; }
+    public static bool Fire { get; private set; }
     public static bool Escape { get; private set; }
     public static Vector2 MouseDelta { get; private set; }
 
@@ -71,6 +72,7 @@ public class InputManager : MonoBehaviour
 
         float zoom = input.GunnerControl.ToggleZoom.ReadValue<float>();
         bool laser = input.GunnerControl.Laser.ReadValue<float>() > 0f;
+        bool fire = input.GunnerControl.Fire.ReadValue<float>() > 0f;
 
         //general inputs
         bool escape = input.GeneralControls.Escape.triggered;
@@ -93,6 +95,7 @@ public class InputManager : MonoBehaviour
 
         CycleZoom = zoom;
         Rangefind = laser;
+        Fire = fire;
 
         Escape = escape;
 

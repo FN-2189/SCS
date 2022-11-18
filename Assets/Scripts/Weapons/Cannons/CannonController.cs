@@ -146,9 +146,12 @@ public class CannonController : MonoBehaviour
         // allowed to shoot
         if (Time.time >= _timeNextShot /*&& _inBounds*/ && _canHitTarget && Mathf.Abs(_relativeRotation.x) <= maxShootAngle && Mathf.Abs(_relativeRotation.y) <= maxShootAngle)
         {
-            Shoot();
-            _shotsFired++;
-            _timeNextShot = Time.time + 60f / type.FireRate;
+            if (InputManager.Fire)
+            {
+                Shoot();
+                _shotsFired++;
+                _timeNextShot = Time.time + 60f / type.FireRate;
+            }
         }
 
         Turret.localRotation = Quaternion.Euler(0, _currentAim.x, 0);
@@ -159,7 +162,8 @@ public class CannonController : MonoBehaviour
     {
         //line.SetPositions(new Vector3[] { transform.position, _localTarget + transform.position });
         //laser.SetPositions(new Vector3[] { Barrel.position, Barrel.position + Barrel.forward * 50000 });
-        Debug.DrawLine(Barrel.position, Barrel.position + Barrel.forward * 50000);
+        //Debug.DrawLine(Barrel.position, Barrel.position + Barrel.forward * 50000);
+        // Remove Debug code
     }
 
     private void Shoot()
