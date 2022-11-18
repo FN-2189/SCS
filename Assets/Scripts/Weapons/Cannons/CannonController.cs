@@ -26,17 +26,12 @@ public class CannonController : MonoBehaviour
 
     private Vector3 _localTarget;
 
-    public LineRenderer line;
-    public LineRenderer laser;
-
     private Rigidbody rb;
 
     private float _timeNextShot = 0f;
 
     private Animator _gunAnimator;
     private ParticleSystem[] _muzzleParticles;
-
-    public Transform leadIndicator;
 
     private int _shotsFired = 0;
     private float _lastTime;
@@ -109,7 +104,7 @@ public class CannonController : MonoBehaviour
         if(_lastTime + RPMTimestep < Time.time)
         {
             _lastTime = Time.time;
-            print(_shotsFired * 60 / RPMTimestep);
+            //print(_shotsFired * 60 / RPMTimestep);
             _shotsFired = 0;
         }
     }
@@ -169,7 +164,8 @@ public class CannonController : MonoBehaviour
     private void Shoot()
     {
         var g = Instantiate(type.BulletType, Barrel.position + Barrel.forward * type.BulletSpawnOffset, Barrel.rotation);
-        g.GetComponent<Rigidbody>().velocity = rb.velocity + Barrel.forward * type.MuzzleVelocity;
+        //g.GetComponent<Rigidbody>().velocity = rb.velocity + Barrel.forward * type.MuzzleVelocity;
+        g.GetComponent<Bullet>().SendIt(rb.velocity + Barrel.forward * type.MuzzleVelocity);
         BulletManager.AddToList(g.GetComponent<Bullet>());
 
         _gunAnimator.StopPlayback();

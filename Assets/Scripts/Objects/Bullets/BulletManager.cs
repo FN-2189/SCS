@@ -26,17 +26,6 @@ public class BulletManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        // Destroy when to far away
-        for (int i = 0; i < _bullets.Count; i++)
-        {
-            if (_bullets[i].transform.position.magnitude > maxDistance)
-            {
-                var bullet = _bullets[i];
-                RelativeSpace.removeObject(bullet.transform);
-                _bullets.RemoveAt(i);
-                Destroy(bullet);
-            }
-        }
         RaycastForAll();
     }
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -12,6 +13,8 @@ public class Bullet : MonoBehaviour
 
     [SerializeField]
     private float despawnTime = 30f;
+
+    private float startTime;
 
     // Start is called before the first frame update
     void Start()
@@ -26,8 +29,9 @@ public class Bullet : MonoBehaviour
 
     public void SendIt(Vector3 v)
     {
+        startTime = Time.time;
         rb.velocity = v;
-        Destroy(gameObject, 30f);
+        Destroy(gameObject, despawnTime);
     }
 
     public void Hit(Collider hit)

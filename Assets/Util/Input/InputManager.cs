@@ -38,16 +38,16 @@ public class InputManager : MonoBehaviour
     {
         /*
         // mouse controls (pitch + yaw)
-        Vector2 pitchAndRoll = input.ManualShipThrusterControl.PitchAndRoll.ReadValue<Vector2>();
-        Vector2 pitchAndRollJoystick = input.ManualShipThrusterControl.pitchAndRollJoystick.ReadValue<Vector2>();
+        Vector2 pitchAndRoll = input.PilotControl.PitchAndRoll.ReadValue<Vector2>();
+        Vector2 pitchAndRollJoystick = input.PilotControl.pitchAndRollJoystick.ReadValue<Vector2>();
         Vector3 stick = this.Stick;
-        stick.z = input.ManualShipThrusterControl.Yaw.ReadValue<float>();
+        stick.z = input.PilotControl.Yaw.ReadValue<float>();
         stick.x = Mathf.Clamp(stick.x, -1, 1);
         stick.y = Mathf.Clamp(stick.y, -1, 1);
 
-        float throttleInput = input.ManualShipThrusterControl.Throttle.ReadValue<float>();
+        float throttleInput = input.PilotControl.Throttle.ReadValue<float>();
         
-        float joyStickRz = input.ManualShipThrusterControl.StickRz.ReadValue<float>();
+        float joyStickRz = input.PilotControl.StickRz.ReadValue<float>();
         stick.x = joyStickRz; 
         stick.y = pitchAndRollJoystick.y * -1;
         stick.z = pitchAndRollJoystick.x;
@@ -56,19 +56,19 @@ public class InputManager : MonoBehaviour
         
 
         float trigger = 0f;
-        trigger = input.ManualShipThrusterControl.Fire.ReadValue<float>();
+        trigger = input.PilotControl.Fire.ReadValue<float>();
         */
 
         //inputs
-        Vector2 pitchAndRollIn = input.ManualShipThrusterControl.pitchAndRollJoystick.ReadValue<Vector2>();
-        Vector2 translateIn = input.ManualShipThrusterControl.Translate.ReadValue<Vector2>();
-        float yawIn = input.ManualShipThrusterControl.Yaw.ReadValue<float>();
-        float throttleIn = input.ManualShipThrusterControl.Throttle.ReadValue<float>();
-        float triggerIn = input.ManualShipThrusterControl.Fire.ReadValue<float>();
+        Vector2 pitchAndRollIn = input.PilotControl.pitchAndRollJoystick.ReadValue<Vector2>();
+        Vector2 translateIn = input.PilotControl.Translate.ReadValue<Vector2>();
+        float yawIn = input.PilotControl.Yaw.ReadValue<float>();
+        float throttleIn = input.PilotControl.Throttle.ReadValue<float>();
+        float triggerIn = input.PilotControl.Fire.ReadValue<float>();
         //TODO: Make bools
-        float flightAssistToggleIn = input.ManualShipThrusterControl.FlightAssistToggle.ReadValue<float>();
-        float aimAssistToggleIn = input.ManualShipThrusterControl.AimAissistToggle.ReadValue<float>();
-        float decelAssistToggleIn = input.ManualShipThrusterControl.DecelerateAssistToggle.ReadValue<float>();
+        float flightAssistToggleIn = input.PilotControl.FlightAssistToggle.ReadValue<float>();
+        float aimAssistToggleIn = input.PilotControl.AimAissistToggle.ReadValue<float>();
+        float decelAssistToggleIn = input.PilotControl.DecelerateAssistToggle.ReadValue<float>();
 
         float zoom = input.GunnerControl.ToggleZoom.ReadValue<float>();
         bool laser = input.GunnerControl.Laser.ReadValue<float>() > 0f;
@@ -84,7 +84,7 @@ public class InputManager : MonoBehaviour
         stick.y = -pitchAndRollIn.y;
         stick.z = pitchAndRollIn.x;
 
-        //this.Throttle = input.ManualShipThrusterControl.Throttle.ReadValue<float>();
+        //this.Throttle = input.PilotControl.Throttle.ReadValue<float>();
         Throttle = throttleIn;
         Stick = stick;
         Translate = translateIn;
@@ -99,7 +99,7 @@ public class InputManager : MonoBehaviour
 
         Escape = escape;
 
-        MouseDelta = delta;
+        MouseDelta = delta * mouseSensitivity;
 
     }
 }

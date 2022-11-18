@@ -2,18 +2,9 @@
     "name": "PlayerInputActions",
     "maps": [
         {
-            "name": "ManualShipThrusterControl",
+            "name": "PilotControl",
             "id": "f062a2a2-29b1-4c39-8eb1-0bf2d5aa483e",
             "actions": [
-                {
-                    "name": "PitchAndRoll",
-                    "type": "Value",
-                    "id": "23c66b26-1ab0-4e79-a297-c63d9491aae9",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
                 {
                     "name": "Yaw",
                     "type": "Value",
@@ -97,17 +88,6 @@
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "6249b220-218c-466e-bac4-44e02fd92c39",
-                    "path": "<Mouse>/delta",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KandM",
-                    "action": "PitchAndRoll",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "Keybord",
                     "id": "17b60ad3-63b7-4254-a5a8-47f1df549f18",
@@ -595,9 +575,36 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "SwitchMode",
+                    "name": "Switch to Pilot",
                     "type": "Button",
-                    "id": "e8d5bf52-74ec-4330-bef3-f3cb026ec4cf",
+                    "id": "f80586ab-0c73-4cc5-a375-2098942e29e1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Switch to Gunner",
+                    "type": "Button",
+                    "id": "43738f3c-fb87-4129-a012-42d585874ec5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Switch to Commander",
+                    "type": "Button",
+                    "id": "3bcea14b-a817-423b-a978-f623716efdad",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Switch to Engineer",
+                    "type": "Button",
+                    "id": "a2d931a8-d6e8-484f-a76b-aa21dccc6617",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -629,12 +636,45 @@
                 },
                 {
                     "name": "",
-                    "id": "b4b6422f-b8e0-4a50-b823-aec2dfe350e1",
-                    "path": "<Keyboard>/p",
+                    "id": "6b924fd2-2501-4a3c-beba-a7c39e1a151f",
+                    "path": "<Keyboard>/1",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SwitchMode",
+                    "action": "Switch to Pilot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b9f659b0-7d03-4eca-a49a-ee416242011c",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Switch to Gunner",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "280592a2-c871-45c8-8ef1-71c114550f53",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Switch to Commander",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "62e5c688-f3b9-48b8-abff-a3816ef35822",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Switch to Engineer",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
