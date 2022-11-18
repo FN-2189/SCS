@@ -74,10 +74,6 @@ public class BulletManager : MonoBehaviour
                 if (results[i].collider)
                 {
                     _bullets[i].Hit(results[i].collider);
-
-                    RelativeSpace.removeObject(_bullets[i].transform);
-                    _bullets.Remove(_bullets[i]);
-
                 }
             }
 

@@ -37,7 +37,7 @@ public class Bullet : MonoBehaviour
     public void Hit(Collider hit)
     {
         Debug.Log(gameObject.name + " hit " + hit.gameObject.name);
-        Destroy(gameObject, despawnTime);
+        Destroy(gameObject);
     }
 
 
