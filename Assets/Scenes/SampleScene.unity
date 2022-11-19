@@ -25528,7 +25528,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 578880229}
+  - component: {fileID: 578880233}
   - component: {fileID: 578880232}
+  - component: {fileID: 578880234}
   - component: {fileID: 578880231}
   - component: {fileID: 578880230}
   m_Layer: 0
@@ -25598,12 +25600,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9689060096568274c8023b6863c8d3d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: {fileID: 11400000, guid: 8ea3e115be307474a9268c037049ef99, type: 2}
+  RelativeRotation: {x: 0, y: 0}
   rate: 0.02
   deadZone: 0.001
-  maxShootAngle: 0.5
+--- !u!114 &578880233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578880228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6b4fd02255becb408b3a6ce718f4b22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: {fileID: 11400000, guid: 8ea3e115be307474a9268c037049ef99, type: 2}
+  rb: {fileID: 0}
   target: {fileID: 1794374662}
-  RPMTimestep: 2
+--- !u!114 &578880234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578880228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c188e24bb29c9846b4f642c506d0419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxShootAngle: 0.5
+  RPMTimestep: 1
 --- !u!1 &582431205
 GameObject:
   m_ObjectHideFlags: 0
@@ -37870,7 +37898,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 858562882}
+  - component: {fileID: 858562886}
   - component: {fileID: 858562885}
+  - component: {fileID: 858562887}
   - component: {fileID: 858562884}
   - component: {fileID: 858562883}
   m_Layer: 0
@@ -37940,12 +37970,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9689060096568274c8023b6863c8d3d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: {fileID: 11400000, guid: 8ea3e115be307474a9268c037049ef99, type: 2}
+  RelativeRotation: {x: 0, y: 0}
   rate: 0.02
   deadZone: 0.001
-  maxShootAngle: 0.5
+--- !u!114 &858562886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858562881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6b4fd02255becb408b3a6ce718f4b22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: {fileID: 11400000, guid: 8ea3e115be307474a9268c037049ef99, type: 2}
+  rb: {fileID: 0}
   target: {fileID: 1794374662}
-  RPMTimestep: 2
+--- !u!114 &858562887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858562881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c188e24bb29c9846b4f642c506d0419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxShootAngle: 0.5
+  RPMTimestep: 1
 --- !u!1 &863775107
 GameObject:
   m_ObjectHideFlags: 0
@@ -56017,7 +56073,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1185359505}
+  - component: {fileID: 1185359509}
   - component: {fileID: 1185359506}
+  - component: {fileID: 1185359510}
   - component: {fileID: 1185359507}
   - component: {fileID: 1185359508}
   m_Layer: 0
@@ -56055,12 +56113,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9689060096568274c8023b6863c8d3d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: {fileID: 11400000, guid: 8ea3e115be307474a9268c037049ef99, type: 2}
+  RelativeRotation: {x: 0, y: 0}
   rate: 0.02
   deadZone: 0.001
-  maxShootAngle: 0.5
-  target: {fileID: 1794374662}
-  RPMTimestep: 2
 --- !u!114 &1185359507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56093,6 +56148,35 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1185359509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185359504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6b4fd02255becb408b3a6ce718f4b22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: {fileID: 11400000, guid: 8ea3e115be307474a9268c037049ef99, type: 2}
+  rb: {fileID: 0}
+  target: {fileID: 1794374662}
+--- !u!114 &1185359510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185359504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c188e24bb29c9846b4f642c506d0419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxShootAngle: 0.5
+  RPMTimestep: 1
 --- !u!1 &1195737876
 GameObject:
   m_ObjectHideFlags: 0
@@ -62954,7 +63038,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1374302557}
+  - component: {fileID: 1374302561}
   - component: {fileID: 1374302560}
+  - component: {fileID: 1374302562}
   - component: {fileID: 1374302559}
   - component: {fileID: 1374302558}
   m_Layer: 0
@@ -63024,12 +63110,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9689060096568274c8023b6863c8d3d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: {fileID: 11400000, guid: 8ea3e115be307474a9268c037049ef99, type: 2}
+  RelativeRotation: {x: 0, y: 0}
   rate: 0.02
   deadZone: 0.001
-  maxShootAngle: 0.5
+--- !u!114 &1374302561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1374302556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6b4fd02255becb408b3a6ce718f4b22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: {fileID: 11400000, guid: 8ea3e115be307474a9268c037049ef99, type: 2}
+  rb: {fileID: 0}
   target: {fileID: 1794374662}
-  RPMTimestep: 2
+--- !u!114 &1374302562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1374302556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c188e24bb29c9846b4f642c506d0419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxShootAngle: 0.5
+  RPMTimestep: 1
 --- !u!1 &1376265885
 GameObject:
   m_ObjectHideFlags: 0
