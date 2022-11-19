@@ -22,6 +22,8 @@ public class LeadCalculator : MonoBehaviour
 
         //Debug.Log("t1: " + t1 + " t2: " + t2);
 
+
+        // if none are positive or a NaN return null
         if (float.IsNaN(t1) && float.IsNaN(t2)) return null;
         if(t1 < 0f && t2 < 0f) return null;
 
