@@ -1,7 +1,6 @@
 ﻿#if UNITY_EDITOR
 
 using System;
-using System.Collections;
 using UnityEditor;
 using UnityEngine;
 
@@ -32,15 +31,8 @@ namespace Assets.Scripts.Objects
             cannon.MaxTraverseDown = EditorGUILayout.FloatField("Max Traverse Down", Mathf.Max(0f, cannon.MaxTraverseDown));
 
             EditorGUI.indentLevel--;
-            EditorGUILayout.Space(20f);
-
-            cannon.Turret = (GameObject)EditorGUILayout.ObjectField(label: "Turret", obj: cannon.Turret, objType:typeof(GameObject), allowSceneObjects: false);
-            cannon.BarrelMount = (GameObject)EditorGUILayout.ObjectField(label: "Barrle Mount", obj: cannon.BarrelMount, objType: typeof(GameObject), allowSceneObjects: false);
-            cannon.Barrel = (GameObject)EditorGUILayout.ObjectField(label: "Barrel", obj: cannon.Barrel, objType: typeof(GameObject), allowSceneObjects: false);
 
             EditorGUILayout.Space(10f);
-            cannon.BarrelMountOffset = EditorGUILayout.Vector3Field("Barrel Mount Offset", cannon.BarrelMountOffset);
-            cannon.BarrelOffset = EditorGUILayout.Vector3Field("Barrel Offset", cannon.BarrelOffset);
             cannon.BulletSpawnOffset = EditorGUILayout.FloatField("Bullet Spawn Offset", cannon.BulletSpawnOffset);
 
             EditorGUILayout.Space(10f);

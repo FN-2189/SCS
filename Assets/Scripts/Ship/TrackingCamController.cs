@@ -99,10 +99,11 @@ namespace Assets.Scripts.Ship
         {
             // find range
             RaycastHit hit;
+            string text = "R:";
+
             if (Physics.Raycast(transform.position, transform.rotation * Vector3.forward, out hit))
             {
                 // format string to display
-                string text = "R:";
 
                 // formatting is hard
                 int range = (int)Mathf.Floor(hit.distance);
@@ -128,13 +129,13 @@ namespace Assets.Scripts.Ship
                 {
                     text += "00000";
                 }
-                rangeDisplay.text = text;
             }
             else 
             {
-                rangeDisplay.text = "00000";
+                text += "00000";
             }
 
+            rangeDisplay.text = text;
         }
     }
 }

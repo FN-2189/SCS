@@ -25601,7 +25601,7 @@ MonoBehaviour:
   type: {fileID: 11400000, guid: 8ea3e115be307474a9268c037049ef99, type: 2}
   rate: 0.02
   deadZone: 0.001
-  maxShootAngle: 2
+  maxShootAngle: 0.5
   target: {fileID: 1794374662}
   RPMTimestep: 2
 --- !u!1 &582431205
@@ -37943,7 +37943,7 @@ MonoBehaviour:
   type: {fileID: 11400000, guid: 8ea3e115be307474a9268c037049ef99, type: 2}
   rate: 0.02
   deadZone: 0.001
-  maxShootAngle: 2
+  maxShootAngle: 0.5
   target: {fileID: 1794374662}
   RPMTimestep: 2
 --- !u!1 &863775107
@@ -56058,7 +56058,7 @@ MonoBehaviour:
   type: {fileID: 11400000, guid: 8ea3e115be307474a9268c037049ef99, type: 2}
   rate: 0.02
   deadZone: 0.001
-  maxShootAngle: 2
+  maxShootAngle: 0.5
   target: {fileID: 1794374662}
   RPMTimestep: 2
 --- !u!114 &1185359507
@@ -63027,7 +63027,7 @@ MonoBehaviour:
   type: {fileID: 11400000, guid: 8ea3e115be307474a9268c037049ef99, type: 2}
   rate: 0.02
   deadZone: 0.001
-  maxShootAngle: 2
+  maxShootAngle: 0.5
   target: {fileID: 1794374662}
   RPMTimestep: 2
 --- !u!1 &1376265885
