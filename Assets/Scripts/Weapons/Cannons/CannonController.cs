@@ -46,7 +46,7 @@ public class CannonController : MonoBehaviour
         Vector3 ? tryGetLead = LeadCalculator.CaculateLead(_targetRb.velocity - rb.velocity, transform.position, target.position, Type.MuzzleVelocity) - transform.position;
         if (tryGetLead == null)
         {
-            print("Can't reach target!");
+            //print("Can't reach target!");
             CanHitTarget = false;
             targetDir = Vector3.zero;
         }
@@ -55,6 +55,8 @@ public class CannonController : MonoBehaviour
             targetDir = (Vector3)tryGetLead;
             CanHitTarget = true;
         }
+
+        Debug.DrawRay(transform.position, targetDir * 1000f);
 
         LocalTarget = transform.InverseTransformDirection(targetDir);
     }

@@ -24,7 +24,15 @@ public class LeadCalculator : MonoBehaviour
 
         if (float.IsNaN(t1) && float.IsNaN(t2)) return null;
         if(t1 < 0f && t2 < 0f) return null;
-        float time = Mathf.Max(t1, t2);
+
+        float time = 0f;
+
+        // return the positive number if one is negative
+        if (t1 < 0f) time = t2;
+        else if (t2 < 0f) time = t1;
+
+        // return the smallest of the two if both are positive
+        else time = Mathf.Min(t1, t2);
 
         Vector3 ret = targetPos + relV * time;
         return ret;

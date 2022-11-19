@@ -12,27 +12,19 @@ public class CannonAimController : MonoBehaviour
     private Vector2 _currentAim;
     public Vector2 RelativeRotation = Vector2.zero;
 
-    public float rate = 0.5f;
-    public float deadZone = 0.01f;
-
-    //public Transform target;
-    //private Rigidbody _targetRb;
-
-    //private Vector3 _localTarget;
-
-    //private Rigidbody rb;
-
-    //private float _timeNextShot = 0f;
-
-    //private Animator _gunAnimator;
-    //private ParticleSystem[] _muzzleParticles;
-
-    //private int _shotsFired = 0;
-    //private float _lastTime;
-    //public float RPMTimestep = 1f;
-
-    //private bool _canHitTarget = false;
+    public float deadZone = 0f;
     private bool _inBounds = true;
+
+    private const int sampleSize = 5;
+
+    private float[] samplesX = new float[sampleSize], samplesY = new float[sampleSize];
+
+    [SerializeField]
+    private float kp = 1f;
+    [SerializeField]
+    private float ki = 1f;
+    [SerializeField]
+    private float kd = 1f;
 
     // Start is called before the first frame update
     void Awake()
@@ -76,13 +68,19 @@ public class CannonAimController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Sample(_currentAim);
+
         bool inBoundsX = true, inBoundsY = true;
 
         if (Mathf.Abs(RelativeRotation.x) > deadZone)
         {
-            _currentAim.x += _controller.Type.traverseSpeed.x * Mathf.Clamp(RelativeRotation.x / (180 * rate), -1f, 1f) * Time.fixedDeltaTime;
+            //PID stuff
+            float speedX = MathHelper.PID(kp, ki, kd, samplesX, _gunAim.x, Time.fixedDeltaTime);
+            speedX = Mathf.Clamp(speedX, -_controller.Type.traverseSpeed.x, _controller.Type.traverseSpeed.x);
+
+            _currentAim.x += speedX * Time.fixedDeltaTime;
             
-            
+            // clamp rotation to max traverse
             float aimX = _controller.Type.CanRotateAround ? _currentAim.x : Mathf.Clamp(_currentAim.x, -_controller.Type.MaxTraverseLeft, _controller.Type.MaxTraverseRight);
             inBoundsX = aimX != _currentAim.x;
             _currentAim.x = aimX;
@@ -90,7 +88,13 @@ public class CannonAimController : MonoBehaviour
 
         if (Mathf.Abs(RelativeRotation.y) > deadZone)
         {
-            _currentAim.y += _controller.Type.traverseSpeed.y * Mathf.Clamp(RelativeRotation.y / (180 * rate), -1f, 1f) * Time.fixedDeltaTime;
+            // PID stuff
+            float speedY = MathHelper.PID(kp, ki, kd, samplesY, _gunAim.y, Time.fixedDeltaTime);
+            speedY = Mathf.Clamp(speedY, -_controller.Type.traverseSpeed.y, _controller.Type.traverseSpeed.y);
+
+            _currentAim.y += speedY * Time.fixedDeltaTime;
+
+            // clamp rotation to max traverse
             float aimY = Mathf.Clamp(_currentAim.y, -_controller.Type.MaxTraverseUp, _controller.Type.MaxTraverseDown);
             inBoundsY = aimY != _currentAim.y;
             _currentAim.y = aimY;
@@ -100,19 +104,26 @@ public class CannonAimController : MonoBehaviour
 
         // TODO add PISS i mean PID already have P kinda
 
-
-        //print(_relativeRotation);
-
-
         _controller.Turret.localRotation = Quaternion.Euler(0, _currentAim.x, 0);
         _controller.BarrelMount.localRotation = Quaternion.Euler(_currentAim.y, 0, 0);
     }
 
-    private void LateUpdate()
+    private void Sample(Vector2 newSample)
     {
-        //line.SetPositions(new Vector3[] { transform.position, _localTarget + transform.position });
-        //laser.SetPositions(new Vector3[] { Barrel.position, Barrel.position + Barrel.forward * 50000 });
-        //Debug.DrawLine(Barrel.position, Barrel.position + Barrel.forward * 50000);
-        // Remove Debug code
+        // sampling
+
+        // x values
+        for (int i = samplesX.Length - 1; i >= 1; i--)
+        {
+            samplesX[i] = samplesX[i - 1];
+        }
+        samplesX[0] = newSample.x;
+
+        // y values
+        for (int i = samplesY.Length - 1; i >= 1; i--)
+        {
+            samplesY[i] = samplesY[i - 1];
+        }
+        samplesY[0] = newSample.y;
     }
 }
