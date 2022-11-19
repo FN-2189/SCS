@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
 using UnityEngine;
 using Assets.Scripts.Objects;
+using System;
 
 public class CannonController : MonoBehaviour
 {
@@ -16,10 +14,11 @@ public class CannonController : MonoBehaviour
     public float deadZone = 0.01f;
     public float maxShootAngle = 10f;
 
-    public Transform Turret;
-    public Transform BarrelMount;
-    public Transform Barrel;
-    public Transform Muzzle;
+
+    private Transform _turret;
+    private Transform _barrelMount;
+    private Transform _barrel;
+    private Transform _muzzle;
 
     public Transform target;
     private Rigidbody _targetRb;
@@ -37,7 +36,6 @@ public class CannonController : MonoBehaviour
     private float _lastTime;
     public float RPMTimestep = 1f;
 
-    [SerializeField]
     private bool _canHitTarget = false;
     private bool _inBounds = true;
 
@@ -47,7 +45,13 @@ public class CannonController : MonoBehaviour
         rb = GetComponentInParent<Rigidbody>();
         _targetRb = target.GetComponent<Rigidbody>();
         _gunAnimator = GetComponent<Animator>();
-        _muzzleParticles = Muzzle.GetComponentsInChildren<ParticleSystem>();
+
+        _turret =       Array.Find(GetComponentsInChildren<Transform>(),                t => t.name == "Turret");
+        _barrelMount =  Array.Find(_turret.GetComponentsInChildren<Transform>(),        t => t.name == "BarrelMount");
+        _barrel =       Array.Find(_barrelMount.GetComponentsInChildren<Transform>(),   t => t.name == "Barrel");
+        _muzzle =       Array.Find(_barrel.GetComponentsInChildren<Transform>(),        t => t.name == "Muzzle");
+
+        _muzzleParticles = _muzzle.GetComponentsInChildren<ParticleSystem>();
         _timeNextShot = Time.time;
         _lastTime = Time.time;
     }
@@ -74,7 +78,7 @@ public class CannonController : MonoBehaviour
         _localTarget = transform.InverseTransformDirection(targetDir);
 
         // TODO fix target not being where it should be (Offset of Barrel)
-        _localTarget -= Turret.localRotation * (BarrelMount.localPosition + new Vector3(Barrel.localPosition.x, Barrel.localPosition.y, 0f));
+        _localTarget -= _turret.localRotation * (_barrelMount.localPosition + new Vector3(_barrel.localPosition.x, _barrel.localPosition.y, 0f));
 
         float x = _localTarget.x;
         float y = _localTarget.y;
@@ -151,8 +155,8 @@ public class CannonController : MonoBehaviour
             }
         }
 
-        Turret.localRotation = Quaternion.Euler(0, _currentAim.x, 0);
-        BarrelMount.localRotation = Quaternion.Euler(_currentAim.y, 0, 0);
+        _turret.localRotation = Quaternion.Euler(0, _currentAim.x, 0);
+        _barrelMount.localRotation = Quaternion.Euler(_currentAim.y, 0, 0);
     }
 
     private void LateUpdate()
@@ -165,9 +169,9 @@ public class CannonController : MonoBehaviour
 
     private void Shoot()
     {
-        var g = Instantiate(type.BulletType, Barrel.position + Barrel.forward * type.BulletSpawnOffset, Barrel.rotation);
+        var g = Instantiate(type.BulletType, _barrel.position + _barrel.forward * type.BulletSpawnOffset, _barrel.rotation);
         //g.GetComponent<Rigidbody>().velocity = rb.velocity + Barrel.forward * type.MuzzleVelocity;
-        g.GetComponent<Bullet>().SendIt(rb.velocity + Barrel.forward * type.MuzzleVelocity);
+        g.GetComponent<Bullet>().SendIt(rb.velocity + _barrel.forward * type.MuzzleVelocity);
         BulletManager.AddToList(g.GetComponent<Bullet>());
 
         _gunAnimator.StopPlayback();

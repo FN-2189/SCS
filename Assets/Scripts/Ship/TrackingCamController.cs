@@ -70,18 +70,6 @@ namespace Assets.Scripts.Ship
                 CycleZoom();
                 _zoomReleased = false;
             }
-
-            //if (InputManager.Rangefind && !_callRangefind) _callRangefind = true;
-            if (InputManager.Rangefind) GetRange();
-        }
-
-        private void FixedUpdate()
-        {
-            if (_callRangefind)
-            {
-                GetRange();
-                _callRangefind = false;
-            }
         }
 
         private void LateUpdate()
@@ -120,14 +108,14 @@ namespace Assets.Scripts.Ship
                 int range = (int)Mathf.Floor(hit.distance);
                 if (range <= maxPreciseRange)
                 {
-                    for(int i = 0; i < 5 - range.ToString().Length; i++)
+                    for (int i = 0; i < 5 - range.ToString().Length; i++)
                     {
                         text += "0";
                     }
 
                     text += range;
                 }
-                else if(range <= maxRange)
+                else if (range <= maxRange)
                 {
                     for (int i = 0; i < 5 - (range / 1000).ToString().Length; i++)
                     {
@@ -142,6 +130,11 @@ namespace Assets.Scripts.Ship
                 }
                 rangeDisplay.text = text;
             }
+            else 
+            {
+                rangeDisplay.text = "00000";
+            }
+
         }
     }
 }
