@@ -24,7 +24,7 @@ public class MoveStaticTarget : MonoBehaviour
 
     private void Update()
     {
-        if ((target.position - transform.position).magnitude < 500f && restart)
+        if ((target.position - transform.position).magnitude < 50f && restart)
         {
             Debug.Log("You've failed!");
             StartCoroutine(Run());
