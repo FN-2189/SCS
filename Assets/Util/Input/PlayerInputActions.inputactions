@@ -2,18 +2,9 @@
     "name": "PlayerInputActions",
     "maps": [
         {
-            "name": "ManualShipThrusterControl",
+            "name": "PilotControl",
             "id": "f062a2a2-29b1-4c39-8eb1-0bf2d5aa483e",
             "actions": [
-                {
-                    "name": "PitchAndRoll",
-                    "type": "Value",
-                    "id": "23c66b26-1ab0-4e79-a297-c63d9491aae9",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
                 {
                     "name": "Yaw",
                     "type": "Value",
@@ -98,17 +89,6 @@
             ],
             "bindings": [
                 {
-                    "name": "",
-                    "id": "6249b220-218c-466e-bac4-44e02fd92c39",
-                    "path": "<Mouse>/delta",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KandM",
-                    "action": "PitchAndRoll",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
                     "name": "Keybord",
                     "id": "17b60ad3-63b7-4254-a5a8-47f1df549f18",
                     "path": "1DAxis",
@@ -186,15 +166,37 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "03449cc5-f1f9-4cba-9579-7c62a1b46947",
-                    "path": "<Mouse>/leftButton",
+                    "name": "Keyboard",
+                    "id": "1fb3db1c-11f1-4566-87b9-e63b42bc3ac8",
+                    "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
-                    "groups": "KandM",
-                    "action": "Fire",
-                    "isComposite": false,
+                    "groups": "",
+                    "action": "Throttle",
+                    "isComposite": true,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "4760a6de-58a3-4f43-9eaf-76c802aa5a57",
+                    "path": "<Keyboard>/g",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Throttle",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "19eb38f3-2cfb-4468-b62f-e4dda2f1bd97",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Throttle",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
@@ -220,6 +222,17 @@
                 },
                 {
                     "name": "",
+                    "id": "40659b34-6c8d-4140-b977-e0b85b85cea3",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "79461b7a-77d7-45d5-a8f4-3845b42eb004",
                     "path": "<Joystick>/stick",
                     "interactions": "",
@@ -239,6 +252,61 @@
                     "action": "pitchAndRollJoystick",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "9b3f4aac-ddc4-4df0-a2fb-e9be4db29a67",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "pitchAndRollJoystick",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "731b4eae-311d-4860-ad6d-7a791790e6e2",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "pitchAndRollJoystick",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "5d312988-62c4-4c1c-8d4c-16f81948fa01",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "pitchAndRollJoystick",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "c79a1e01-dc1a-4dde-b735-7f92cd08c90c",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "pitchAndRollJoystick",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "f244741b-43ae-418b-ae87-5cc3c0e87d13",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "pitchAndRollJoystick",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
@@ -485,6 +553,51 @@
                     "processors": "",
                     "interactions": "Tap",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Delta",
+                    "type": "Value",
+                    "id": "daf4a42a-fc22-4809-93f6-10f7d0078b4b",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Switch to Pilot",
+                    "type": "Button",
+                    "id": "f80586ab-0c73-4cc5-a375-2098942e29e1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Switch to Gunner",
+                    "type": "Button",
+                    "id": "43738f3c-fb87-4129-a012-42d585874ec5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Switch to Commander",
+                    "type": "Button",
+                    "id": "3bcea14b-a817-423b-a978-f623716efdad",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Switch to Engineer",
+                    "type": "Button",
+                    "id": "a2d931a8-d6e8-484f-a76b-aa21dccc6617",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -496,6 +609,204 @@
                     "processors": "",
                     "groups": "",
                     "action": "Escape",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fa757e98-ffd3-4714-81af-89970baf9c08",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Delta",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6b924fd2-2501-4a3c-beba-a7c39e1a151f",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Switch to Pilot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b9f659b0-7d03-4eca-a49a-ee416242011c",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Switch to Gunner",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "280592a2-c871-45c8-8ef1-71c114550f53",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Switch to Commander",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "62e5c688-f3b9-48b8-abff-a3816ef35822",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Switch to Engineer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "GunnerControl",
+            "id": "87529a99-9613-4c7b-a697-3baa30174178",
+            "actions": [
+                {
+                    "name": "Look",
+                    "type": "Value",
+                    "id": "60cd1d2e-8c13-4fa5-9b62-31057b593f6b",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Fire",
+                    "type": "Button",
+                    "id": "44b9d46a-90ae-4efd-9495-8f578a706313",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ToggleZoom",
+                    "type": "Button",
+                    "id": "ad4dc5c1-d389-48f9-b5ba-67ea1ccc2720",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Laser",
+                    "type": "Button",
+                    "id": "b9187d95-c8b3-4087-9483-6813093506ec",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "611c705c-04bd-47ef-88e4-5ce2689ee399",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3641bb0a-84f0-4fda-b525-f3b637df68dc",
+                    "path": "<Joystick>/stick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "24d6042c-ec39-4767-ace2-e263e3c34fae",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dc2d6b30-379a-4687-944e-c604a092c8d7",
+                    "path": "<Joystick>/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6c71d2b6-3628-4150-90dc-53edcc7289fe",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b76977cd-cebc-4c28-bf4c-4f07e37958d2",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleZoom",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fcb7a9f9-648a-4348-ad67-9951325fea3a",
+                    "path": "<Keyboard>/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleZoom",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ac433531-76d5-4f87-b600-8968474dc1e5",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Laser",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ec38b1c7-97db-4ac1-8a19-893b8ebda336",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Laser",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

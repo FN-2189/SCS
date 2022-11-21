@@ -24,18 +24,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     ""name"": ""PlayerInputActions"",
     ""maps"": [
         {
-            ""name"": ""ManualShipThrusterControl"",
+            ""name"": ""PilotControl"",
             ""id"": ""f062a2a2-29b1-4c39-8eb1-0bf2d5aa483e"",
             ""actions"": [
-                {
-                    ""name"": ""PitchAndRoll"",
-                    ""type"": ""Value"",
-                    ""id"": ""23c66b26-1ab0-4e79-a297-c63d9491aae9"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
                 {
                     ""name"": ""Yaw"",
                     ""type"": ""Value"",
@@ -120,17 +111,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
             ],
             ""bindings"": [
                 {
-                    ""name"": """",
-                    ""id"": ""6249b220-218c-466e-bac4-44e02fd92c39"",
-                    ""path"": ""<Mouse>/delta"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KandM"",
-                    ""action"": ""PitchAndRoll"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
                     ""name"": ""Keybord"",
                     ""id"": ""17b60ad3-63b7-4254-a5a8-47f1df549f18"",
                     ""path"": ""1DAxis"",
@@ -208,15 +188,37 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""03449cc5-f1f9-4cba-9579-7c62a1b46947"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""name"": ""Keyboard"",
+                    ""id"": ""1fb3db1c-11f1-4566-87b9-e63b42bc3ac8"",
+                    ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""KandM"",
-                    ""action"": ""Fire"",
-                    ""isComposite"": false,
+                    ""groups"": """",
+                    ""action"": ""Throttle"",
+                    ""isComposite"": true,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""4760a6de-58a3-4f43-9eaf-76c802aa5a57"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Throttle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""19eb38f3-2cfb-4468-b62f-e4dda2f1bd97"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Throttle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
@@ -242,6 +244,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""40659b34-6c8d-4140-b977-e0b85b85cea3"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""79461b7a-77d7-45d5-a8f4-3845b42eb004"",
                     ""path"": ""<Joystick>/stick"",
                     ""interactions"": """",
@@ -261,6 +274,61 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""pitchAndRollJoystick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""9b3f4aac-ddc4-4df0-a2fb-e9be4db29a67"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""pitchAndRollJoystick"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""731b4eae-311d-4860-ad6d-7a791790e6e2"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""pitchAndRollJoystick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""5d312988-62c4-4c1c-8d4c-16f81948fa01"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""pitchAndRollJoystick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""c79a1e01-dc1a-4dde-b735-7f92cd08c90c"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""pitchAndRollJoystick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""f244741b-43ae-418b-ae87-5cc3c0e87d13"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""pitchAndRollJoystick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
@@ -507,6 +575,51 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Tap"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Delta"",
+                    ""type"": ""Value"",
+                    ""id"": ""daf4a42a-fc22-4809-93f6-10f7d0078b4b"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Switch to Pilot"",
+                    ""type"": ""Button"",
+                    ""id"": ""f80586ab-0c73-4cc5-a375-2098942e29e1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Switch to Gunner"",
+                    ""type"": ""Button"",
+                    ""id"": ""43738f3c-fb87-4129-a012-42d585874ec5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Switch to Commander"",
+                    ""type"": ""Button"",
+                    ""id"": ""3bcea14b-a817-423b-a978-f623716efdad"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Switch to Engineer"",
+                    ""type"": ""Button"",
+                    ""id"": ""a2d931a8-d6e8-484f-a76b-aa21dccc6617"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -518,6 +631,204 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Escape"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fa757e98-ffd3-4714-81af-89970baf9c08"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Delta"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6b924fd2-2501-4a3c-beba-a7c39e1a151f"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch to Pilot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b9f659b0-7d03-4eca-a49a-ee416242011c"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch to Gunner"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""280592a2-c871-45c8-8ef1-71c114550f53"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch to Commander"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""62e5c688-f3b9-48b8-abff-a3816ef35822"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch to Engineer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""GunnerControl"",
+            ""id"": ""87529a99-9613-4c7b-a697-3baa30174178"",
+            ""actions"": [
+                {
+                    ""name"": ""Look"",
+                    ""type"": ""Value"",
+                    ""id"": ""60cd1d2e-8c13-4fa5-9b62-31057b593f6b"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Fire"",
+                    ""type"": ""Button"",
+                    ""id"": ""44b9d46a-90ae-4efd-9495-8f578a706313"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ToggleZoom"",
+                    ""type"": ""Button"",
+                    ""id"": ""ad4dc5c1-d389-48f9-b5ba-67ea1ccc2720"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Laser"",
+                    ""type"": ""Button"",
+                    ""id"": ""b9187d95-c8b3-4087-9483-6813093506ec"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""611c705c-04bd-47ef-88e4-5ce2689ee399"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3641bb0a-84f0-4fda-b525-f3b637df68dc"",
+                    ""path"": ""<Joystick>/stick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""24d6042c-ec39-4767-ace2-e263e3c34fae"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dc2d6b30-379a-4687-944e-c604a092c8d7"",
+                    ""path"": ""<Joystick>/trigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6c71d2b6-3628-4150-90dc-53edcc7289fe"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b76977cd-cebc-4c28-bf4c-4f07e37958d2"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleZoom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fcb7a9f9-648a-4348-ad67-9951325fea3a"",
+                    ""path"": ""<Keyboard>/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleZoom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ac433531-76d5-4f87-b600-8968474dc1e5"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Laser"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ec38b1c7-97db-4ac1-8a19-893b8ebda336"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Laser"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -569,21 +880,31 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         }
     ]
 }");
-        // ManualShipThrusterControl
-        m_ManualShipThrusterControl = asset.FindActionMap("ManualShipThrusterControl", throwIfNotFound: true);
-        m_ManualShipThrusterControl_PitchAndRoll = m_ManualShipThrusterControl.FindAction("PitchAndRoll", throwIfNotFound: true);
-        m_ManualShipThrusterControl_Yaw = m_ManualShipThrusterControl.FindAction("Yaw", throwIfNotFound: true);
-        m_ManualShipThrusterControl_Throttle = m_ManualShipThrusterControl.FindAction("Throttle", throwIfNotFound: true);
-        m_ManualShipThrusterControl_Fire = m_ManualShipThrusterControl.FindAction("Fire", throwIfNotFound: true);
-        m_ManualShipThrusterControl_pitchAndRollJoystick = m_ManualShipThrusterControl.FindAction("pitchAndRollJoystick", throwIfNotFound: true);
-        m_ManualShipThrusterControl_StickRz = m_ManualShipThrusterControl.FindAction("StickRz", throwIfNotFound: true);
-        m_ManualShipThrusterControl_Translate = m_ManualShipThrusterControl.FindAction("Translate", throwIfNotFound: true);
-        m_ManualShipThrusterControl_FlightAssistToggle = m_ManualShipThrusterControl.FindAction("FlightAssistToggle", throwIfNotFound: true);
-        m_ManualShipThrusterControl_AimAissistToggle = m_ManualShipThrusterControl.FindAction("AimAissistToggle", throwIfNotFound: true);
-        m_ManualShipThrusterControl_DecelerateAssistToggle = m_ManualShipThrusterControl.FindAction("DecelerateAssistToggle", throwIfNotFound: true);
+        // PilotControl
+        m_PilotControl = asset.FindActionMap("PilotControl", throwIfNotFound: true);
+        m_PilotControl_Yaw = m_PilotControl.FindAction("Yaw", throwIfNotFound: true);
+        m_PilotControl_Throttle = m_PilotControl.FindAction("Throttle", throwIfNotFound: true);
+        m_PilotControl_Fire = m_PilotControl.FindAction("Fire", throwIfNotFound: true);
+        m_PilotControl_pitchAndRollJoystick = m_PilotControl.FindAction("pitchAndRollJoystick", throwIfNotFound: true);
+        m_PilotControl_StickRz = m_PilotControl.FindAction("StickRz", throwIfNotFound: true);
+        m_PilotControl_Translate = m_PilotControl.FindAction("Translate", throwIfNotFound: true);
+        m_PilotControl_FlightAssistToggle = m_PilotControl.FindAction("FlightAssistToggle", throwIfNotFound: true);
+        m_PilotControl_AimAissistToggle = m_PilotControl.FindAction("AimAissistToggle", throwIfNotFound: true);
+        m_PilotControl_DecelerateAssistToggle = m_PilotControl.FindAction("DecelerateAssistToggle", throwIfNotFound: true);
         // GeneralControls
         m_GeneralControls = asset.FindActionMap("GeneralControls", throwIfNotFound: true);
         m_GeneralControls_Escape = m_GeneralControls.FindAction("Escape", throwIfNotFound: true);
+        m_GeneralControls_Delta = m_GeneralControls.FindAction("Delta", throwIfNotFound: true);
+        m_GeneralControls_SwitchtoPilot = m_GeneralControls.FindAction("Switch to Pilot", throwIfNotFound: true);
+        m_GeneralControls_SwitchtoGunner = m_GeneralControls.FindAction("Switch to Gunner", throwIfNotFound: true);
+        m_GeneralControls_SwitchtoCommander = m_GeneralControls.FindAction("Switch to Commander", throwIfNotFound: true);
+        m_GeneralControls_SwitchtoEngineer = m_GeneralControls.FindAction("Switch to Engineer", throwIfNotFound: true);
+        // GunnerControl
+        m_GunnerControl = asset.FindActionMap("GunnerControl", throwIfNotFound: true);
+        m_GunnerControl_Look = m_GunnerControl.FindAction("Look", throwIfNotFound: true);
+        m_GunnerControl_Fire = m_GunnerControl.FindAction("Fire", throwIfNotFound: true);
+        m_GunnerControl_ToggleZoom = m_GunnerControl.FindAction("ToggleZoom", throwIfNotFound: true);
+        m_GunnerControl_Laser = m_GunnerControl.FindAction("Laser", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -640,79 +961,71 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // ManualShipThrusterControl
-    private readonly InputActionMap m_ManualShipThrusterControl;
-    private IManualShipThrusterControlActions m_ManualShipThrusterControlActionsCallbackInterface;
-    private readonly InputAction m_ManualShipThrusterControl_PitchAndRoll;
-    private readonly InputAction m_ManualShipThrusterControl_Yaw;
-    private readonly InputAction m_ManualShipThrusterControl_Throttle;
-    private readonly InputAction m_ManualShipThrusterControl_Fire;
-    private readonly InputAction m_ManualShipThrusterControl_pitchAndRollJoystick;
-    private readonly InputAction m_ManualShipThrusterControl_StickRz;
-    private readonly InputAction m_ManualShipThrusterControl_Translate;
-    private readonly InputAction m_ManualShipThrusterControl_FlightAssistToggle;
-    private readonly InputAction m_ManualShipThrusterControl_AimAissistToggle;
-    private readonly InputAction m_ManualShipThrusterControl_DecelerateAssistToggle;
-    public struct ManualShipThrusterControlActions
+    // PilotControl
+    private readonly InputActionMap m_PilotControl;
+    private IPilotControlActions m_PilotControlActionsCallbackInterface;
+    private readonly InputAction m_PilotControl_Yaw;
+    private readonly InputAction m_PilotControl_Throttle;
+    private readonly InputAction m_PilotControl_Fire;
+    private readonly InputAction m_PilotControl_pitchAndRollJoystick;
+    private readonly InputAction m_PilotControl_StickRz;
+    private readonly InputAction m_PilotControl_Translate;
+    private readonly InputAction m_PilotControl_FlightAssistToggle;
+    private readonly InputAction m_PilotControl_AimAissistToggle;
+    private readonly InputAction m_PilotControl_DecelerateAssistToggle;
+    public struct PilotControlActions
     {
         private @PlayerInputActions m_Wrapper;
-        public ManualShipThrusterControlActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @PitchAndRoll => m_Wrapper.m_ManualShipThrusterControl_PitchAndRoll;
-        public InputAction @Yaw => m_Wrapper.m_ManualShipThrusterControl_Yaw;
-        public InputAction @Throttle => m_Wrapper.m_ManualShipThrusterControl_Throttle;
-        public InputAction @Fire => m_Wrapper.m_ManualShipThrusterControl_Fire;
-        public InputAction @pitchAndRollJoystick => m_Wrapper.m_ManualShipThrusterControl_pitchAndRollJoystick;
-        public InputAction @StickRz => m_Wrapper.m_ManualShipThrusterControl_StickRz;
-        public InputAction @Translate => m_Wrapper.m_ManualShipThrusterControl_Translate;
-        public InputAction @FlightAssistToggle => m_Wrapper.m_ManualShipThrusterControl_FlightAssistToggle;
-        public InputAction @AimAissistToggle => m_Wrapper.m_ManualShipThrusterControl_AimAissistToggle;
-        public InputAction @DecelerateAssistToggle => m_Wrapper.m_ManualShipThrusterControl_DecelerateAssistToggle;
-        public InputActionMap Get() { return m_Wrapper.m_ManualShipThrusterControl; }
+        public PilotControlActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Yaw => m_Wrapper.m_PilotControl_Yaw;
+        public InputAction @Throttle => m_Wrapper.m_PilotControl_Throttle;
+        public InputAction @Fire => m_Wrapper.m_PilotControl_Fire;
+        public InputAction @pitchAndRollJoystick => m_Wrapper.m_PilotControl_pitchAndRollJoystick;
+        public InputAction @StickRz => m_Wrapper.m_PilotControl_StickRz;
+        public InputAction @Translate => m_Wrapper.m_PilotControl_Translate;
+        public InputAction @FlightAssistToggle => m_Wrapper.m_PilotControl_FlightAssistToggle;
+        public InputAction @AimAissistToggle => m_Wrapper.m_PilotControl_AimAissistToggle;
+        public InputAction @DecelerateAssistToggle => m_Wrapper.m_PilotControl_DecelerateAssistToggle;
+        public InputActionMap Get() { return m_Wrapper.m_PilotControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(ManualShipThrusterControlActions set) { return set.Get(); }
-        public void SetCallbacks(IManualShipThrusterControlActions instance)
+        public static implicit operator InputActionMap(PilotControlActions set) { return set.Get(); }
+        public void SetCallbacks(IPilotControlActions instance)
         {
-            if (m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface != null)
+            if (m_Wrapper.m_PilotControlActionsCallbackInterface != null)
             {
-                @PitchAndRoll.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnPitchAndRoll;
-                @PitchAndRoll.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnPitchAndRoll;
-                @PitchAndRoll.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnPitchAndRoll;
-                @Yaw.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnYaw;
-                @Yaw.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnYaw;
-                @Yaw.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnYaw;
-                @Throttle.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnThrottle;
-                @Throttle.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnThrottle;
-                @Throttle.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnThrottle;
-                @Fire.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnFire;
-                @Fire.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnFire;
-                @Fire.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnFire;
-                @pitchAndRollJoystick.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnPitchAndRollJoystick;
-                @pitchAndRollJoystick.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnPitchAndRollJoystick;
-                @pitchAndRollJoystick.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnPitchAndRollJoystick;
-                @StickRz.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnStickRz;
-                @StickRz.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnStickRz;
-                @StickRz.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnStickRz;
-                @Translate.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnTranslate;
-                @Translate.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnTranslate;
-                @Translate.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnTranslate;
-                @FlightAssistToggle.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnFlightAssistToggle;
-                @FlightAssistToggle.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnFlightAssistToggle;
-                @FlightAssistToggle.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnFlightAssistToggle;
-                @AimAissistToggle.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnAimAissistToggle;
-                @AimAissistToggle.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnAimAissistToggle;
-                @AimAissistToggle.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnAimAissistToggle;
-                @DecelerateAssistToggle.started -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnDecelerateAssistToggle;
-                @DecelerateAssistToggle.performed -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnDecelerateAssistToggle;
-                @DecelerateAssistToggle.canceled -= m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface.OnDecelerateAssistToggle;
+                @Yaw.started -= m_Wrapper.m_PilotControlActionsCallbackInterface.OnYaw;
+                @Yaw.performed -= m_Wrapper.m_PilotControlActionsCallbackInterface.OnYaw;
+                @Yaw.canceled -= m_Wrapper.m_PilotControlActionsCallbackInterface.OnYaw;
+                @Throttle.started -= m_Wrapper.m_PilotControlActionsCallbackInterface.OnThrottle;
+                @Throttle.performed -= m_Wrapper.m_PilotControlActionsCallbackInterface.OnThrottle;
+                @Throttle.canceled -= m_Wrapper.m_PilotControlActionsCallbackInterface.OnThrottle;
+                @Fire.started -= m_Wrapper.m_PilotControlActionsCallbackInterface.OnFire;
+                @Fire.performed -= m_Wrapper.m_PilotControlActionsCallbackInterface.OnFire;
+                @Fire.canceled -= m_Wrapper.m_PilotControlActionsCallbackInterface.OnFire;
+                @pitchAndRollJoystick.started -= m_Wrapper.m_PilotControlActionsCallbackInterface.OnPitchAndRollJoystick;
+                @pitchAndRollJoystick.performed -= m_Wrapper.m_PilotControlActionsCallbackInterface.OnPitchAndRollJoystick;
+                @pitchAndRollJoystick.canceled -= m_Wrapper.m_PilotControlActionsCallbackInterface.OnPitchAndRollJoystick;
+                @StickRz.started -= m_Wrapper.m_PilotControlActionsCallbackInterface.OnStickRz;
+                @StickRz.performed -= m_Wrapper.m_PilotControlActionsCallbackInterface.OnStickRz;
+                @StickRz.canceled -= m_Wrapper.m_PilotControlActionsCallbackInterface.OnStickRz;
+                @Translate.started -= m_Wrapper.m_PilotControlActionsCallbackInterface.OnTranslate;
+                @Translate.performed -= m_Wrapper.m_PilotControlActionsCallbackInterface.OnTranslate;
+                @Translate.canceled -= m_Wrapper.m_PilotControlActionsCallbackInterface.OnTranslate;
+                @FlightAssistToggle.started -= m_Wrapper.m_PilotControlActionsCallbackInterface.OnFlightAssistToggle;
+                @FlightAssistToggle.performed -= m_Wrapper.m_PilotControlActionsCallbackInterface.OnFlightAssistToggle;
+                @FlightAssistToggle.canceled -= m_Wrapper.m_PilotControlActionsCallbackInterface.OnFlightAssistToggle;
+                @AimAissistToggle.started -= m_Wrapper.m_PilotControlActionsCallbackInterface.OnAimAissistToggle;
+                @AimAissistToggle.performed -= m_Wrapper.m_PilotControlActionsCallbackInterface.OnAimAissistToggle;
+                @AimAissistToggle.canceled -= m_Wrapper.m_PilotControlActionsCallbackInterface.OnAimAissistToggle;
+                @DecelerateAssistToggle.started -= m_Wrapper.m_PilotControlActionsCallbackInterface.OnDecelerateAssistToggle;
+                @DecelerateAssistToggle.performed -= m_Wrapper.m_PilotControlActionsCallbackInterface.OnDecelerateAssistToggle;
+                @DecelerateAssistToggle.canceled -= m_Wrapper.m_PilotControlActionsCallbackInterface.OnDecelerateAssistToggle;
             }
-            m_Wrapper.m_ManualShipThrusterControlActionsCallbackInterface = instance;
+            m_Wrapper.m_PilotControlActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @PitchAndRoll.started += instance.OnPitchAndRoll;
-                @PitchAndRoll.performed += instance.OnPitchAndRoll;
-                @PitchAndRoll.canceled += instance.OnPitchAndRoll;
                 @Yaw.started += instance.OnYaw;
                 @Yaw.performed += instance.OnYaw;
                 @Yaw.canceled += instance.OnYaw;
@@ -743,17 +1056,27 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
             }
         }
     }
-    public ManualShipThrusterControlActions @ManualShipThrusterControl => new ManualShipThrusterControlActions(this);
+    public PilotControlActions @PilotControl => new PilotControlActions(this);
 
     // GeneralControls
     private readonly InputActionMap m_GeneralControls;
     private IGeneralControlsActions m_GeneralControlsActionsCallbackInterface;
     private readonly InputAction m_GeneralControls_Escape;
+    private readonly InputAction m_GeneralControls_Delta;
+    private readonly InputAction m_GeneralControls_SwitchtoPilot;
+    private readonly InputAction m_GeneralControls_SwitchtoGunner;
+    private readonly InputAction m_GeneralControls_SwitchtoCommander;
+    private readonly InputAction m_GeneralControls_SwitchtoEngineer;
     public struct GeneralControlsActions
     {
         private @PlayerInputActions m_Wrapper;
         public GeneralControlsActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Escape => m_Wrapper.m_GeneralControls_Escape;
+        public InputAction @Delta => m_Wrapper.m_GeneralControls_Delta;
+        public InputAction @SwitchtoPilot => m_Wrapper.m_GeneralControls_SwitchtoPilot;
+        public InputAction @SwitchtoGunner => m_Wrapper.m_GeneralControls_SwitchtoGunner;
+        public InputAction @SwitchtoCommander => m_Wrapper.m_GeneralControls_SwitchtoCommander;
+        public InputAction @SwitchtoEngineer => m_Wrapper.m_GeneralControls_SwitchtoEngineer;
         public InputActionMap Get() { return m_Wrapper.m_GeneralControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -766,6 +1089,21 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Escape.started -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnEscape;
                 @Escape.performed -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnEscape;
                 @Escape.canceled -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnEscape;
+                @Delta.started -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnDelta;
+                @Delta.performed -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnDelta;
+                @Delta.canceled -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnDelta;
+                @SwitchtoPilot.started -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnSwitchtoPilot;
+                @SwitchtoPilot.performed -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnSwitchtoPilot;
+                @SwitchtoPilot.canceled -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnSwitchtoPilot;
+                @SwitchtoGunner.started -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnSwitchtoGunner;
+                @SwitchtoGunner.performed -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnSwitchtoGunner;
+                @SwitchtoGunner.canceled -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnSwitchtoGunner;
+                @SwitchtoCommander.started -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnSwitchtoCommander;
+                @SwitchtoCommander.performed -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnSwitchtoCommander;
+                @SwitchtoCommander.canceled -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnSwitchtoCommander;
+                @SwitchtoEngineer.started -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnSwitchtoEngineer;
+                @SwitchtoEngineer.performed -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnSwitchtoEngineer;
+                @SwitchtoEngineer.canceled -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnSwitchtoEngineer;
             }
             m_Wrapper.m_GeneralControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -773,10 +1111,82 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Escape.started += instance.OnEscape;
                 @Escape.performed += instance.OnEscape;
                 @Escape.canceled += instance.OnEscape;
+                @Delta.started += instance.OnDelta;
+                @Delta.performed += instance.OnDelta;
+                @Delta.canceled += instance.OnDelta;
+                @SwitchtoPilot.started += instance.OnSwitchtoPilot;
+                @SwitchtoPilot.performed += instance.OnSwitchtoPilot;
+                @SwitchtoPilot.canceled += instance.OnSwitchtoPilot;
+                @SwitchtoGunner.started += instance.OnSwitchtoGunner;
+                @SwitchtoGunner.performed += instance.OnSwitchtoGunner;
+                @SwitchtoGunner.canceled += instance.OnSwitchtoGunner;
+                @SwitchtoCommander.started += instance.OnSwitchtoCommander;
+                @SwitchtoCommander.performed += instance.OnSwitchtoCommander;
+                @SwitchtoCommander.canceled += instance.OnSwitchtoCommander;
+                @SwitchtoEngineer.started += instance.OnSwitchtoEngineer;
+                @SwitchtoEngineer.performed += instance.OnSwitchtoEngineer;
+                @SwitchtoEngineer.canceled += instance.OnSwitchtoEngineer;
             }
         }
     }
     public GeneralControlsActions @GeneralControls => new GeneralControlsActions(this);
+
+    // GunnerControl
+    private readonly InputActionMap m_GunnerControl;
+    private IGunnerControlActions m_GunnerControlActionsCallbackInterface;
+    private readonly InputAction m_GunnerControl_Look;
+    private readonly InputAction m_GunnerControl_Fire;
+    private readonly InputAction m_GunnerControl_ToggleZoom;
+    private readonly InputAction m_GunnerControl_Laser;
+    public struct GunnerControlActions
+    {
+        private @PlayerInputActions m_Wrapper;
+        public GunnerControlActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Look => m_Wrapper.m_GunnerControl_Look;
+        public InputAction @Fire => m_Wrapper.m_GunnerControl_Fire;
+        public InputAction @ToggleZoom => m_Wrapper.m_GunnerControl_ToggleZoom;
+        public InputAction @Laser => m_Wrapper.m_GunnerControl_Laser;
+        public InputActionMap Get() { return m_Wrapper.m_GunnerControl; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(GunnerControlActions set) { return set.Get(); }
+        public void SetCallbacks(IGunnerControlActions instance)
+        {
+            if (m_Wrapper.m_GunnerControlActionsCallbackInterface != null)
+            {
+                @Look.started -= m_Wrapper.m_GunnerControlActionsCallbackInterface.OnLook;
+                @Look.performed -= m_Wrapper.m_GunnerControlActionsCallbackInterface.OnLook;
+                @Look.canceled -= m_Wrapper.m_GunnerControlActionsCallbackInterface.OnLook;
+                @Fire.started -= m_Wrapper.m_GunnerControlActionsCallbackInterface.OnFire;
+                @Fire.performed -= m_Wrapper.m_GunnerControlActionsCallbackInterface.OnFire;
+                @Fire.canceled -= m_Wrapper.m_GunnerControlActionsCallbackInterface.OnFire;
+                @ToggleZoom.started -= m_Wrapper.m_GunnerControlActionsCallbackInterface.OnToggleZoom;
+                @ToggleZoom.performed -= m_Wrapper.m_GunnerControlActionsCallbackInterface.OnToggleZoom;
+                @ToggleZoom.canceled -= m_Wrapper.m_GunnerControlActionsCallbackInterface.OnToggleZoom;
+                @Laser.started -= m_Wrapper.m_GunnerControlActionsCallbackInterface.OnLaser;
+                @Laser.performed -= m_Wrapper.m_GunnerControlActionsCallbackInterface.OnLaser;
+                @Laser.canceled -= m_Wrapper.m_GunnerControlActionsCallbackInterface.OnLaser;
+            }
+            m_Wrapper.m_GunnerControlActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Look.started += instance.OnLook;
+                @Look.performed += instance.OnLook;
+                @Look.canceled += instance.OnLook;
+                @Fire.started += instance.OnFire;
+                @Fire.performed += instance.OnFire;
+                @Fire.canceled += instance.OnFire;
+                @ToggleZoom.started += instance.OnToggleZoom;
+                @ToggleZoom.performed += instance.OnToggleZoom;
+                @ToggleZoom.canceled += instance.OnToggleZoom;
+                @Laser.started += instance.OnLaser;
+                @Laser.performed += instance.OnLaser;
+                @Laser.canceled += instance.OnLaser;
+            }
+        }
+    }
+    public GunnerControlActions @GunnerControl => new GunnerControlActions(this);
     private int m_KandMSchemeIndex = -1;
     public InputControlScheme KandMScheme
     {
@@ -795,9 +1205,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_StickSchemeIndex];
         }
     }
-    public interface IManualShipThrusterControlActions
+    public interface IPilotControlActions
     {
-        void OnPitchAndRoll(InputAction.CallbackContext context);
         void OnYaw(InputAction.CallbackContext context);
         void OnThrottle(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
@@ -811,5 +1220,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     public interface IGeneralControlsActions
     {
         void OnEscape(InputAction.CallbackContext context);
+        void OnDelta(InputAction.CallbackContext context);
+        void OnSwitchtoPilot(InputAction.CallbackContext context);
+        void OnSwitchtoGunner(InputAction.CallbackContext context);
+        void OnSwitchtoCommander(InputAction.CallbackContext context);
+        void OnSwitchtoEngineer(InputAction.CallbackContext context);
+    }
+    public interface IGunnerControlActions
+    {
+        void OnLook(InputAction.CallbackContext context);
+        void OnFire(InputAction.CallbackContext context);
+        void OnToggleZoom(InputAction.CallbackContext context);
+        void OnLaser(InputAction.CallbackContext context);
     }
 }

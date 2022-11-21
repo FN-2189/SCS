@@ -8,8 +8,6 @@ public class Control : MonoBehaviour
     [SerializeField]
     private ThrustManager thrusters;
 
-    private InputManager input;
-
     [SerializeField] ParticleSystem mainEngineParticles;
     [SerializeField] Rigidbody rb;
     [SerializeField] Camera thirdpersonview;
@@ -26,7 +24,6 @@ public class Control : MonoBehaviour
 
     private void Awake()
     {
-        input = GameObject.Find("Manager").GetComponent<InputManager>();
         railgun = railgunObject.GetComponent<Railgun>();
 
         ThirdPersonCameraPosition = thirdpersonview.transform.position;
@@ -38,7 +35,7 @@ public class Control : MonoBehaviour
         switch (railgunfiredCooldown) 
         {
             case 0:
-                if (input.Trigger == 1)
+                if (InputManager.Trigger == 1)
                 {
                     railgun.StartRailgunShot();
                     railgunCool = false;
@@ -47,7 +44,7 @@ public class Control : MonoBehaviour
                 }
                 break;
             case 1:
-                if (input.Trigger == 0 && railgunCool)
+                if (InputManager.Trigger == 0 && railgunCool)
                 {
                     railgunfiredCooldown = 0;
                 }
@@ -58,14 +55,14 @@ public class Control : MonoBehaviour
         switch (faTriggerCooldown)
         {
             case 0:
-                if (input.FAtoggle == 1)
+                if (InputManager.FAtoggle == 1)
                 {
                     thrusters.flightAssistOn = !thrusters.flightAssistOn;
                     faTriggerCooldown = 1;
                 }
                 break;
             case 1:
-                if (input.FAtoggle == 0)
+                if (InputManager.FAtoggle == 0)
                 {
                     faTriggerCooldown = 0;
                 }
@@ -90,7 +87,7 @@ public class Control : MonoBehaviour
         */
         // Good Code \/
         Autopilot ap = GetComponent<Autopilot>();
-        if (input.AAtoggle > 0 || input.DeAtoggle > 0) 
+        if (InputManager.AAtoggle > 0 || InputManager.DeAtoggle > 0) 
         {
             GetComponent<Autopilot>().autopilotActive = true;
             GetComponent<Autopilot>().InPosMode = true;
@@ -101,7 +98,7 @@ public class Control : MonoBehaviour
         }
         
         //Decelerate assist
-        if (input.DeAtoggle > 0 /*&& decelerateAssistCooldown == 0*/)
+        if (InputManager.DeAtoggle > 0 /*&& decelerateAssistCooldown == 0*/)
         {
             ap.decelerateAssistActive = true;
         }
@@ -110,7 +107,7 @@ public class Control : MonoBehaviour
             ap.decelerateAssistActive = false;
         }
         ParticleSystem.MainModule psMain = mainEngineParticles.main;
-        psMain.startLifetime = input.Throttle * 3;
+        psMain.startLifetime = InputManager.Throttle * 3;
 
         //mainEngineParticles.startLifetime = input.Throttle * 3;
 

@@ -17,9 +17,6 @@ public class ThrustManager : MonoBehaviour
     [SerializeField]
     private Rigidbody rb;
 
-    [SerializeField]
-    private InputManager input;
-
     [SerializeField] public bool flightAssistOn;
 
     public bool velFlightAssistOn;
@@ -47,7 +44,7 @@ public class ThrustManager : MonoBehaviour
         {
             if (thrusters[i].isInAxis[Axis.Pitch] && !inManualMode[Axis.Pitch])
             {
-                if (Mathf.Abs(input.Stick.y) > deadZone) thrusters[i].thrustLevel = -input.Stick.y;
+                if (Mathf.Abs(InputManager.Stick.y) > deadZone) thrusters[i].thrustLevel = -InputManager.Stick.y;
                 else thrusters[i].thrustLevel = 0f;
             }
         }
@@ -57,7 +54,7 @@ public class ThrustManager : MonoBehaviour
         {
             if (thrusters[i].isInAxis[Axis.Yaw] && !inManualMode[Axis.Yaw])
             {
-                if (Mathf.Abs(input.Stick.x) > deadZone) thrusters[i].thrustLevel = -input.Stick.x;
+                if (Mathf.Abs(InputManager.Stick.x) > deadZone) thrusters[i].thrustLevel = -InputManager.Stick.x;
                 else thrusters[i].thrustLevel = 0f;
             }
         }
@@ -67,7 +64,7 @@ public class ThrustManager : MonoBehaviour
         {
             if (thrusters[i].isInAxis[Axis.Roll] && !inManualMode[Axis.Roll])
             {
-                if (Mathf.Abs(input.Stick.z) > deadZone) thrusters[i].thrustLevel = -input.Stick.z;
+                if (Mathf.Abs(InputManager.Stick.z) > deadZone) thrusters[i].thrustLevel = -InputManager.Stick.z;
                 else thrusters[i].thrustLevel = 0f;
             }
         }
@@ -77,7 +74,7 @@ public class ThrustManager : MonoBehaviour
         {
             if (thrusters[i].isInAxis[Axis.Horizontal] && !inManualMode[Axis.Horizontal])
             {
-                if (Mathf.Abs(input.Translate.x) > deadZone) thrusters[i].thrustLevel = -input.Translate.x;
+                if (Mathf.Abs(InputManager.Translate.x) > deadZone) thrusters[i].thrustLevel = -InputManager.Translate.x;
                 else thrusters[i].thrustLevel = 0f;
             }
         }
@@ -87,7 +84,7 @@ public class ThrustManager : MonoBehaviour
         {
             if (thrusters[i].isInAxis[Axis.Vertical] && !inManualMode[Axis.Vertical])
             {
-                if(Mathf.Abs(input.Translate.y) > deadZone) thrusters[i].thrustLevel = -input.Translate.y;
+                if(Mathf.Abs(InputManager.Translate.y) > deadZone) thrusters[i].thrustLevel = -InputManager.Translate.y;
                 else thrusters[i].thrustLevel = 0f;
             }
         }
@@ -97,7 +94,7 @@ public class ThrustManager : MonoBehaviour
         {
             if (thrusters[i].isInAxis[Axis.Forward] && !inManualMode[Axis.Forward])
             {
-                thrusters[i].thrustLevel = input.Throttle;
+                thrusters[i].thrustLevel = InputManager.Throttle;
             }
         }
 
@@ -131,7 +128,7 @@ public class ThrustManager : MonoBehaviour
         Vector3 goalV = Vector3.zero;
 
         //flight assist pitch
-        if (Mathf.Abs(input.Stick.y) < deadZone && angularV.magnitude > 0.01)
+        if (Mathf.Abs(InputManager.Stick.y) < deadZone && angularV.magnitude > 0.01)
         {
             if (angularV.x < goalAngularVelocity.x)
             {
@@ -157,7 +154,7 @@ public class ThrustManager : MonoBehaviour
         }
 
         //flight assist yaw
-        if (Mathf.Abs(input.Stick.x) < deadZone && angularV.magnitude > 0.01)
+        if (Mathf.Abs(InputManager.Stick.x) < deadZone && angularV.magnitude > 0.01)
         {
             if (angularV.y < goalAngularVelocity.y)
             {
@@ -183,7 +180,7 @@ public class ThrustManager : MonoBehaviour
         }
 
         //flight assist roll
-        if (Mathf.Abs(input.Stick.z) < deadZone && angularV.magnitude > 0.01)
+        if (Mathf.Abs(InputManager.Stick.z) < deadZone && angularV.magnitude > 0.01)
         {
             if (angularV.z < goalAngularVelocity.z)
             {
@@ -212,7 +209,7 @@ public class ThrustManager : MonoBehaviour
         if (velFlightAssistOn)
         {
             //flight assist Horizontal
-            if (Mathf.Abs(input.Translate.x) < deadZone)
+            if (Mathf.Abs(InputManager.Translate.x) < deadZone)
             {
                 if (v.x < goalV.x)
                 {
@@ -238,7 +235,7 @@ public class ThrustManager : MonoBehaviour
             }
 
             //flight assist Vertical
-            if (Mathf.Abs(input.Translate.y) < deadZone)
+            if (Mathf.Abs(InputManager.Translate.y) < deadZone)
             {
                 if (v.y < goalV.y)
                 {

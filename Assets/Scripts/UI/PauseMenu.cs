@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    private InputManager input;
     public GameObject pauseMenuUI;
     public GameObject quitScreen;
     public GameObject settingsScreen;
@@ -16,7 +15,6 @@ public class PauseMenu : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        input = GameObject.Find("Manager").GetComponent<InputManager>();
         isPaused = false;
         pauseMenuUI.SetActive(false);
         quitScreen.SetActive(false);
@@ -26,7 +24,7 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (input.Escape)
+        if (InputManager.Escape)
         {
             if (isPaused)
             {
