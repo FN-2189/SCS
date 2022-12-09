@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Numerics;
 
 public static class MathHelper
@@ -56,6 +57,11 @@ public static class MathHelper
         return (x1 - x2) / dt;
     }
 
+    public static UnityEngine.Vector3 Derive(UnityEngine.Vector3 x1, UnityEngine.Vector3 x2, float dt)
+    {
+        return (x1 - x2) / dt;
+    }
+
     public static float Integrate(float[] samples, float dt)
     {
         float result = 0f;
@@ -71,17 +77,22 @@ public static class MathHelper
     public static float PID(float kp, float ki, float kd, float[] samples, float target, float dt)
     {
         // output: kp * (target - current) + ki * integrate samples + kd * derive last 2 values
+        float[] errorSamples = new float[samples.Length];
+        for(int i = 0; i < samples.Length; i++)
+        {
+            errorSamples[i] = target - samples[i];
+        }
 
         // proportional part
-        float error = kp * (target - samples[0]);
+        float error = kp * (errorSamples[0]);
 
         // integrated part
-        float i = ki * Integrate(samples, dt);
+        float integral = ki * Integrate(errorSamples, dt);
 
         // derivative part
-        float d = kd * Derive(samples[0], samples[1], dt);
+        float derivative = kd * Derive(errorSamples[0], errorSamples[1], dt);
 
 
-        return error + i + d;
+        return error + integral + derivative;
     }
 }

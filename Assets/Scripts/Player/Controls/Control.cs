@@ -27,7 +27,7 @@ public class Control : MonoBehaviour
         railgun = railgunObject.GetComponent<Railgun>();
 
         ThirdPersonCameraPosition = thirdpersonview.transform.position;
-
+        rb.centerOfMass = Vector3.zero;
     }
 
     private void Update()

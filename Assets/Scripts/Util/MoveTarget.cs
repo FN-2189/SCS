@@ -7,12 +7,12 @@ public class MoveTarget : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GetComponent<Rigidbody>().AddForce(transform.forward * 100, ForceMode.VelocityChange);
         
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        GetComponent<Rigidbody>().AddForce(transform.forward * 1000 * Time.deltaTime, ForceMode.Acceleration);
     }
 }
