@@ -54,7 +54,9 @@ public class CannonController : MonoBehaviour
         float t = (float)MathHelper.GetLowestPositive(MathHelper.SolveQuarticReal(a, b, c, d, e));
 
         CanHitTarget = true; // if time is good you may shoot
-        Debug.Log($"a: {a},b: {b},c: {c},d: {d},e: {e},t: {t}", this);
+
+        if(DebugManager.instance.GetSettingState("gun_log")) Debug.Log($"a: {a},b: {b},c: {c},d: {d},e: {e},t: {t}", this);
+        
         Vector3 leadPoint = -0.5f * t * t * relA - relV * t + relPos;
 
         Debug.DrawRay(transform.position, leadPoint.normalized * 10000f);

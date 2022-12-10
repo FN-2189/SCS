@@ -23,4 +23,9 @@ public class DebugSetting : MonoBehaviour
     {
         return toggle.isOn;
     }
+
+    public void SetState(bool value)
+    {
+        toggle.isOn = value;
+    }
 }

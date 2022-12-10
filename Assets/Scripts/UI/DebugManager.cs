@@ -14,7 +14,10 @@ public class DebugManager : MonoBehaviour
     [SerializeField]
     private GameObject debugSettingsPrefab;
 
-    public List<DebugSetting> Settings;
+    [SerializeField]
+    private Transform debugSettingsMenu;
+
+    private List<DebugSetting> _settings;
 
     void Awake()
     {
@@ -26,23 +29,46 @@ public class DebugManager : MonoBehaviour
 
         instance = this;
 
-        Settings = new List<DebugSetting>();
+        _settings = new List<DebugSetting>();
 
         for(int i = 0; i < labels.Length; i++)
         {
-            GameObject obj = Instantiate(debugSettingsPrefab, transform);
+            GameObject obj = Instantiate(debugSettingsPrefab, debugSettingsMenu);
             RectTransform t = obj.GetComponent<RectTransform>();
             t.anchoredPosition = Vector3.zero;
             t.localPosition = new Vector3(5f ,540f - 25f - 50f * i, 0f);
             DebugSetting setting = obj.GetComponent<DebugSetting>();
             setting.Setup(labels[i].Label, labels[i].ID);
-            Settings.Add(setting);
+            _settings.Add(setting);
+        }
+    }
+
+    private void Update()
+    {
+        if (InputManager.Debug)
+        {
+            debugSettingsMenu.gameObject.SetActive(!debugSettingsMenu.gameObject.activeSelf);
+
+            // disable all settings when not displayed
+            if (!debugSettingsMenu.gameObject.activeSelf)
+            {
+                foreach(DebugSetting s in _settings)
+                {
+                    s.SetState(false);
+                }
+            }
         }
     }
 
     public bool GetSettingState(string id)
     {
-        return instance.Settings.Find(setting => setting.ID == id).GetState();
+        DebugSetting setting;
+        if((setting = _settings.Find(setting => setting.ID == id)) == null)
+        {
+            Debug.LogError($"Error: Could not find setting: {id}!");
+            return false;
+        }
+        return _settings.Find(setting => setting.ID == id).GetState();
     }
 }
 

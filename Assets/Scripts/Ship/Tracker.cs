@@ -25,7 +25,7 @@ public class Tracker : MonoBehaviour
         Trackfile track = GetFile(1);
 
         track.UpdateFile(Target.position - transform.position, Target.rotation * Quaternion.Inverse(transform.rotation));
-        Debug.Log($"Target: {track.Name}: Position: {track.Position}, Velocity: {track.Velocity}m/s, Acceleration: {track.Acceleration}m/s²");
+        if(DebugManager.instance.GetSettingState("tracker_log")) Debug.Log($"Target: {track.Name}: Position: {track.Position}, Velocity: {track.Velocity}m/s, Acceleration: {track.Acceleration}m/s²");
 
         Debug.DrawRay(transform.position, trackedTargets[0].Position, Color.red);
     }

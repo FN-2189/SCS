@@ -7057,7 +7057,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 182156242}
-  - component: {fileID: 182156243}
   m_Layer: 5
   m_Name: Debug Menu
   m_TagString: Untagged
@@ -7085,28 +7084,6 @@ RectTransform:
   m_AnchoredPosition: {x: 300, y: -540}
   m_SizeDelta: {x: 600, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &182156243
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 182156241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7d27b844b0dade4bbf9f37fa16f54da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  labels:
-  - ID: a
-    Label: AAAAA
-  - ID: b
-    Label: BBBBB
-  - ID: c
-    Label: CCCCC
-  - ID: d
-    Label: DDDDD
-  debugSettingsPrefab: {fileID: 4050827656503897270, guid: 46703fd5e3fd65544a595b932983b2cd, type: 3}
 --- !u!1 &186867082
 GameObject:
   m_ObjectHideFlags: 0
@@ -13962,7 +13939,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3096275745932923647, guid: a97fe8958ace5b44f92b49fbfe99b2ad, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000019073486
+      value: 0.00002670288
       objectReference: {fileID: 0}
     - target: {fileID: 4969897592974415291, guid: a97fe8958ace5b44f92b49fbfe99b2ad, type: 3}
       propertyPath: m_RootOrder
@@ -14078,7 +14055,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5553216253583879264, guid: a97fe8958ace5b44f92b49fbfe99b2ad, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.00002670288
+      value: 0.000038146973
       objectReference: {fileID: 0}
     - target: {fileID: 6946140219015669007, guid: a97fe8958ace5b44f92b49fbfe99b2ad, type: 3}
       propertyPath: m_AnchorMax.x
@@ -46787,6 +46764,7 @@ GameObject:
   - component: {fileID: 1221816538}
   - component: {fileID: 1221816539}
   - component: {fileID: 1221816540}
+  - component: {fileID: 1221816541}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -46892,6 +46870,27 @@ MonoBehaviour:
   Player: {fileID: 980771550}
   maxDistance: 10000000
   maxVelocity: 10000000
+--- !u!114 &1221816541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221816533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7d27b844b0dade4bbf9f37fa16f54da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  labels:
+  - ID: gun_snap
+    Label: Enable Gun Snapping
+  - ID: gun_log
+    Label: Enable Gun Logging
+  - ID: tracker_log
+    Label: Enable Tracker Logging
+  debugSettingsPrefab: {fileID: 4050827656503897270, guid: 46703fd5e3fd65544a595b932983b2cd, type: 3}
+  debugSettingsMenu: {fileID: 182156242}
 --- !u!1 &1248063288
 GameObject:
   m_ObjectHideFlags: 0

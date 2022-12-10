@@ -124,7 +124,8 @@ public class CannonAimController : MonoBehaviour
 
         string s = "";
         foreach (float x in samplesX) s += $"{x} : ";
-        Debug.Log(s, gameObject);
+
+        if(DebugManager.instance.GetSettingState("gun_log")) Debug.Log(s, gameObject);
 
         // y values
         for (int i = samplesY.Length - 1; i >= 1; i--)

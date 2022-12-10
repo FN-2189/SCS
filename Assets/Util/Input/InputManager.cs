@@ -21,6 +21,7 @@ public class InputManager : MonoBehaviour
     public static bool Rangefind { get; private set; }
     public static bool Fire { get; private set; }
     public static bool Escape { get; private set; }
+    public static bool Debug { get; private set; }
     public static Vector2 MouseDelta { get; private set; }
 
     private float faTriggerCooldown;
@@ -76,6 +77,7 @@ public class InputManager : MonoBehaviour
 
         //general inputs
         bool escape = input.GeneralControls.Escape.triggered;
+        bool debug = input.GeneralControls.Debug.triggered;
 
         Vector2 delta = input.GeneralControls.Delta.ReadValue<Vector2>();
 
@@ -98,6 +100,7 @@ public class InputManager : MonoBehaviour
         Fire = fire;
 
         Escape = escape;
+        Debug = debug;
 
         MouseDelta = delta * mouseSensitivity;
 

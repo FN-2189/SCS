@@ -620,6 +620,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Debug"",
+                    ""type"": ""Button"",
+                    ""id"": ""2e61f78e-0660-4c15-9293-43da9ea8f050"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -686,6 +695,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Switch to Engineer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a09c4580-095d-439c-86b6-f4284a8ee8bf"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Debug"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -899,6 +919,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_GeneralControls_SwitchtoGunner = m_GeneralControls.FindAction("Switch to Gunner", throwIfNotFound: true);
         m_GeneralControls_SwitchtoCommander = m_GeneralControls.FindAction("Switch to Commander", throwIfNotFound: true);
         m_GeneralControls_SwitchtoEngineer = m_GeneralControls.FindAction("Switch to Engineer", throwIfNotFound: true);
+        m_GeneralControls_Debug = m_GeneralControls.FindAction("Debug", throwIfNotFound: true);
         // GunnerControl
         m_GunnerControl = asset.FindActionMap("GunnerControl", throwIfNotFound: true);
         m_GunnerControl_Look = m_GunnerControl.FindAction("Look", throwIfNotFound: true);
@@ -1067,6 +1088,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_GeneralControls_SwitchtoGunner;
     private readonly InputAction m_GeneralControls_SwitchtoCommander;
     private readonly InputAction m_GeneralControls_SwitchtoEngineer;
+    private readonly InputAction m_GeneralControls_Debug;
     public struct GeneralControlsActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -1077,6 +1099,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @SwitchtoGunner => m_Wrapper.m_GeneralControls_SwitchtoGunner;
         public InputAction @SwitchtoCommander => m_Wrapper.m_GeneralControls_SwitchtoCommander;
         public InputAction @SwitchtoEngineer => m_Wrapper.m_GeneralControls_SwitchtoEngineer;
+        public InputAction @Debug => m_Wrapper.m_GeneralControls_Debug;
         public InputActionMap Get() { return m_Wrapper.m_GeneralControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1104,6 +1127,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @SwitchtoEngineer.started -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnSwitchtoEngineer;
                 @SwitchtoEngineer.performed -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnSwitchtoEngineer;
                 @SwitchtoEngineer.canceled -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnSwitchtoEngineer;
+                @Debug.started -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnDebug;
+                @Debug.performed -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnDebug;
+                @Debug.canceled -= m_Wrapper.m_GeneralControlsActionsCallbackInterface.OnDebug;
             }
             m_Wrapper.m_GeneralControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -1126,6 +1152,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @SwitchtoEngineer.started += instance.OnSwitchtoEngineer;
                 @SwitchtoEngineer.performed += instance.OnSwitchtoEngineer;
                 @SwitchtoEngineer.canceled += instance.OnSwitchtoEngineer;
+                @Debug.started += instance.OnDebug;
+                @Debug.performed += instance.OnDebug;
+                @Debug.canceled += instance.OnDebug;
             }
         }
     }
@@ -1225,6 +1254,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnSwitchtoGunner(InputAction.CallbackContext context);
         void OnSwitchtoCommander(InputAction.CallbackContext context);
         void OnSwitchtoEngineer(InputAction.CallbackContext context);
+        void OnDebug(InputAction.CallbackContext context);
     }
     public interface IGunnerControlActions
     {
