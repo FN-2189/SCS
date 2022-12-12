@@ -6,7 +6,7 @@ public class Thruster : MonoBehaviour
 {
 
     [SerializeField]
-    private ThrusterType type;
+    public ThrusterType type;
 
     private ParticleSystem exhaustParticles;
 
