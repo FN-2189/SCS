@@ -31,7 +31,7 @@ public class CannonShootController : MonoBehaviour
     private void FixedUpdate()
     {
         // allowed to shoot
-        if (Time.time >= _timeNextShot /*&& _inBounds*/ && _controller.CanHitTarget && Mathf.Abs(_aimController.RelativeRotation.x) <= maxShootAngle && Mathf.Abs(_aimController.RelativeRotation.y) <= maxShootAngle)
+        if (DebugManager.instance.GetSettingState("gun_nosafety") || Time.time >= _timeNextShot /*&& _inBounds*/ && _controller.CanHitTarget && Mathf.Abs(_aimController.RelativeRotation.x) <= maxShootAngle && Mathf.Abs(_aimController.RelativeRotation.y) <= maxShootAngle)
         {
             if (InputManager.Fire)
             {
