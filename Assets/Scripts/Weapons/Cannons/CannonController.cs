@@ -21,7 +21,7 @@ public class CannonController : MonoBehaviour
 
     public Vector3 LocalTarget { get; private set; }
     public Vector2 RelativeRotation { get; private set; }
-    public bool CanHitTarget { get; private set; }
+    public bool CanHitTarget { get;  set; }
 
     // Start is called before the first frame update
     void Start()
@@ -37,19 +37,20 @@ public class CannonController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        target = tracker.GetFile(1);
+        /*
+        Trackfile target = transform.parent.Find("Tracker").GetComponent<Tracker>().GetFile(1);
         Vector3 relA = target.Acceleration;
         Vector3 relV = target.Velocity;
         Vector3 relPos = target.Position - transform.parent.rotation * transform.localPosition;
 
         // something wrong
-        float a = 0.25f * Vector3.Dot(relA, relA);
-        float b = Vector3.Dot(relA, relV);
-        float c = Vector3.Dot(relA, relPos) + Vector3.Dot(relV, relV) - (Type.MuzzleVelocity * Type.MuzzleVelocity);
-        float d = 2f * Vector3.Dot(relV, relPos);
-        float e = Vector3.Dot(relPos, relPos);
+        double a = 0.25d * Vector3.Dot(relA, relA);
+        double b = Vector3.Dot(relA, relV);
+        double c = Vector3.Dot(relA, relPos) + Vector3.Dot(relV, relV) - (Type.MuzzleVelocity * Type.MuzzleVelocity);
+        double d = 2f * Vector3.Dot(relV, relPos);
+        double e = Vector3.Dot(relPos, relPos);
 
         float t = (float)MathHelper.GetLowestPositive(MathHelper.SolveQuarticReal(a, b, c, d, e));
 
@@ -59,10 +60,10 @@ public class CannonController : MonoBehaviour
         
         Vector3 leadPoint = -0.5f * t * t * relA - relV * t + relPos;
 
-        Debug.DrawRay(transform.position, leadPoint.normalized * 10000f);
+        if (DebugManager.instance.GetSettingState("gun_log")) Debug.DrawRay(transform.position, leadPoint.normalized * 10000f);
 
         LocalTarget = transform.InverseTransformDirection(leadPoint);
-
+        */
         //LocalTarget = (Vector3)LeadCalculator.CaculateLead(target.Velocity, transform.position, transform.parent.position + target.Position, Type.MuzzleVelocity);
         //Debug.DrawRay(transform.position, LocalTarget);
     }

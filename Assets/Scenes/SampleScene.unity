@@ -6012,7 +6012,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &99172219
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -7063,7 +7063,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &182156242
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13939,7 +13939,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3096275745932923647, guid: a97fe8958ace5b44f92b49fbfe99b2ad, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.00002670288
+      value: -0.000030517578
       objectReference: {fileID: 0}
     - target: {fileID: 4969897592974415291, guid: a97fe8958ace5b44f92b49fbfe99b2ad, type: 3}
       propertyPath: m_RootOrder
@@ -14055,7 +14055,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5553216253583879264, guid: a97fe8958ace5b44f92b49fbfe99b2ad, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000038146973
+      value: 0.00002670288
       objectReference: {fileID: 0}
     - target: {fileID: 6946140219015669007, guid: a97fe8958ace5b44f92b49fbfe99b2ad, type: 3}
       propertyPath: m_AnchorMax.x
@@ -20685,9 +20685,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RelativeRotation: {x: 0, y: 0}
   deadZone: 0
-  kp: 50
-  ki: 1
-  kd: 0.1
+  kp: 10
+  ki: 0
+  kd: 0.2
 --- !u!114 &578880233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28177,9 +28177,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RelativeRotation: {x: 0, y: 0}
   deadZone: 0
-  kp: 50
-  ki: 1
-  kd: 0.1
+  kp: 10
+  ki: 0
+  kd: 0.2
 --- !u!114 &858562886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33309,7 +33309,7 @@ Transform:
   m_GameObject: {fileID: 897933076}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 13.83}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1067038596}
@@ -33734,7 +33734,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &941140677
 Transform:
   m_ObjectHideFlags: 0
@@ -46325,9 +46325,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RelativeRotation: {x: 0, y: 0}
   deadZone: 0
-  kp: 50
-  ki: 1
-  kd: 0.1
+  kp: 10
+  ki: 0
+  kd: 0.2
 --- !u!95 &1185359508
 Animator:
   serializedVersion: 4
@@ -46868,8 +46868,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 980771550}
-  maxDistance: 10000000
-  maxVelocity: 10000000
+  maxDistance: 1000
+  maxVelocity: 10
 --- !u!114 &1221816541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48533,9 +48533,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RelativeRotation: {x: 0, y: 0}
   deadZone: 0
-  kp: 50
-  ki: 1
-  kd: 0.1
+  kp: 10
+  ki: 0
+  kd: 0.2
 --- !u!114 &1374302561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67318,7 +67318,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 0
+  m_Constraints: 8
   m_CollisionDetection: 1
 --- !u!114 &1775464274
 MonoBehaviour:
@@ -67547,7 +67547,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &1794374658
 Rigidbody:
   m_ObjectHideFlags: 0
