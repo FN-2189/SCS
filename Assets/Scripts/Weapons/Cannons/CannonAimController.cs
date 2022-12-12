@@ -106,6 +106,9 @@ public class CannonAimController : MonoBehaviour
 
         _controller.Turret.localRotation = Quaternion.Euler(0, _currentAim.x, 0);
         _controller.BarrelMount.localRotation = Quaternion.Euler(_currentAim.y, 0, 0);
+
+        Debug.DrawRay(_controller.Barrel.position, _controller.Barrel.forward * 10000f, Color.green);
+
     }
 
     private void Sample(Vector2 newSample)
@@ -118,6 +121,11 @@ public class CannonAimController : MonoBehaviour
             samplesX[i] = samplesX[i - 1];
         }
         samplesX[0] = newSample.x;
+
+        string s = "";
+        foreach (float x in samplesX) s += $"{x} : ";
+
+        if(DebugManager.instance.GetSettingState("gun_log")) Debug.Log(s, gameObject);
 
         // y values
         for (int i = samplesY.Length - 1; i >= 1; i--)

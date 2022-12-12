@@ -22,10 +22,10 @@ public class CannonShootController : MonoBehaviour
         _controller = GetComponent<CannonController>();
         _aimController = GetComponent<CannonAimController>();
         _gunAnimator = GetComponent<Animator>();
+        _timeNextShot = Time.time;
         if (_controller.Muzzle == null) return;
         _muzzleParticles = _controller.Muzzle.GetComponentsInChildren<ParticleSystem>();
 
-        _timeNextShot = Time.time;
     }
 
     private void FixedUpdate()

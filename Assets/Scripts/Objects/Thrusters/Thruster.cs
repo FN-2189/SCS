@@ -4,8 +4,6 @@ using System.Collections.Generic;
 
 public class Thruster : MonoBehaviour
 {
-
-    [SerializeField]
     public ThrusterType type;
 
     private ParticleSystem exhaustParticles;

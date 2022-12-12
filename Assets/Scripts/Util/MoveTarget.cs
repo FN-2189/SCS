@@ -11,8 +11,8 @@ public class MoveTarget : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        GetComponent<Rigidbody>().AddForce(transform.forward * 1000 * Time.deltaTime, ForceMode.Acceleration);
+        GetComponent<Rigidbody>().AddForce(transform.forward * 10 * Time.fixedDeltaTime, ForceMode.VelocityChange);
     }
 }
