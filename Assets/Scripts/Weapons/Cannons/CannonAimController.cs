@@ -48,13 +48,13 @@ public class CannonAimController : MonoBehaviour
         double d = 2f * Vector3.Dot(relV, relPos);
         double e = Vector3.Dot(relPos, relPos);
 
-        float t = (float)MathHelper.GetLowestPositive(MathHelper.SolveQuarticReal(a, b, c, d, e));
+        float t = (float)MathHelper.GetLowestPositive(MathHelper.SolveQuarticReal(a, b, c, d, e)); // the last thing is needed
 
         _controller.CanHitTarget = true; // if time is good you may shoot
 
         if (DebugManager.instance.GetSettingState("gun_log")) Debug.Log($"a: {a},b: {b},c: {c},d: {d},e: {e},t: {t}", this);
 
-        Vector3 leadPoint = -0.5f * t * t * relA - relV * t + relPos;
+        Vector3 leadPoint = -(0.5f * t * t * relA + relV * t) + relPos;
 
         if (DebugManager.instance.GetSettingState("gun_log")) Debug.DrawRay(transform.position, leadPoint.normalized * 10000f);
 
