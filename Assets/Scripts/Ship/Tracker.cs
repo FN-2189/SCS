@@ -22,6 +22,9 @@ public class Tracker : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        // this thing is lagging at least one frame behind, other than that it's on point
+
+
         Trackfile track = GetFile(1);
 
         track.UpdateFile(Target.position - transform.position, Target.rotation * Quaternion.Inverse(transform.rotation));

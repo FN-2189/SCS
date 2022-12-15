@@ -26,6 +26,11 @@ public class InputManager : MonoBehaviour
     public static Vector2 Walk { get; private set; }
     public static bool Jump { get; private set; }
 
+    public static bool SwitchPilot { get; private set; }
+    public static bool SwitchGunner { get; private set; }
+    public static bool SwitchCommander { get; private set; }
+    public static bool SwitchEngineer { get; private set; }
+
     private float faTriggerCooldown;
 
     
@@ -85,6 +90,11 @@ public class InputManager : MonoBehaviour
 
         Vector2 walk = input.WalkControls.Move.ReadValue<Vector2>();
         bool jump = input.WalkControls.Jump.ReadValue<float>() > 0f;
+
+        SwitchPilot = input.GeneralControls.SwitchtoPilot.ReadValue<float>() > 0f;
+        SwitchGunner = input.GeneralControls.SwitchtoGunner.ReadValue<float>() > 0f;
+        SwitchCommander = input.GeneralControls.SwitchtoCommander.ReadValue<float>() > 0f;
+        SwitchEngineer = input.GeneralControls.SwitchtoEngineer.ReadValue<float>() > 0f;
 
         Vector3 stick = Vector3.zero;
         stick.x = yawIn;
