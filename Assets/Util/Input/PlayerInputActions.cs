@@ -656,6 +656,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""28b4693f-915f-49f9-be4f-42a9d1ee243c"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": ""InvertVector2(invertX=false)"",
+                    ""groups"": """",
+                    ""action"": ""Delta"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""6b924fd2-2501-4a3c-beba-a7c39e1a151f"",
                     ""path"": ""<Keyboard>/1"",
                     ""interactions"": """",
@@ -875,6 +886,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Sprint"",
+                    ""type"": ""Button"",
+                    ""id"": ""9455e295-9f5a-4676-a388-b7a0ec25b3b4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -965,6 +985,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""95dd85a0-e472-432b-9a22-0add2bedbb57"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -1044,6 +1075,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_WalkControls = asset.FindActionMap("WalkControls", throwIfNotFound: true);
         m_WalkControls_Move = m_WalkControls.FindAction("Move", throwIfNotFound: true);
         m_WalkControls_Jump = m_WalkControls.FindAction("Jump", throwIfNotFound: true);
+        m_WalkControls_Sprint = m_WalkControls.FindAction("Sprint", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1340,12 +1372,14 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private IWalkControlsActions m_WalkControlsActionsCallbackInterface;
     private readonly InputAction m_WalkControls_Move;
     private readonly InputAction m_WalkControls_Jump;
+    private readonly InputAction m_WalkControls_Sprint;
     public struct WalkControlsActions
     {
         private @PlayerInputActions m_Wrapper;
         public WalkControlsActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_WalkControls_Move;
         public InputAction @Jump => m_Wrapper.m_WalkControls_Jump;
+        public InputAction @Sprint => m_Wrapper.m_WalkControls_Sprint;
         public InputActionMap Get() { return m_Wrapper.m_WalkControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1361,6 +1395,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Jump.started -= m_Wrapper.m_WalkControlsActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_WalkControlsActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_WalkControlsActionsCallbackInterface.OnJump;
+                @Sprint.started -= m_Wrapper.m_WalkControlsActionsCallbackInterface.OnSprint;
+                @Sprint.performed -= m_Wrapper.m_WalkControlsActionsCallbackInterface.OnSprint;
+                @Sprint.canceled -= m_Wrapper.m_WalkControlsActionsCallbackInterface.OnSprint;
             }
             m_Wrapper.m_WalkControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -1371,6 +1408,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @Sprint.started += instance.OnSprint;
+                @Sprint.performed += instance.OnSprint;
+                @Sprint.canceled += instance.OnSprint;
             }
         }
     }
@@ -1426,5 +1466,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnSprint(InputAction.CallbackContext context);
     }
 }

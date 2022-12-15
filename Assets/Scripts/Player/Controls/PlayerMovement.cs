@@ -27,6 +27,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float lookSpeed;
 
+    [SerializeField]
+    private float movementThreshhold;
+
+    [SerializeField]
+    private float sprintMultiplier;
+
     private Rigidbody rb;
 
     private Vector3 angles;
@@ -59,10 +65,11 @@ public class PlayerMovement : MonoBehaviour
 
         // if on floor
         // very bad practice oh no
-        if((col = Physics.OverlapSphere(groundCheck.position, .3f)).Length > 0 && Array.Find(col, c => c.name != "B E A N"))
+        if((col = Physics.OverlapSphere(groundCheck.position, .5f)).Length > 0 && Array.Find(col, c => c.name != "B E A N"))
         {
+
             forceVector.x = InputManager.Walk.x * moveSpeed;
-            forceVector.z = InputManager.Walk.y * moveSpeed;
+            forceVector.z = InputManager.Walk.y * moveSpeed * (1 + sprintMultiplier * InputManager.Sprint);
 
             forceVector.y = InputManager.Jump ? jumpSpeed : 0f;
 
@@ -73,6 +80,10 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        rb.AddForce(transform.rotation * forceVector);
+        if (rb.velocity.magnitude < movementThreshhold * (1 + sprintMultiplier * InputManager.Sprint))
+        {
+            rb.AddForce(transform.rotation * forceVector);
+        }
+        
     }
 }

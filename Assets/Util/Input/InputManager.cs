@@ -24,6 +24,7 @@ public class InputManager : MonoBehaviour
     public static bool Debug { get; private set; }
     public static Vector2 MouseDelta { get; private set; }
     public static Vector2 Walk { get; private set; }
+    public static float Sprint { get; private set; }
     public static bool Jump { get; private set; }
 
     public static bool SwitchPilot { get; private set; }
@@ -90,6 +91,7 @@ public class InputManager : MonoBehaviour
 
         Vector2 walk = input.WalkControls.Move.ReadValue<Vector2>();
         bool jump = input.WalkControls.Jump.ReadValue<float>() > 0f;
+        float sprint = input.WalkControls.Sprint.ReadValue<float>();
 
         SwitchPilot = input.GeneralControls.SwitchtoPilot.ReadValue<float>() > 0f;
         SwitchGunner = input.GeneralControls.SwitchtoGunner.ReadValue<float>() > 0f;
@@ -121,6 +123,7 @@ public class InputManager : MonoBehaviour
 
         Walk = walk;
         Jump = jump;
+        Sprint = sprint;
 
     }
 }
