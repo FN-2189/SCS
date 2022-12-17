@@ -20,18 +20,22 @@ public class Teleporter : MonoBehaviour
         if (InputManager.SwitchPilot)
         {
             transform.position = targetPositions[0];
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
         else if (InputManager.SwitchGunner)
         {
             transform.position = targetPositions[1];
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
         else if (InputManager.SwitchCommander)
         {
             transform.position = targetPositions[2];
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
         else if (InputManager.SwitchEngineer)
         {
             transform.position = targetPositions[3];
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
     }
 }
