@@ -69,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         // if (shipRb.velocity.magnitude != 0) { shipRbVelocity = shipRb.velocity; } else { shipRbVelocity = new Vector3(0.1f, 0.1f, 0.1f); }
-        gravity = MathHelper.Derive(shipLastVelocity - relativeSpaceLastVelocity ,shipRb.velocity - RelativeSpace.CurrentVelocity, Time.deltaTime);
+        gravity = MathHelper.Derive(shipLastVelocity - relativeSpaceLastVelocity ,shipRb.velocity - RelativeSpace.CurrentVelocity, Time.fixedDeltaTime);
 
         Debug.Log("Gravity: " + gravity + " Last Velocity " + (shipLastVelocity + relativeSpaceLastVelocity) + "Current Velocity:" + (shipRb.velocity + RelativeSpace.CurrentVelocity));
         shipLastVelocity = shipRb.velocity;
