@@ -37,10 +37,13 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 angles;
 
+    private bool jumpCooldown;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         angles = Vector3.zero;
+        jumpCooldown = false;
     }
 
     private void Update()
@@ -71,7 +74,13 @@ public class PlayerMovement : MonoBehaviour
             forceVector.x = InputManager.Walk.x * moveSpeed;
             forceVector.z = InputManager.Walk.y * moveSpeed * (1 + sprintMultiplier * InputManager.Sprint);
 
-            forceVector.y = InputManager.Jump ? jumpSpeed : 0f;
+            // Debug.Log(InputManager.Jump + " " + jumpCooldown);
+            if (InputManager.Jump && !jumpCooldown)
+            {
+                forceVector.y = jumpSpeed;
+                jumpCooldown = true;
+                Debug.Log("Jump");
+            }
 
             Debug.Log("Force Vector:" + forceVector + " Input WS " + InputManager.Walk.y + InputManager.Walk.x);
 
@@ -86,6 +95,11 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(transform.rotation * forceVector);
         }
-        
+
+        if (!InputManager.Jump && jumpCooldown)
+        {
+            jumpCooldown = false;
+            Debug.Log("Jump Cooldown reset");
+        }
     }
 }
