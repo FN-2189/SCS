@@ -33557,6 +33557,7 @@ GameObject:
   - component: {fileID: 980771548}
   - component: {fileID: 980771551}
   - component: {fileID: 980771553}
+  - component: {fileID: 980771554}
   m_Layer: 0
   m_Name: B O A T
   m_TagString: Relative
@@ -33661,6 +33662,20 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 3568db7b0b8c6d14f8c5cfedbd548700, type: 3}
+--- !u!114 &980771554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980771546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b3e5ca15a2d60b4f9b860c5f973a774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: B O A T
+  shipType: shippymacshipface
 --- !u!1 &981000133
 GameObject:
   m_ObjectHideFlags: 0
