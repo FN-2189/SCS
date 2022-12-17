@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class Tracker : MonoBehaviour
@@ -64,7 +65,8 @@ public class Trackfile
     public Vector3 Velocity {
         get
         {
-            return _lastVelocities[0];
+            // this negativ shouldn't be needed here need to fix
+            return _lastVelocities[0] - Acceleration * Time.fixedDeltaTime;
         }
     }
     public Vector3 Acceleration {

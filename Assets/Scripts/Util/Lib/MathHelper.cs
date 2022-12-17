@@ -16,8 +16,14 @@ public static class MathHelper
         return new double[] { x1, x2 };
     }
 
+    // this is likely the problem
     public static double[] SolveQuarticReal(double a, double b, double c, double d, double e)
     {
+        a += 0.0000000000001;
+        b += 0.0000000000001;
+        c += 0.0000000000001;
+        d += 0.0000000000001;
+        e += 0.0000000000001;
         double D0 = c * c - 3 * b * d + 12 * a * e;
         double D1 = 2 * c * c * c - 9 * b * c * d + 27 * b * b * e + 27 * a * d * d - 72 * a * c * e;
         double p = (8 * a * c - 3 * b * b) / (8 * a * a);
@@ -40,6 +46,26 @@ public static class MathHelper
         }
 
         return realSolutions.ToArray();
+    }
+
+    public static Complex[] SolveQuarticComplex(double a, double b, double c, double d, double e)
+    {
+        double D0 = c * c - 3 * b * d + 12 * a * e;
+        double D1 = 2 * c * c * c - 9 * b * c * d + 27 * b * b * e + 27 * a * d * d - 72 * a * c * e;
+        double p = (8 * a * c - 3 * b * b) / (8 * a * a);
+        double q = (b * b * b - 4 * a * b * c + 8 * a * a * d) / (8 * a * a * a);
+        Complex Q = Complex.Pow((D1 + Complex.Sqrt(D1 * D1 - 4 * D0 * D0 * D0)) / 2, 1.0 / 3.0);
+        Complex S = Complex.Sqrt(-2 * p / 3 + (Q + D0 / Q) / (3 * a)) / 2;
+        Complex u = Complex.Sqrt(-4 * S * S - 2 * p + q / S) / 2;
+        Complex v = Complex.Sqrt(-4 * S * S - 2 * p - q / S) / 2;
+        Complex x1 = -b / (4 * a) - S + u;
+        Complex x2 = -b / (4 * a) - S - u;
+        Complex x3 = -b / (4 * a) + S + v;
+        Complex x4 = -b / (4 * a) + S - v;
+
+        Complex[] solutions = new Complex[] { x1, x2, x3, x4 };
+
+        return solutions;
     }
 
     public static double GetLowestPositive(double[] values)

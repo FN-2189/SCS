@@ -48,7 +48,7 @@ public class CannonAimController : MonoBehaviour
         double d = 2f * Vector3.Dot(relV, relPos);
         double e = Vector3.Dot(relPos, relPos);
 
-        float t = (float)MathHelper.GetLowestPositive(MathHelper.SolveQuarticReal(a, b, c, d, e)); // the last thing is needed
+        float t = (float)MathHelper.GetLowestPositive(MathHelper.SolveQuarticReal(a, b, c, d, e));
 
         _controller.CanHitTarget = true; // if time is good you may shoot
 
