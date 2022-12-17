@@ -41,6 +41,7 @@ public class InputManager : MonoBehaviour
         //Cursor.visible = false;
         input = new PlayerInputActions();
         input.Enable();
+        input.WalkControls.Enable();
     }
 
     private void Update()

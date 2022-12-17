@@ -65,13 +65,15 @@ public class PlayerMovement : MonoBehaviour
 
         // if on floor
         // very bad practice oh no
-        if((col = Physics.OverlapSphere(groundCheck.position, .5f)).Length > 0 && Array.Find(col, c => c.name != "B E A N"))
+        if((col = Physics.OverlapSphere(groundCheck.position, .3f)).Length > 0 && Array.Find(col, c => c.name != "B E A N"))
         {
 
             forceVector.x = InputManager.Walk.x * moveSpeed;
             forceVector.z = InputManager.Walk.y * moveSpeed * (1 + sprintMultiplier * InputManager.Sprint);
 
             forceVector.y = InputManager.Jump ? jumpSpeed : 0f;
+
+            Debug.Log("Force Vector:" + forceVector + " Input WS " + InputManager.Walk.y + InputManager.Walk.x);
 
             // if nothing pressed and on ground stop Player
             if(forceVector.magnitude == 0f)
