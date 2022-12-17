@@ -17,8 +17,7 @@ public class RelativeSpace : MonoBehaviour
     [SerializeField]
     private float maxVelocity;
 
-
-    private static Vector3 _currentVelocity = Vector3.zero;
+    public static Vector3 CurrentVelocity { get; private set;}
 
 
     // Start is called before the first frame update
@@ -127,7 +126,7 @@ public class RelativeSpace : MonoBehaviour
         // Manually move objects without rb
         foreach(Transform t in _allTransformsNoRb)
         {
-            t.position += _currentVelocity * Time.deltaTime;
+            t.position += CurrentVelocity * Time.deltaTime;
         }
     }
 
@@ -147,7 +146,7 @@ public class RelativeSpace : MonoBehaviour
             t.velocity += amount;
         }
 
-        _currentVelocity += amount;
+        CurrentVelocity += amount;
     }
 
     public static void addObject(Transform t)

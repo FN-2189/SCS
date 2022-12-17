@@ -33,6 +33,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float sprintMultiplier;
 
+    [SerializeField]
+    private Rigidbody shipRb;
+    private Vector3 shipRbVelocity;
+    private Vector3 shipLastVelocity = Vector3.zero;
+    private Vector3 relativeSpaceLastVelocity = Vector3.zero;
+
     private Rigidbody rb;
 
     private Vector3 angles;
@@ -44,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         angles = Vector3.zero;
         jumpCooldown = false;
+
     }
 
     private void Update()
@@ -56,10 +63,20 @@ public class PlayerMovement : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(new Vector3(0f, angles.y, 0f));
         head.localRotation = Quaternion.Euler(new Vector3(angles.x, 0f, 0f));
+
     }
 
     void FixedUpdate()
     {
+        // if (shipRb.velocity.magnitude != 0) { shipRbVelocity = shipRb.velocity; } else { shipRbVelocity = new Vector3(0.1f, 0.1f, 0.1f); }
+        gravity = MathHelper.Derive(shipLastVelocity - relativeSpaceLastVelocity ,shipRb.velocity - RelativeSpace.CurrentVelocity, Time.deltaTime);
+
+        Debug.Log("Gravity: " + gravity + " Last Velocity " + (shipLastVelocity + relativeSpaceLastVelocity) + "Current Velocity:" + (shipRb.velocity + RelativeSpace.CurrentVelocity));
+        shipLastVelocity = shipRb.velocity;
+        relativeSpaceLastVelocity = RelativeSpace.CurrentVelocity;
+
+
+
         // simulate gravity
         rb.AddForce(gravity, ForceMode.Acceleration);
         Vector3 forceVector = Vector3.zero;
@@ -82,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("Jump");
             }
 
-            Debug.Log("Force Vector:" + forceVector + " Input WS " + InputManager.Walk.y + InputManager.Walk.x);
+            // Debug.Log("Force Vector:" + forceVector + " Input WS " + InputManager.Walk.y + InputManager.Walk.x);
 
             // if nothing pressed and on ground stop Player
             if(forceVector.magnitude == 0f)
