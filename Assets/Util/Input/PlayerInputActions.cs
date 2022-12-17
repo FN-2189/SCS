@@ -659,7 +659,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""id"": ""28b4693f-915f-49f9-be4f-42a9d1ee243c"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
-                    ""processors"": ""InvertVector2(invertX=false)"",
+                    ""processors"": ""InvertVector2(invertX=false,invertY=false)"",
                     ""groups"": """",
                     ""action"": ""Delta"",
                     ""isComposite"": false,
