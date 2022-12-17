@@ -18,12 +18,7 @@ MonoBehaviour:
   MaxTraverseRight: 0
   MaxTraverseUp: 70
   MaxTraverseDown: 5
-  Turret: {fileID: 919132149155446097, guid: 877da56c76e9aa64a8193e5aa93270eb, type: 3}
-  BarrelMount: {fileID: 0}
-  Barrel: {fileID: 0}
-  BarrelMountOffset: {x: 0, y: 0, z: 0}
-  BarrelOffset: {x: 0, y: 0, z: 0}
   BulletSpawnOffset: 0
-  FireRate: 0
-  BulletType: {fileID: 0}
-  MuzzleVelocity: 0
+  FireRate: 3000
+  BulletType: {fileID: 5141249847025850347, guid: d6e7b3488d067d246b100b40b660339a, type: 3}
+  MuzzleVelocity: 1050
