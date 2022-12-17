@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
         angles = transform.rotation.eulerAngles;
         angles.x = head.rotation.eulerAngles.x;
         angles.y += InputManager.MouseDelta.x * lookSpeed * Time.deltaTime;
-        angles.x += InputManager.MouseDelta.y * lookSpeed * Time.deltaTime;
+        angles.x += -InputManager.MouseDelta.y * lookSpeed * Time.deltaTime;
 
         transform.rotation = Quaternion.Euler(new Vector3(0f, angles.y, 0f));
         head.localRotation = Quaternion.Euler(new Vector3(angles.x, 0f, 0f));
