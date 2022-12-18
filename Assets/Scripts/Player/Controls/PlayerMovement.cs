@@ -39,6 +39,12 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 shipLastVelocity = Vector3.zero;
     private Vector3 relativeSpaceLastVelocity = Vector3.zero;
 
+    [SerializeField]
+    private Transform shipTransform;
+
+    [SerializeField]
+    private Vector3 gravcorrection;
+
     private Rigidbody rb;
 
     private Vector3 angles;
@@ -69,8 +75,9 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         // if (shipRb.velocity.magnitude != 0) { shipRbVelocity = shipRb.velocity; } else { shipRbVelocity = new Vector3(0.1f, 0.1f, 0.1f); }
-        gravity = MathHelper.Derive(shipLastVelocity - relativeSpaceLastVelocity ,shipRb.velocity - RelativeSpace.CurrentVelocity, Time.deltaTime);
-
+        // shipRb.rotation.eulerAngles.x + 90, -shipRb.rotation.eulerAngles.y, -shipRb.rotation.eulerAngles.z
+        gravity = Quaternion.Euler(-90, 0, 0) * shipTransform.InverseTransformVector(MathHelper.Derive(shipLastVelocity - relativeSpaceLastVelocity ,shipRb.velocity - RelativeSpace.CurrentVelocity, Time.deltaTime));
+        
         Debug.Log("Gravity: " + gravity + " Last Velocity " + (shipLastVelocity + relativeSpaceLastVelocity) + "Current Velocity:" + (shipRb.velocity + RelativeSpace.CurrentVelocity));
         shipLastVelocity = shipRb.velocity;
         relativeSpaceLastVelocity = RelativeSpace.CurrentVelocity;

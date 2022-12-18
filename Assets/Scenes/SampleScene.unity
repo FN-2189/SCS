@@ -46109,6 +46109,8 @@ MonoBehaviour:
   movementThreshhold: 2
   sprintMultiplier: 2
   shipRb: {fileID: 980771548}
+  shipTransform: {fileID: 980771550}
+  gravcorrection: {x: 0, y: 0, z: 0}
 --- !u!54 &1262404401
 Rigidbody:
   m_ObjectHideFlags: 0
