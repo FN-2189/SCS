@@ -14,11 +14,13 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     private Transform groundCheck;
+    private bool grounded;
 
     [SerializeField]
     private Transform head;
 
     [SerializeField]
+    private float walkSpeed;
     private float moveSpeed;
 
     [SerializeField]
@@ -26,16 +28,30 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     private float lookSpeed;
+    private float xRotation;
+    private float yRotation;
 
     [SerializeField]
+    private float walkThreshhold;
     private float movementThreshhold;
 
     [SerializeField]
     private float sprintMultiplier;
+    [SerializeField]
+    private float sneakMultiplier;
+    [SerializeField]
+    private float airMultiplier;
+
+    public MovementState state;
+    public enum MovementState
+    {
+        sprinting,
+        sneaking,
+        walking
+    }
 
     [SerializeField]
     private Rigidbody shipRb;
-    private Vector3 shipRbVelocity;
     private Vector3 shipLastVelocity = Vector3.zero;
     private Vector3 relativeSpaceLastVelocity = Vector3.zero;
 
@@ -43,7 +59,11 @@ public class PlayerMovement : MonoBehaviour
     private Transform shipTransform;
 
     [SerializeField]
+    private CapsuleCollider playerCollider;
+
+    [SerializeField]
     private Vector3 gravcorrection;
+    private Vector3 gravdirection;
 
     private Rigidbody rb;
 
@@ -62,68 +82,117 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         // looking
-        angles = transform.rotation.eulerAngles;
-        angles.x = head.rotation.eulerAngles.x;
-        angles.y += InputManager.MouseDelta.x * lookSpeed * Time.deltaTime;
-        angles.x += -InputManager.MouseDelta.y * lookSpeed * Time.deltaTime;
+        //angles = transform.rotation.eulerAngles;
+        //angles.x = head.rotation.eulerAngles.x;
+        //angles.y += InputManager.MouseDelta.x * lookSpeed * Time.deltaTime;
+        //angles.x += -InputManager.MouseDelta.y * lookSpeed * Time.deltaTime;
 
-        transform.rotation = Quaternion.Euler(new Vector3(0f, angles.y, 0f));
-        head.localRotation = Quaternion.Euler(new Vector3(angles.x, 0f, 0f));
+        float mouseX = InputManager.MouseDelta.x * lookSpeed * Time.fixedDeltaTime;
+        float mouseY = InputManager.MouseDelta.y * lookSpeed * Time.fixedDeltaTime;
+
+        yRotation += mouseX;
+
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+
+        transform.rotation = Quaternion.Euler(0, yRotation, 0);
+        head.rotation = Quaternion.Euler(xRotation, yRotation, 0);
 
     }
 
     void FixedUpdate()
     {
-        // if (shipRb.velocity.magnitude != 0) { shipRbVelocity = shipRb.velocity; } else { shipRbVelocity = new Vector3(0.1f, 0.1f, 0.1f); }
-        // shipRb.rotation.eulerAngles.x + 90, -shipRb.rotation.eulerAngles.y, -shipRb.rotation.eulerAngles.z
-        gravity = Quaternion.Euler(-90, 0, 0) * shipTransform.InverseTransformVector(MathHelper.Derive(shipLastVelocity - relativeSpaceLastVelocity ,shipRb.velocity - RelativeSpace.CurrentVelocity, Time.deltaTime));
-        
-        Debug.Log("Gravity: " + gravity + " Last Velocity " + (shipLastVelocity + relativeSpaceLastVelocity) + "Current Velocity:" + (shipRb.velocity + RelativeSpace.CurrentVelocity));
-        shipLastVelocity = shipRb.velocity;
-        relativeSpaceLastVelocity = RelativeSpace.CurrentVelocity;
+        applyGravity();
 
-
-
-        // simulate gravity
-        rb.AddForce(gravity, ForceMode.Acceleration);
         Vector3 forceVector = Vector3.zero;
 
         Collider[] col;
 
-        // if on floor
-        // very bad practice oh no
-        if((col = Physics.OverlapSphere(groundCheck.position, .3f)).Length > 0 && Array.Find(col, c => c.name != "B E A N"))
+        //(col = Physics.OverlapSphere(groundCheck.position, .3f)).Length > 0 && Array.Find(col, c => c.name != "B E A N")
+        grounded = (col = Physics.OverlapSphere(groundCheck.position, .3f)).Length > 0 && Array.Find(col, c => c.name != "B E A N");
+
+        stateHandler();
+
+        if(grounded)
         {
 
             forceVector.x = InputManager.Walk.x * moveSpeed;
-            forceVector.z = InputManager.Walk.y * moveSpeed * (1 + sprintMultiplier * InputManager.Sprint);
+            forceVector.z = InputManager.Walk.y * moveSpeed;
 
-            // Debug.Log(InputManager.Jump + " " + jumpCooldown);
             if (InputManager.Jump && !jumpCooldown)
             {
-                forceVector.y = jumpSpeed;
+                rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+                rb.AddForce(jumpSpeed * -gravdirection, ForceMode.Impulse);
                 jumpCooldown = true;
                 Debug.Log("Jump");
+                Invoke(nameof(resetJump), 0.15f);
             }
-
-            // Debug.Log("Force Vector:" + forceVector + " Input WS " + InputManager.Walk.y + InputManager.Walk.x);
 
             // if nothing pressed and on ground stop Player
             if(forceVector.magnitude == 0f)
             {
                 rb.AddForce(-rb.velocity * counterForce);
+                Debug.Log("Counter");
             }
-        }
+        } 
+        else{ forceVector.x = InputManager.Walk.x * walkSpeed * airMultiplier;forceVector.z = InputManager.Walk.y * walkSpeed * airMultiplier;}
 
-        if (rb.velocity.magnitude < movementThreshhold * (1 + sprintMultiplier * InputManager.Sprint))
+        if (rb.velocity.magnitude < movementThreshhold)
         {
             rb.AddForce(transform.rotation * forceVector);
         }
 
-        if (!InputManager.Jump && jumpCooldown)
+    }
+
+    private void applyGravity()
+    {
+        // compute gravity
+        gravity = Quaternion.Euler(-90, 0, 0) * shipTransform.InverseTransformVector(MathHelper.Derive(shipLastVelocity - relativeSpaceLastVelocity, shipRb.velocity - RelativeSpace.CurrentVelocity, Time.deltaTime));
+
+        shipLastVelocity = shipRb.velocity;
+        relativeSpaceLastVelocity = RelativeSpace.CurrentVelocity;
+
+        gravdirection = gravity.normalized;
+
+        // simulate gravity
+        rb.AddForce(gravity, ForceMode.Acceleration);
+    }
+
+    private void resetJump()
+    {
+        jumpCooldown = false;
+    }
+
+    private void stateHandler()
+    {
+        if (InputManager.Sprint > 0f && !InputManager.Sneak)
         {
-            jumpCooldown = false;
-            Debug.Log("Jump Cooldown reset");
+            state = MovementState.sprinting;
+            moveSpeed = walkSpeed * sprintMultiplier;
+            movementThreshhold = walkThreshhold * sprintMultiplier;
+            playerCollider.height = 1.8f;
+            groundCheck.localPosition = new Vector3(groundCheck.localPosition.x, -0.7f, groundCheck.localPosition.z);
         }
+        else if (InputManager.Sneak)
+        {
+            if (state != MovementState.sneaking)
+            {
+                rb.AddForce(gravity * 0.5f, ForceMode.Impulse);
+            }
+            state = MovementState.sneaking;
+            moveSpeed = walkSpeed * sneakMultiplier;
+            movementThreshhold = walkThreshhold * sneakMultiplier;
+            playerCollider.height = 0.8f;
+            groundCheck.localPosition = new Vector3(groundCheck.localPosition.x, -0.2f, groundCheck.localPosition.z);
+        }
+        else
+        {
+            state = MovementState.walking;
+            moveSpeed = walkSpeed;
+            movementThreshhold = walkThreshhold;
+            playerCollider.height = 1.8f;
+            groundCheck.localPosition = new Vector3(groundCheck.localPosition.x, -0.7f, groundCheck.localPosition.z);
+        }
+
     }
 }

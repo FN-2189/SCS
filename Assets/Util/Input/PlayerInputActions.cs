@@ -53,6 +53,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Sneak"",
+                    ""type"": ""Button"",
+                    ""id"": ""3eb9df3f-5ab7-4e3f-b678-5feaa521b5ed"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -163,6 +172,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eac0498d-05a4-407c-89f4-0c439df5ed26"",
+                    ""path"": ""<Keyboard>/leftCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sneak"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1061,6 +1081,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_WalkControls_Move = m_WalkControls.FindAction("Move", throwIfNotFound: true);
         m_WalkControls_Jump = m_WalkControls.FindAction("Jump", throwIfNotFound: true);
         m_WalkControls_Sprint = m_WalkControls.FindAction("Sprint", throwIfNotFound: true);
+        m_WalkControls_Sneak = m_WalkControls.FindAction("Sneak", throwIfNotFound: true);
         // PilotControl
         m_PilotControl = asset.FindActionMap("PilotControl", throwIfNotFound: true);
         m_PilotControl_Yaw = m_PilotControl.FindAction("Yaw", throwIfNotFound: true);
@@ -1149,6 +1170,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_WalkControls_Move;
     private readonly InputAction m_WalkControls_Jump;
     private readonly InputAction m_WalkControls_Sprint;
+    private readonly InputAction m_WalkControls_Sneak;
     public struct WalkControlsActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -1156,6 +1178,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_WalkControls_Move;
         public InputAction @Jump => m_Wrapper.m_WalkControls_Jump;
         public InputAction @Sprint => m_Wrapper.m_WalkControls_Sprint;
+        public InputAction @Sneak => m_Wrapper.m_WalkControls_Sneak;
         public InputActionMap Get() { return m_Wrapper.m_WalkControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1174,6 +1197,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Sprint.started -= m_Wrapper.m_WalkControlsActionsCallbackInterface.OnSprint;
                 @Sprint.performed -= m_Wrapper.m_WalkControlsActionsCallbackInterface.OnSprint;
                 @Sprint.canceled -= m_Wrapper.m_WalkControlsActionsCallbackInterface.OnSprint;
+                @Sneak.started -= m_Wrapper.m_WalkControlsActionsCallbackInterface.OnSneak;
+                @Sneak.performed -= m_Wrapper.m_WalkControlsActionsCallbackInterface.OnSneak;
+                @Sneak.canceled -= m_Wrapper.m_WalkControlsActionsCallbackInterface.OnSneak;
             }
             m_Wrapper.m_WalkControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -1187,6 +1213,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Sprint.started += instance.OnSprint;
                 @Sprint.performed += instance.OnSprint;
                 @Sprint.canceled += instance.OnSprint;
+                @Sneak.started += instance.OnSneak;
+                @Sneak.performed += instance.OnSneak;
+                @Sneak.canceled += instance.OnSneak;
             }
         }
     }
@@ -1449,6 +1478,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
+        void OnSneak(InputAction.CallbackContext context);
     }
     public interface IPilotControlActions
     {

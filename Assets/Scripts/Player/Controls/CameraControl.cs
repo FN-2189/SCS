@@ -21,12 +21,12 @@ public class CameraControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _currentRotation.x += -InputManager.MouseDelta.y * sensitivity * Time.deltaTime;
-        _currentRotation.x = Mathf.Clamp(_currentRotation.x, -maxUp, maxDown);
-
-        _currentRotation.y += InputManager.MouseDelta.x * sensitivity * Time.deltaTime;
-        _currentRotation.y = Mathf.Clamp(_currentRotation.y, -maxSide, maxSide);
-
-        transform.localRotation = Quaternion.Euler(_currentRotation);
+        //_currentRotation.x += -InputManager.MouseDelta.y * sensitivity * Time.deltaTime;
+        //_currentRotation.x = Mathf.Clamp(_currentRotation.x, -maxUp, maxDown);
+        //
+        //_currentRotation.y += InputManager.MouseDelta.x * sensitivity * Time.deltaTime;
+        //_currentRotation.y = Mathf.Clamp(_currentRotation.y, -maxSide, maxSide);
+        //
+        //transform.localRotation = Quaternion.Euler(_currentRotation);
     }
 }
