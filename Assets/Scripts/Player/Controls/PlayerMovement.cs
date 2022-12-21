@@ -173,7 +173,7 @@ public class PlayerMovement : MonoBehaviour
             state = MovementState.sprinting;
             moveSpeed = walkSpeed * sprintMultiplier;
             movementThreshhold = walkThreshhold * sprintMultiplier;
-            playerCollider.height = 1.8f;
+            playerCollider.height = 1.85f;
             groundCheck.localPosition = new Vector3(groundCheck.localPosition.x, -0.7f, groundCheck.localPosition.z);
         }
         else if (InputManager.Sneak)
@@ -193,7 +193,7 @@ public class PlayerMovement : MonoBehaviour
             state = MovementState.walking;
             moveSpeed = walkSpeed;
             movementThreshhold = walkThreshhold;
-            playerCollider.height = 1.8f;
+            playerCollider.height = 1.85f;
             groundCheck.localPosition = new Vector3(groundCheck.localPosition.x, -0.7f, groundCheck.localPosition.z);
         }
 
