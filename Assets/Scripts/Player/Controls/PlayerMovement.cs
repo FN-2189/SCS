@@ -102,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        applyGravity();
+        ApplyGravity();
 
         Vector3 forceVector = Vector3.zero;
 
@@ -111,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
         //(col = Physics.OverlapSphere(groundCheck.position, .3f)).Length > 0 && Array.Find(col, c => c.name != "B E A N")
         grounded = (col = Physics.OverlapSphere(groundCheck.position, .3f)).Length > 0 && Array.Find(col, c => c.name != "B E A N");
 
-        stateHandler();
+        StateHandler();
 
         if(grounded)
         {
@@ -125,26 +125,29 @@ public class PlayerMovement : MonoBehaviour
                 rb.AddForce(jumpSpeed * -gravdirection, ForceMode.Impulse);
                 jumpCooldown = true;
                 Debug.Log("Jump");
-                Invoke(nameof(resetJump), 0.15f);
+                Invoke(nameof(ResetJump), 0.15f);
             }
 
             // if nothing pressed and on ground stop Player
             if(forceVector.magnitude == 0f)
             {
                 rb.AddForce(-rb.velocity * counterForce);
-                Debug.Log("Counter");
             }
         } 
         else{ forceVector.x = InputManager.Walk.x * walkSpeed * airMultiplier;forceVector.z = InputManager.Walk.y * walkSpeed * airMultiplier;}
 
-        if (rb.velocity.magnitude < movementThreshhold)
+        if (rb.velocity.magnitude < movementThreshhold && grounded)
+        {
+            rb.AddForce(transform.rotation * forceVector);
+        } 
+        else if (!grounded)
         {
             rb.AddForce(transform.rotation * forceVector);
         }
 
     }
 
-    private void applyGravity()
+    private void ApplyGravity()
     {
         // compute gravity
         gravity = Quaternion.Euler(-90, 0, 0) * shipTransform.InverseTransformVector(MathHelper.Derive(shipLastVelocity - relativeSpaceLastVelocity, shipRb.velocity - RelativeSpace.CurrentVelocity, Time.deltaTime));
@@ -158,12 +161,12 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(gravity, ForceMode.Acceleration);
     }
 
-    private void resetJump()
+    private void ResetJump()
     {
         jumpCooldown = false;
     }
 
-    private void stateHandler()
+    private void StateHandler()
     {
         if (InputManager.Sprint > 0f && !InputManager.Sneak)
         {
