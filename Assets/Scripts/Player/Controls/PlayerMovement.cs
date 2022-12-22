@@ -71,6 +71,9 @@ public class PlayerMovement : MonoBehaviour
 
     private bool jumpCooldown;
 
+    [SerializeField]
+    private Animator animator;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -110,6 +113,7 @@ public class PlayerMovement : MonoBehaviour
 
         //(col = Physics.OverlapSphere(groundCheck.position, .3f)).Length > 0 && Array.Find(col, c => c.name != "B E A N")
         grounded = (col = Physics.OverlapSphere(groundCheck.position, .3f)).Length > 0 && Array.Find(col, c => c.name != "B E A N");
+        animator.SetBool("isGrounded", grounded);
 
         StateHandler();
 
@@ -133,6 +137,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.AddForce(-rb.velocity * counterForce);
             }
+            else
+            {
+                animator.SetBool("isWalking", true);
+            }
+
+           
         } 
         else{ forceVector.x = InputManager.Walk.x * walkSpeed * airMultiplier;forceVector.z = InputManager.Walk.y * walkSpeed * airMultiplier;}
 
@@ -168,6 +178,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void StateHandler()
     {
+
+
         if (InputManager.Sprint > 0f && !InputManager.Sneak)
         {
             state = MovementState.sprinting;
@@ -175,6 +187,8 @@ public class PlayerMovement : MonoBehaviour
             movementThreshhold = walkThreshhold * sprintMultiplier;
             playerCollider.height = 1.85f;
             groundCheck.localPosition = new Vector3(groundCheck.localPosition.x, -0.7f, groundCheck.localPosition.z);
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isSprinting", true);
         }
         else if (InputManager.Sneak)
         {
@@ -187,6 +201,8 @@ public class PlayerMovement : MonoBehaviour
             movementThreshhold = walkThreshhold * sneakMultiplier;
             playerCollider.height = 0.8f;
             groundCheck.localPosition = new Vector3(groundCheck.localPosition.x, -0.2f, groundCheck.localPosition.z);
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isSprinting", false);
         }
         else
         {
@@ -195,6 +211,8 @@ public class PlayerMovement : MonoBehaviour
             movementThreshhold = walkThreshhold;
             playerCollider.height = 1.85f;
             groundCheck.localPosition = new Vector3(groundCheck.localPosition.x, -0.7f, groundCheck.localPosition.z);
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isSprinting", false);
         }
 
     }
