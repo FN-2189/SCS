@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 93323795}
-  m_IndirectSpecularColor: {r: 0.17822434, g: 0.22315373, b: 0.30521375, a: 1}
+  m_IndirectSpecularColor: {r: 0.16570595, g: 0.20782423, b: 0.28763703, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1304,7 +1304,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 21811c6451c165640ab64fbc0e5ea2fa, type: 2}
+  - {fileID: 2100000, guid: d2b3e9a58acc8b04b957ef2fad47b1df, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2139,7 +2139,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3096275745932923647, guid: a97fe8958ace5b44f92b49fbfe99b2ad, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000030517578
+      value: 0.000091552734
       objectReference: {fileID: 0}
     - target: {fileID: 4969897592974415291, guid: a97fe8958ace5b44f92b49fbfe99b2ad, type: 3}
       propertyPath: m_Pivot.x
@@ -2231,7 +2231,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5553216253583879264, guid: a97fe8958ace5b44f92b49fbfe99b2ad, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000030517578
+      value: 0.000091552734
       objectReference: {fileID: 0}
     - target: {fileID: 6946140219015669007, guid: a97fe8958ace5b44f92b49fbfe99b2ad, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2247,6 +2247,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7267950893813632433, guid: a97fe8958ace5b44f92b49fbfe99b2ad, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874219506463788523, guid: a97fe8958ace5b44f92b49fbfe99b2ad, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874219506463788523, guid: a97fe8958ace5b44f92b49fbfe99b2ad, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874219506463788523, guid: a97fe8958ace5b44f92b49fbfe99b2ad, type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2542,7 +2554,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6478536213147159724, guid: 3568db7b0b8c6d14f8c5cfedbd548700, type: 3}
+  - {fileID: 2100000, guid: 62f31196c5c54e94e86feedfddc4bebd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2840,15 +2852,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9203838482176673287}
-  m_LocalRotation: {x: -0.70635444, y: 0.032611497, z: -0.0326115, w: 0.7063543}
-  m_LocalPosition: {x: -22.9, y: -4.8, z: 43.3}
+  m_LocalRotation: {x: -0.5329841, y: 0.11006113, z: -0.07016872, w: 0.835997}
+  m_LocalPosition: {x: -19.6, y: 1.9214058, z: 26.966755}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 869786388}
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -84.713, y: 90, z: -90}
+  m_LocalEulerAnglesHint: {x: -61.128, y: 32.413, z: -29.075}
 --- !u!1 &9203838482176673287
 GameObject:
   m_ObjectHideFlags: 0
