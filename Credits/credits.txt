@@ -1,0 +1,4 @@
+Assets/Textures/... : ...
+
+List of all external resources used in this project.
+Please update when adding new assets.
