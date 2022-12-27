@@ -15,6 +15,17 @@
 > <a href="https://github.com/FN-2189/SCS" color="#b32835">SCS</a> is a space battle simulator with near-future technology setting aiming to achieve relatively realistic space combat. It is a open source game made in the Unity game engine. Almost all assets and all scripts were created by us. <br>
 > Creators: <a href="https://github.com/FN-2189" color="#b32835">FN 2189</a> / <a href="https://github.com/PipInSpace" color="#b32835">PipInSpace</a>
 
+<p align="center">
+<img src="https://github.com/FN-2189/SCS/blob/master/ReadMeResources/scsscreen1.png">
+</p>
+
+> Placeholder ship "shippymacshipface"
+
+<p align="center">
+<img src="https://github.com/FN-2189/SCS/blob/master/ReadMeResources/scsscreen2.png">
+</p>
+
+> Inside shippymacshipface's cockpit
 
 ## Planned Features
 
@@ -27,3 +38,4 @@ The game takes place in first person exclusively, and players interact with the 
 ## Credits
 
 > You can find a list of all third party assets <a href="https://github.com/FN-2189/SCS/blob/master/Credits/credits.txt" color="#b32835">here</a>.
+> <br>MCRN Logos are placeholders, and not here to stay.
