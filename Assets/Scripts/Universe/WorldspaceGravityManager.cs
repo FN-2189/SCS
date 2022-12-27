@@ -5,7 +5,7 @@ using UnityEngine;
 public class WorldspaceGravityManager : MonoBehaviour
 {
     [SerializeField]
-    private List<Rigidbody> affectedObjects;
+    private List<WorldspaceGravityObject> affectedObjects;
     [SerializeField]
     private Planet[] gravitationalObjects;
 
@@ -15,8 +15,10 @@ public class WorldspaceGravityManager : MonoBehaviour
     void FixedUpdate()
     {
         
-        foreach (Rigidbody rb in affectedObjects)
+        foreach (WorldspaceGravityObject worldspaceGravityObject in affectedObjects)
         {
+            Rigidbody rb = worldspaceGravityObject.GetComponent<Rigidbody>();
+
             Vector3 worldspaceGravity = Vector3.zero;
             foreach (Planet gravObject in gravitationalObjects)
             {
@@ -26,7 +28,7 @@ public class WorldspaceGravityManager : MonoBehaviour
                 worldspaceGravity += ((float)a) * (gravObject.transform.position - rb.transform.position).normalized;
             }
 
-            rb.AddForce(worldspaceGravity, ForceMode.Acceleration);
+            worldspaceGravityObject.gravity = worldspaceGravity;
 
             Debug.Log(rb + ": " + worldspaceGravity);
         }
