@@ -160,7 +160,7 @@ public class PlayerMovement : MonoBehaviour
     private void ApplyGravity()
     {
         // compute gravity
-        gravity = Quaternion.Euler(-90, 0, 0) * shipTransform.InverseTransformVector(MathHelper.Derive(shipLastVelocity - relativeSpaceLastVelocity, shipRb.velocity - RelativeSpace.CurrentVelocity, Time.deltaTime));
+        gravity = Quaternion.Euler(-90, 0, 0) * shipTransform.InverseTransformVector(MathHelper.Derive(shipLastVelocity - relativeSpaceLastVelocity, shipRb.velocity - RelativeSpace.CurrentVelocity, Time.deltaTime)) - shipRb.GetComponent<WorldspaceGravityObject>().gravity;
 
         shipLastVelocity = shipRb.velocity;
         relativeSpaceLastVelocity = RelativeSpace.CurrentVelocity;
