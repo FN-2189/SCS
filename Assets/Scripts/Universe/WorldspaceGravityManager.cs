@@ -29,8 +29,6 @@ public class WorldspaceGravityManager : MonoBehaviour
             }
 
             worldspaceGravityObject.gravity = worldspaceGravity;
-
-            Debug.Log(rb + ": " + worldspaceGravity);
         }
 
     }
