@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Reactor : ShipModule
 {
+    [SerializeField]
+    private ParticleSystem reactorParticleSystem;
 
     // Start is called before the first frame update
     void Start()
@@ -21,5 +23,6 @@ public class Reactor : ShipModule
     public override void ModuleDestroyed()
     {
         Debug.Log("Reactor goes boom");
+        reactorParticleSystem.Play();
     }
 }
