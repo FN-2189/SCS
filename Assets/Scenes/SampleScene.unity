@@ -22018,7 +22018,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2dfdf14b3ac733d4ea38c25e0c0456aa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1745400.1
+      value: 385000600
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2dfdf14b3ac733d4ea38c25e0c0456aa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -22062,7 +22062,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2dfdf14b3ac733d4ea38c25e0c0456aa, type: 3}
       propertyPath: m_Name
-      value: Moon 1
+      value: Luna
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2dfdf14b3ac733d4ea38c25e0c0456aa, type: 3}
       propertyPath: m_IsActive
@@ -51264,6 +51264,7 @@ MonoBehaviour:
   - {fileID: 980771555}
   gravitationalObjects:
   - {fileID: 647115222}
+  - {fileID: 1668326185}
 --- !u!1 &1248063288
 GameObject:
   m_ObjectHideFlags: 0
@@ -84060,7 +84061,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 487411134681837984, guid: cf838acd8b0ca2d4988650dcb214087e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000019073486
+      value: 0.000022888184
       objectReference: {fileID: 0}
     - target: {fileID: 598138125678993407, guid: cf838acd8b0ca2d4988650dcb214087e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -84204,7 +84205,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7001817006109380415, guid: cf838acd8b0ca2d4988650dcb214087e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000011444092
+      value: 0.000019073486
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf838acd8b0ca2d4988650dcb214087e, type: 3}
