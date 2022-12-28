@@ -27,6 +27,12 @@
 
 > Inside shippymacshipface's cockpit
 
+<p align="center">
+<img src="https://github.com/FN-2189/SCS/blob/master/ReadMeResources/image.png">
+</p>
+
+> The solar system
+
 ## Planned Features
 
 > <a href="https://github.com/users/FN-2189/projects/1" color="#b32835">Roadmap available here</a><br><br>
