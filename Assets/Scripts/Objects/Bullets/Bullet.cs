@@ -36,6 +36,11 @@ public class Bullet : MonoBehaviour
 
     public void Hit(Collider hit)
     {
+        if (hit.TryGetComponent(out ShipModule module))
+        {
+            module.Damage(10);
+        }
+
         Debug.Log(gameObject.name + " hit " + hit.gameObject.name + " at T+" + Time.time + "s");
         Destroy(gameObject);
     }

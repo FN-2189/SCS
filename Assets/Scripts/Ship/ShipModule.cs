@@ -44,8 +44,11 @@ public class ShipModule : MonoBehaviour
 
     public virtual void ModuleDestroyed() {}
 
-    public void OnTriggerEnter(Collider other)
+    public virtual void Damage(float damage)
     {
-        health += -10;
+        float tempHealth = health;
+        tempHealth -= damage;
+
+        health = Mathf.Max(tempHealth, 0f);
     }
 }

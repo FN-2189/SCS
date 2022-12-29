@@ -5,7 +5,7 @@ using UnityEngine;
 public class Reactor : ShipModule
 {
     [SerializeField]
-    private ParticleSystem reactorParticleSystem;
+    private GameObject explosionPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -22,8 +22,9 @@ public class Reactor : ShipModule
 
     public override void ModuleDestroyed()
     {
-        Debug.Log("Reactor goes boom");
-        reactorParticleSystem.Play();
+        GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+
+        Destroy(explosion, 30f);
     }
 
 }
