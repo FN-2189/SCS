@@ -32,8 +32,6 @@ public class Reactor : PowerModule
     {
         float targetPowerOutput = driveconeConsumption + (distributor.maxPower - distributor.power);
 
-        Debug.Log(targetPowerOutput);
-
         if (fuelTank.fluid == "Hydrogen Fuel" && fuelTank.fluidLevel > 0 && moduleActive && fuelTank.moduleActive)
         {
             float output = Mathf.Min(targetPowerOutput, maxPowerOutput);

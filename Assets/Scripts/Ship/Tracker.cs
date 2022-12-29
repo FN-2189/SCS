@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tracker : MonoBehaviour
+public class Tracker : PowerModule
 {
+    [Header("Tracker")]
     public Transform Target;
 
     private List<Trackfile> trackedTargets = new();
@@ -20,14 +21,15 @@ public class Tracker : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    override public void FixedUpdate()
     {
+        base.FixedUpdate();
         // this thing is lagging at least one frame behind, other than that it's on point
 
 
         Trackfile track = GetFile(1);
 
-        track.UpdateFile(Target.position - transform.position, Target.rotation * Quaternion.Inverse(transform.rotation));
+        if(moduleActive) track.UpdateFile(Target.position - transform.position, Target.rotation * Quaternion.Inverse(transform.rotation));
         if(DebugManager.instance.GetSettingState("tracker_log")) Debug.Log($"Target: {track.Name}: Position: {track.Position}, Velocity: {track.Velocity}m/s, Acceleration: {track.Acceleration}m/s²");
 
         Debug.DrawRay(transform.position, trackedTargets[0].Position, Color.red);

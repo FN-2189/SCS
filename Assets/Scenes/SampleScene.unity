@@ -35360,6 +35360,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1399629165}
   - component: {fileID: 1399629166}
+  - component: {fileID: 1399629167}
   m_Layer: 0
   m_Name: Tracker
   m_TagString: Untagged
@@ -35394,7 +35395,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9267585eac1e06f44999d7567fc0da67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyed: 0
+  maxHealth: 10
+  health: 10
+  collider: {fileID: 1399629167}
+  distributor: {fileID: 0}
+  consumptionMultiplier: 1
+  powerConsumption: 0.01
+  moduleActive: 1
   Target: {fileID: 1775464272}
+--- !u!65 &1399629167
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399629164}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1401621031
 GameObject:
   m_ObjectHideFlags: 0
@@ -44103,7 +44125,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 487411134681837984, guid: cf838acd8b0ca2d4988650dcb214087e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -0.000015258789
       objectReference: {fileID: 0}
     - target: {fileID: 598138125678993407, guid: cf838acd8b0ca2d4988650dcb214087e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -44247,7 +44269,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7001817006109380415, guid: cf838acd8b0ca2d4988650dcb214087e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.00002670288
+      value: 0.000015258789
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf838acd8b0ca2d4988650dcb214087e, type: 3}

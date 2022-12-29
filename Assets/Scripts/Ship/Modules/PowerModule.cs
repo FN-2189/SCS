@@ -21,7 +21,7 @@ public class PowerModule : ShipModule
         base.Update();
     }
 
-    private void FixedUpdate()
+    public virtual void FixedUpdate()
     {
         if (distributor.power > powerConsumption && moduleActive)
         {
