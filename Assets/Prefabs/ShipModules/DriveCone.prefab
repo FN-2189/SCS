@@ -49,9 +49,13 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   collider: {fileID: 0}
+  distributor: {fileID: 0}
+  consumptionMultiplier: 1
+  powerConsumption: 0.01
+  moduleActive: 1
   reactor: {fileID: 0}
-  powerConsumption: 0.5
-  active: 1
+  driveCone: {fileID: 0}
+  maxDriveConeConsumption: 1
 --- !u!135 &8048655604709555787
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class Reactor : PowerModule
 
     public FluidTank fuelTank;
     public float powerOutput;
+    public float driveconeConsumption;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +36,7 @@ public class Reactor : PowerModule
         if (fuelTank.fluid == "Hydrogen Fuel" && fuelTank.fluidLevel > 0 && distributor.power < distributor.maxPower && moduleActive)
         {
             fuelTank.fluidLevel -= 0.001f;
-            distributor.power += powerOutput;
+            distributor.power += powerOutput - driveconeConsumption;
         }
     }
 

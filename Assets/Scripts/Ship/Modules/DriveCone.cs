@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class DriveCone : PowerModule
 {
-    [Header("Reactor")]
+    [Header("Drive Cone")]
     [SerializeField]
     private Reactor reactor;
+    [SerializeField]
+    private Thruster driveCone;
+    [SerializeField]
+    private float maxDriveConeConsumption;
 
     void Start()
     {
@@ -16,7 +20,8 @@ public class DriveCone : PowerModule
     // Update is called once per frame
     new void Update()
     {
-        base.Update();   
+        base.Update();
+        reactor.driveconeConsumption = maxDriveConeConsumption * driveCone.thrustLevel;
     }
 
 }

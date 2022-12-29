@@ -49,11 +49,13 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   collider: {fileID: 9112648872186824688}
+  distributor: {fileID: 0}
+  consumptionMultiplier: 1
+  powerConsumption: 0
+  moduleActive: 1
   explosionPrefab: {fileID: 6975540055226248527, guid: 7be3164813eec1a4d82b627c7815dd13, type: 3}
   fuelTank: {fileID: 0}
-  powerOutput: 1
-  power: 0
-  active: 1
+  powerOutput: 1.5
 --- !u!135 &9112648872186824688
 SphereCollider:
   m_ObjectHideFlags: 0
