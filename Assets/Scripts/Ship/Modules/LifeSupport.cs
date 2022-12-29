@@ -18,7 +18,7 @@ public class LifeSupport : PowerModule
     // Update is called once per frame
     new void FixedUpdate()
     {
-        if (atmosphereVolume < maxAtmosphereVolume)
+        if (atmosphereVolume < maxAtmosphereVolume && moduleActive)
         {
             if (o2Tank.fluid == "Oxygen" && o2Tank.fluidLevel > 0 && h2Tank.fluid == "Hydrogen" && h2Tank.fluidLevel > 0)
             {
