@@ -56389,7 +56389,7 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   collider: {fileID: 1416843601}
-  explosionPrefab: {fileID: 0}
+  explosionPrefab: {fileID: 6975540055226248527, guid: 7be3164813eec1a4d82b627c7815dd13, type: 3}
 --- !u!199 &1416843599
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -56544,7 +56544,7 @@ ParticleSystem:
     enabled: 1
     startLifetime:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 15
       minScalar: 5
       maxCurve:
@@ -56552,22 +56552,22 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
+          value: 0
+          inSlope: 1
+          outSlope: 1
+          tangentMode: 34
           weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
+          inWeight: 0
+          outWeight: 0
         - serializedVersion: 3
           time: 1
           value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
+          inSlope: 1
+          outSlope: 1
+          tangentMode: 34
           weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
+          inWeight: 0
+          outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
@@ -56598,8 +56598,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 500
-      minScalar: 5
+      scalar: 100
+      minScalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -57406,7 +57406,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 200
+        scalar: 10
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -57792,9 +57792,9 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 0.34509805}
-        key1: {r: 0, g: 0.39538956, b: 1, a: 0.003921569}
-        key2: {r: 0, g: 0, b: 0, a: 0.003921569}
+        key0: {r: 1, g: 1, b: 1, a: 0.6901961}
+        key1: {r: 0, g: 0.39538956, b: 1, a: 0.3647059}
+        key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
@@ -57809,7 +57809,7 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 2699
+        atime1: 10216
         atime2: 65535
         atime3: 65535
         atime4: 65535
@@ -89580,7 +89580,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7001817006109380415, guid: cf838acd8b0ca2d4988650dcb214087e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0000076293945
+      value: 0.000022888184
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf838acd8b0ca2d4988650dcb214087e, type: 3}
