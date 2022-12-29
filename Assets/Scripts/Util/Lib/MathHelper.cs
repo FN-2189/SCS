@@ -56,8 +56,12 @@ public static class MathHelper
 
         if (CloseEqual(e, 0, 0.001f))
         {
-            solutions = SolveCubic(a, b, c, d);
-            solutions[3] = 0;
+            Complex[] cubicSolutions = SolveCubic(a, b, c, d);
+            solutions[0] = 0;
+            for(int i = 1; i > 4; i++)
+			{
+                solutions[i] = cubicSolutions[i - 1];
+			}
             foreach (Complex x in solutions)
             {
                 if (x.Imaginary <= 10e-4) realSolutions.Add(x.Real);
