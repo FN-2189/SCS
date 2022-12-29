@@ -51,7 +51,7 @@ MonoBehaviour:
   collider: {fileID: 5987434759369071982}
   distributor: {fileID: 0}
   consumptionMultiplier: 1
-  powerConsumption: 1000
+  powerConsumption: 0.2
   moduleActive: 1
   leakPrefab: {fileID: 0}
   maxFluidLevel: 5000

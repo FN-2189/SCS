@@ -51,11 +51,11 @@ MonoBehaviour:
   collider: {fileID: 0}
   distributor: {fileID: 0}
   consumptionMultiplier: 1
-  powerConsumption: 0.01
+  powerConsumption: 15
   moduleActive: 1
   reactor: {fileID: 0}
   driveCone: {fileID: 0}
-  maxDriveConeConsumption: 1000000
+  maxDriveConeConsumption: 1000
 --- !u!135 &8048655604709555787
 SphereCollider:
   m_ObjectHideFlags: 0

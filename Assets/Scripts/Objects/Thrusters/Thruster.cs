@@ -12,7 +12,8 @@ public class Thruster : MonoBehaviour
     public Quaternion rotation => transform.localRotation;
     public float thrust {
         get {
-            if (isNegative && thrustLevel > 0f) return 0f;
+            if (!isActive) return 0f;
+            else if (isNegative && thrustLevel > 0f) return 0f;
             else if (!isNegative && thrustLevel < 0f) return 0f;
             else return type.power * Mathf.Clamp01(Mathf.Abs(thrustLevel));
         }
@@ -33,6 +34,8 @@ public class Thruster : MonoBehaviour
 
     private ParticleSystem.MainModule PSMain;
     private ParticleSystem.EmissionModule PSEmission;
+
+    public bool isActive;
 
     private void Awake()
     {
@@ -58,6 +61,11 @@ public class Thruster : MonoBehaviour
 
     private void Update()
     {
+        if (!isActive) 
+        { 
+            PSEmission.rateOverTimeMultiplier = 0f; 
+            return; 
+        }
         if((thrustLevel > 0f && !isNegative) || (thrustLevel < 0f && isNegative))
         {
             PSEmission.rateOverTimeMultiplier = type.exhaust.emission.rateOverTimeMultiplier;

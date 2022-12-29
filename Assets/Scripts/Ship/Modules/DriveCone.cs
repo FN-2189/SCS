@@ -21,7 +21,17 @@ public class DriveCone : PowerModule
     new void Update()
     {
         base.Update();
-        reactor.driveconeConsumption = maxDriveConeConsumption * driveCone.thrustLevel;
+        if (moduleActive)
+        {
+            reactor.driveconeConsumption = maxDriveConeConsumption * driveCone.thrustLevel;
+        }
+        else
+        {
+            reactor.driveconeConsumption = 0;
+        }
+        
+
+        driveCone.isActive = moduleActive;
     }
 
 }
