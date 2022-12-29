@@ -14,7 +14,7 @@ public class MagazineStorage : ShipModule
         
     }
 
-    void Update()
+    new void Update()
     {
         base.Update();
     }

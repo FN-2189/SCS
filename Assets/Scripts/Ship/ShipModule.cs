@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class ShipModule : MonoBehaviour
 {
+    [Header("Ship Module")]
     public bool destroyed;
     public float maxHealth;
     public float health;
     public Collider collider;
 
-    // Start is called before the first frame update
     void Start()
     {
         destroyed = false;
@@ -17,7 +17,6 @@ public class ShipModule : MonoBehaviour
         collider.isTrigger = true;
     }
 
-    // Update is called once per frame
     public virtual void Update()
     {
         if (health <= 0 && !destroyed)
