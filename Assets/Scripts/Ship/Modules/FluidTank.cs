@@ -11,7 +11,7 @@ public class FluidTank : PowerModule
     [SerializeField]
     public float maxFluidLevel;
 
-    public float fluidLevel;
+    public double fluidLevel;
     public string fluid;
 
     void Start()
