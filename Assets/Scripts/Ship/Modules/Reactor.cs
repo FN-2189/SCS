@@ -28,7 +28,7 @@ public class Reactor : PowerModule
         Destroy(explosion, 30f);
     }
 
-    private void FixedUpdate()
+    new private void FixedUpdate()
     {
         float targetPowerOutput = driveconeConsumption + (distributor.maxPower - distributor.power);
 

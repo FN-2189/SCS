@@ -21,9 +21,8 @@ public class Tracker : PowerModule
     }
 
     // Update is called once per frame
-    override public void FixedUpdate()
+    new void FixedUpdate()
     {
-        base.FixedUpdate();
         // this thing is lagging at least one frame behind, other than that it's on point
 
 
