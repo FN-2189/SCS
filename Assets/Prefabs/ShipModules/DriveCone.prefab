@@ -51,7 +51,7 @@ MonoBehaviour:
   collider: {fileID: 0}
   distributor: {fileID: 0}
   consumptionMultiplier: 1
-  powerConsumption: 15
+  powerConsumption: 1.5
   moduleActive: 1
   reactor: {fileID: 0}
   driveCone: {fileID: 0}

@@ -1,13 +1,10 @@
 using Assets.Scripts.Objects;
 using System;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
-public class CannonController : MonoBehaviour
+public class CannonController : PowerModule
 {
     public Cannon Type;
-
-    private Tracker tracker;
 
     [SerializeField]
     private Trackfile target;
@@ -15,6 +12,9 @@ public class CannonController : MonoBehaviour
     public Transform BarrelMount { get; private set; }
     public Transform Barrel { get; private set; }
     public Transform Muzzle { get; private set; }
+
+    [SerializeField]
+    private GameObject explosionPrefab;
 
 
     public Rigidbody rb;
@@ -31,9 +31,18 @@ public class CannonController : MonoBehaviour
         Barrel = Array.Find(BarrelMount.GetComponentsInChildren<Transform>(), t => t.name == "Barrel");
         Muzzle = Array.Find(Barrel.GetComponentsInChildren<Transform>(), t => t.name == "Muzzle");
 
-        tracker = transform.parent.Find("Tracker").GetComponent<Tracker>();
-
         rb = GetComponentInParent<Rigidbody>();
+    }
+
+    new private void Update()
+    {
+        base.Update();
+    }
+
+    public override void ModuleDestroyed()
+    {
+        base.ModuleDestroyed();
+        Instantiate(explosionPrefab, transform);
     }
 
     // Update is called once per frame

@@ -36,7 +36,9 @@ public class CannonAimController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Trackfile target = transform.parent.Find("Tracker").GetComponent<Tracker>().GetFile(1);
+        if (_controller.destroyed) return;
+
+        Trackfile target = transform.parent.parent.Find("Tracker").GetComponent<Tracker>().GetFile(1);
         Vector3 relA = target.Acceleration;
         Vector3 relV = target.Velocity;
         Vector3 relPos = target.Position - transform.parent.rotation * transform.localPosition;

@@ -13,6 +13,7 @@ public class PowerModule : ShipModule
     private void Awake()
     {
         distributor = transform.parent.GetComponentInChildren<PowerDistributor>();
+        if(distributor == null) distributor = transform.parent.parent.GetComponentInChildren<PowerDistributor>();
     }
 
     new void Update()

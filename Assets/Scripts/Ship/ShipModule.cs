@@ -8,13 +8,12 @@ public class ShipModule : MonoBehaviour
     public bool destroyed;
     public float maxHealth;
     public float health;
-    public Collider collider;
+    new public Collider collider;
 
     void Start()
     {
         destroyed = false;
         health = maxHealth;
-        collider.isTrigger = true;
     }
 
     public virtual void Update()
