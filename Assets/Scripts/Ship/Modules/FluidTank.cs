@@ -14,11 +14,6 @@ public class FluidTank : PowerModule
     public double fluidLevel;
     public string fluid;
 
-    void Start()
-    {
-
-    }
-
     new void Update()
     {
         base.Update();   
@@ -26,6 +21,7 @@ public class FluidTank : PowerModule
 
     public override void ModuleDestroyed()
     {
+        base.ModuleDestroyed();
         GameObject leak = Instantiate(leakPrefab, transform);
 
         Destroy(leak);

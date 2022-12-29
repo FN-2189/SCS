@@ -10,7 +10,7 @@ public class ShipModule : MonoBehaviour
     public float health;
     new public Collider collider;
 
-    void Start()
+    void Awake()
     {
         destroyed = false;
         health = maxHealth;

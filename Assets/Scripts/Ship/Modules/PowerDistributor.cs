@@ -8,14 +8,8 @@ public class PowerDistributor : PowerModule
     public float power = 5;
     public float maxPower;
 
-    void Start()
+    new void Update()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        base.Update();
     }
 }

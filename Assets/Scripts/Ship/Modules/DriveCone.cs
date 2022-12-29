@@ -12,14 +12,10 @@ public class DriveCone : PowerModule
     [SerializeField]
     private float maxDriveConeConsumption;
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     new void Update()
     {
+        if (!reactor.moduleActive) { moduleActive = false; }
+
         base.Update();
         if (moduleActive)
         {

@@ -9,11 +9,6 @@ public class MagazineStorage : ShipModule
 
     public int ammoCount;
 
-    void Start()
-    {
-        
-    }
-
     new void Update()
     {
         base.Update();

@@ -7,11 +7,6 @@ public class RCS_System : PowerModule
     [SerializeField]
     private Thruster[] thrusters;
 
-    void Start()
-    {
-        
-    }
-
     new void Update()
     {
         base.Update();

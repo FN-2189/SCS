@@ -15,13 +15,6 @@ public class Reactor : PowerModule
     [SerializeField]
     private float fuelUnitEfficiency;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     new void Update()
     {
         base.Update();
@@ -29,6 +22,7 @@ public class Reactor : PowerModule
 
     public override void ModuleDestroyed()
     {
+        base.ModuleDestroyed();
         GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
 
         Destroy(explosion, 30f);

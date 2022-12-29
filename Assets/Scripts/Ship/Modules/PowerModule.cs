@@ -32,4 +32,11 @@ public class PowerModule : ShipModule
             moduleActive = false;
         }
     }
+
+    public override void ModuleDestroyed()
+    {
+        base.ModuleDestroyed();
+
+        moduleActive = false;
+    }
 }
