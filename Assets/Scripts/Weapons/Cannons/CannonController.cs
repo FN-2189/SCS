@@ -34,7 +34,7 @@ public class CannonController : PowerModule
         rb = GetComponentInParent<Rigidbody>();
     }
 
-    new private void Update()
+    new void Update()
     {
         base.Update();
     }
@@ -46,8 +46,8 @@ public class CannonController : PowerModule
     }
 
     // Update is called once per frame
-    void FixedUpdate()
-    {
+    //void FixedUpdate()
+    //{
         /*
         Trackfile target = transform.parent.Find("Tracker").GetComponent<Tracker>().GetFile(1);
         Vector3 relA = target.Acceleration;
@@ -75,5 +75,5 @@ public class CannonController : PowerModule
         */
         //LocalTarget = (Vector3)LeadCalculator.CaculateLead(target.Velocity, transform.position, transform.parent.position + target.Position, Type.MuzzleVelocity);
         //Debug.DrawRay(transform.position, LocalTarget);
-    }
+    //}
 }

@@ -5102,7 +5102,7 @@ MonoBehaviour:
   collider: {fileID: 0}
   distributor: {fileID: 0}
   consumptionMultiplier: 1
-  powerConsumption: 0
+  powerConsumption: 0.5
   moduleActive: 1
   thrusters:
   - {fileID: 1699701357}
@@ -41512,8 +41512,8 @@ MonoBehaviour:
   consumptionMultiplier: 1
   powerConsumption: 0.02
   moduleActive: 1
-  power: 20000
-  maxPower: 20000
+  power: 200
+  maxPower: 200
 --- !u!65 &1952143205
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -43908,7 +43908,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1538922041607206153, guid: 861e6d5c94a936f45a5e993eec143340, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.290003
+      value: -8.290007
       objectReference: {fileID: 0}
     - target: {fileID: 1538922041607206153, guid: 861e6d5c94a936f45a5e993eec143340, type: 3}
       propertyPath: m_LocalRotation.w
@@ -44103,7 +44103,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 487411134681837984, guid: cf838acd8b0ca2d4988650dcb214087e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000030517578
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 598138125678993407, guid: cf838acd8b0ca2d4988650dcb214087e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -44247,7 +44247,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7001817006109380415, guid: cf838acd8b0ca2d4988650dcb214087e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.00002670288
+      value: 0.00002670288
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf838acd8b0ca2d4988650dcb214087e, type: 3}

@@ -34,7 +34,7 @@ public class Reactor : PowerModule
 
         Debug.Log(targetPowerOutput);
 
-        if (fuelTank.fluid == "Hydrogen Fuel" && fuelTank.fluidLevel > 0 && moduleActive)
+        if (fuelTank.fluid == "Hydrogen Fuel" && fuelTank.fluidLevel > 0 && moduleActive && fuelTank.moduleActive)
         {
             float output = Mathf.Min(targetPowerOutput, maxPowerOutput);
             fuelTank.fluidLevel -= output / fuelUnitEfficiency;
