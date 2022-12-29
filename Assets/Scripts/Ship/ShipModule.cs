@@ -7,12 +7,14 @@ public class ShipModule : MonoBehaviour
     public bool destroyed;
     public float maxHealth;
     public float health;
+    public Collider collider;
 
     // Start is called before the first frame update
     void Start()
     {
         destroyed = false;
         health = maxHealth;
+        collider.isTrigger = true;
     }
 
     // Update is called once per frame
@@ -41,4 +43,9 @@ public class ShipModule : MonoBehaviour
     }
 
     public virtual void ModuleDestroyed() {}
+
+    public void OnTriggerEnter(Collider other)
+    {
+        health += -10;
+    }
 }

@@ -25,4 +25,5 @@ public class Reactor : ShipModule
         Debug.Log("Reactor goes boom");
         reactorParticleSystem.Play();
     }
+
 }
