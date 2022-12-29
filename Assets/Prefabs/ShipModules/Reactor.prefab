@@ -55,7 +55,9 @@ MonoBehaviour:
   moduleActive: 1
   explosionPrefab: {fileID: 6975540055226248527, guid: 7be3164813eec1a4d82b627c7815dd13, type: 3}
   fuelTank: {fileID: 0}
-  powerOutput: 1.5
+  maxPowerOutput: 1000
+  driveconeConsumption: 0
+  fuelUnitEfficiency: 10000
 --- !u!135 &9112648872186824688
 SphereCollider:
   m_ObjectHideFlags: 0

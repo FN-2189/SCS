@@ -9,8 +9,11 @@ public class Reactor : PowerModule
     private GameObject explosionPrefab;
 
     public FluidTank fuelTank;
-    public float powerOutput;
+    public float maxPowerOutput;
     public float driveconeConsumption;
+
+    [SerializeField]
+    private float fuelUnitEfficiency;
 
     // Start is called before the first frame update
     void Start()
@@ -33,11 +36,17 @@ public class Reactor : PowerModule
 
     private void FixedUpdate()
     {
-        if (fuelTank.fluid == "Hydrogen Fuel" && fuelTank.fluidLevel > 0 && distributor.power < distributor.maxPower && moduleActive)
+        float targetPowerOutput = driveconeConsumption + (distributor.maxPower - distributor.power);
+
+        Debug.Log(targetPowerOutput);
+
+        if (fuelTank.fluid == "Hydrogen Fuel" && fuelTank.fluidLevel > 0 && moduleActive)
         {
-            fuelTank.fluidLevel -= 0.001f;
-            distributor.power += powerOutput - driveconeConsumption;
+            float output = Mathf.Min(targetPowerOutput, maxPowerOutput);
+            fuelTank.fluidLevel -= output / fuelUnitEfficiency;
+            distributor.power += output - driveconeConsumption;
         }
+
     }
 
 }

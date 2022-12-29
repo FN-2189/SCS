@@ -15349,7 +15349,9 @@ MonoBehaviour:
   moduleActive: 1
   explosionPrefab: {fileID: 6975540055226248527, guid: 7be3164813eec1a4d82b627c7815dd13, type: 3}
   fuelTank: {fileID: 0}
-  powerOutput: 0
+  maxPowerOutput: 0
+  driveconeConsumption: 0
+  fuelUnitEfficiency: 0
 --- !u!1 &311301302
 GameObject:
   m_ObjectHideFlags: 0
@@ -31793,6 +31795,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxShootAngle: 0.5
   RPMTimestep: 1
+--- !u!114 &860694411 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3444483951517069248, guid: 95a76ad00dbb22844b55b9a6f8299e40, type: 3}
+  m_PrefabInstance: {fileID: 5533992621000738598}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49d69c40e0e1be843abeda542d90dc35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &863775107
 GameObject:
   m_ObjectHideFlags: 0
@@ -77222,8 +77235,8 @@ MonoBehaviour:
   consumptionMultiplier: 1
   powerConsumption: 0
   moduleActive: 1
-  power: 5
-  maxPower: 20
+  power: 20000
+  maxPower: 20000
 --- !u!65 &1952143205
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -84702,7 +84715,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3072388089378084783, guid: 15c2e3362afb4ec4bb8d79e56f505a5a, type: 3}
       propertyPath: powerConsumption
-      value: 0.01
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15c2e3362afb4ec4bb8d79e56f505a5a, type: 3}
@@ -84859,7 +84872,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7001817006109380415, guid: cf838acd8b0ca2d4988650dcb214087e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 0.0000038146973
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf838acd8b0ca2d4988650dcb214087e, type: 3}
@@ -84972,6 +84985,22 @@ PrefabInstance:
       propertyPath: reactor
       value: 
       objectReference: {fileID: 1416843598}
+    - target: {fileID: 5014733554421091855, guid: 5ad02e01d9cabdf44af948937f940bc6, type: 3}
+      propertyPath: driveCone
+      value: 
+      objectReference: {fileID: 860694411}
+    - target: {fileID: 5014733554421091855, guid: 5ad02e01d9cabdf44af948937f940bc6, type: 3}
+      propertyPath: powerConsumption
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5014733554421091855, guid: 5ad02e01d9cabdf44af948937f940bc6, type: 3}
+      propertyPath: driveConeConsumption
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5014733554421091855, guid: 5ad02e01d9cabdf44af948937f940bc6, type: 3}
+      propertyPath: maxDriveConeConsumption
+      value: 1000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ad02e01d9cabdf44af948937f940bc6, type: 3}
 --- !u!4 &5222021441226464158
