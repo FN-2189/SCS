@@ -14,7 +14,7 @@ public class DriveCone : PowerModule
 
     new void Update()
     {
-        if (!reactor.moduleActive) { moduleActive = false; }
+        if (!reactor.moduleActive || destroyed) { moduleActive = false; }
 
         base.Update();
         if (moduleActive)

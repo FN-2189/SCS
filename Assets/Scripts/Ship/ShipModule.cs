@@ -24,6 +24,10 @@ public class ShipModule : MonoBehaviour
             Debug.Log($"{gameObject.name} was destroyed");
             ModuleDestroyed();
         }
+        else if (health > 0 && destroyed)
+        {
+            destroyed = false;
+        }
 
     }
 

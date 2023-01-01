@@ -15,7 +15,6 @@ public class LifeSupport : PowerModule
     public float maxAtmosphereVolume;
     public float atmosphereVolume;
 
-    // Update is called once per frame
     new void FixedUpdate()
     {
         if (atmosphereVolume < maxAtmosphereVolume && moduleActive)
