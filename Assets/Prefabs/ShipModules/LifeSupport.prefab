@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyed: 0
-  maxHealth: 0
-  health: 0
+  maxHealth: 100
+  health: 100
   collider: {fileID: 0}
   distributor: {fileID: 0}
   consumptionMultiplier: 1

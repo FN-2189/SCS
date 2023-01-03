@@ -7,12 +7,11 @@ public class TestScript : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        foreach (var g in GameObject.FindGameObjectsWithTag("Testing")) g.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        string compound = "";
+        foreach (double i in MathHelper.SolveQuarticReal(1, 2, 3, 4, 5))
+        {
+            compound += (i + ", ");            
+        }
+        Debug.Log(compound);
     }
 }

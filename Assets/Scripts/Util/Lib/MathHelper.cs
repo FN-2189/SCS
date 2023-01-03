@@ -18,7 +18,7 @@ public static class MathHelper
 
     public static bool CloseEqual(double a, double b, double tolerance)
     {
-        return Math.Abs(a - b) > tolerance;
+        return Math.Abs(a - b) < tolerance;
     }
 
     public static Complex[] SolveCubic(double a, double b, double c, double d)
