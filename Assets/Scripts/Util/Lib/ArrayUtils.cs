@@ -14,4 +14,19 @@ public static class ArrayUtils
 
         return output;
     }
+
+    public static string ToString<T>(T[] array, string seperator)
+    {
+        string s = "";
+        // add all but last
+        for(int i = 0; i < array.Length - 1; i++)
+        {
+            s += array[i].ToString() + seperator;
+        }
+
+        // add last
+        s += array[array.Length - 1].ToString();
+
+        return s;
+    }
 }
